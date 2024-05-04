@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 void main() {
@@ -97,198 +99,304 @@ class MyApp extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    iconMargin: EdgeInsets.only(bottom: 4),
+                    iconMargin: EdgeInsets.only(
+                      bottom: 4,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          body: Column(
-            children: [
-              //status bar
-              const SizedBox(
-                height: 44,
-              ),
-              // top
-              Container(
-                height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // logo
-                    Image.asset("assets/Instagram_logo.png"),
-
-                    // icons
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/Add.png",
-                          width: 26,
-                          height: 26,
-                        ),
-                        const SizedBox(
-                          width: 18,
-                        ),
-                        Image.asset(
-                          "assets/Heart.png",
-                          width: 26,
-                          height: 26,
-                        ),
-                        const SizedBox(
-                          width: 18,
-                        ),
-                        Image.asset(
-                          "assets/Share.png",
-                          width: 26,
-                          height: 26,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              // body
-              Expanded(
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.only(left: 30),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    //user list
+                    // top
                     Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      height: 108,
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.grey,
-                            width: 0.5,
+                      height: 50,
+                      // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          // page title
+                          Text(
+                            'GoodsList',
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.1,
+                            ),
+                          ),
+
+                          // profile icon
+
+                          ProfileIcon(profilePicture: 'assets/profile.png'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    // body
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          '최근에 추가된 굿즈들',
+                          style: TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 0.1,
                           ),
                         ),
-                      ),
-                      child: const SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
+                        SizedBox(
+                          height: 10,
+                        ),
+                        //user list
+                        Container(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 300,
+                                  width: 250,
+                                  margin: EdgeInsets.only(right: 30),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                        'assets/goods.jpeg',
+                                      ),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        height: 100,
+                                        width: 250,
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xDEDBCACA),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(15),
+                                            bottomRight: Radius.circular(15),
+                                          ),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'GoodsName',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text('2024.xx.xx'),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  height: 300,
+                                  width: 250,
+                                  margin: EdgeInsets.only(right: 30),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                        'assets/goods.jpeg',
+                                      ),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        height: 100,
+                                        width: 250,
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xDEDBCACA),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(15),
+                                            bottomRight: Radius.circular(15),
+                                          ),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'GoodsName',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text('2024.xx.xx'),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        // feeds
+                        Column(
                           children: [
-                            // user
-                            User(
-                              userName: 'flutter_framework',
-                              profilePicture: 'assets/Profile_picture_02.png',
+                            const Text(
+                              'Category',
+                              style: TextStyle(
+                                fontSize: 19,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.1,
+                              ),
                             ),
-                            User(
-                              userName: 'awesome_application',
-                              profilePicture: 'assets/Profile_picture_06.png',
-                            ),
-                            User(
-                              userName: 'flutter_framework',
-                              profilePicture: 'assets/Profile_picture_02.png',
-                            ),
-                            User(
-                              userName: 'awesome_application',
-                              profilePicture: 'assets/Profile_picture_06.png',
-                            ),
-                            User(
-                              userName: 'flutter_framework',
-                              profilePicture: 'assets/Profile_picture_02.png',
-                            ),
-                            User(
-                              userName: 'awesome_application',
-                              profilePicture: 'assets/Profile_picture_06.png',
+                            const SizedBox(
+                              height: 10,
                             ),
                           ],
                         ),
-                      ),
-                    ),
-
-                    // feeds
-                    Column(
-                      children: [
-                        // user info
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          height: 52,
-                          child: Row(
+                        Padding(
+                          padding: const EdgeInsets.only(right: 30),
+                          child: Column(
                             children: [
-                              Image.asset('assets/Profile_picture_02.png'),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 150,
+                                        width: 150,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image:
+                                                AssetImage('assets/goods.jpeg'),
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'CategoryName',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    width: 30,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 150,
+                                        width: 150,
+                                        decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                      Text(
+                                        'CategoryName',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                               const SizedBox(
-                                width: 10,
+                                height: 20,
                               ),
-                              const Text(
-                                'flutter_framework',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const Spacer(),
-                              const Icon(
-                                Icons.more_horiz,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 150,
+                                        width: 150,
+                                        decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                      Text(
+                                        'CategoryName',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    width: 30,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 150,
+                                        width: 150,
+                                        decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                      ),
+                                      Text(
+                                        'CategoryName',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ),
-
-                        // feed pictures
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/Feed_picture_01.png',
-                                width: MediaQuery.of(context)
-                                    .size
-                                    .width, // context는 최상위 부모 위젯에서 생성되는데, 모바일 화면의 온갖 정보를 담고 있는 객체이다.
-                              ),
-                              Image.asset(
-                                'assets/Feed_picture_02.png',
-                                width: MediaQuery.of(context).size.width,
-                              ),
-                              Image.asset(
-                                'assets/Feed_picture_03.png',
-                                width: MediaQuery.of(context).size.width,
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        // actions
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
-                          ),
-                          height: 42,
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/Heart.png',
-                              ),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              Image.asset(
-                                'assets/Comment.png',
-                              ),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              Image.asset(
-                                'assets/Share.png',
-                              ),
-                              const Spacer(),
-                              Image.asset(
-                                'assets/Bookmark.png',
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        // Details
                       ],
                     ),
                   ],
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -297,55 +405,40 @@ class MyApp extends StatelessWidget {
 }
 
 @override
-class User extends StatelessWidget {
-  final String userName;
+class ProfileIcon extends StatelessWidget {
+  // final String userName;
   final String profilePicture;
 
-  const User({super.key, required this.userName, required this.profilePicture});
+  const ProfileIcon({super.key, required this.profilePicture});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      child: Column(
-        children: [
-          Container(
-            width: 71,
-            height: 71,
-            padding: const EdgeInsets.all(2.5),
-            decoration: const BoxDecoration(
-              color: Color(0xFFDBCACA),
-              shape: BoxShape.circle,
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(2.5),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage(profilePicture),
-                  ),
-                ),
-              ),
+    return Container(
+      width: 50,
+      height: 50,
+      margin: EdgeInsets.only(
+        right: 30,
+      ),
+      padding: const EdgeInsets.all(2.5),
+      decoration: const BoxDecoration(
+        color: Color(0xFFDBCACA),
+        shape: BoxShape.circle,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(2.5),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(0xFFD9D9D9),
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: AssetImage(profilePicture),
             ),
           ),
-          SizedBox(
-            width: 71,
-            child: Text(
-              userName,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 11,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
