@@ -31,20 +31,7 @@ class MyApp extends StatelessWidget {
                 labelColor: Colors.black,
                 // controller: _tabController,
                 tabs: <Widget>[
-                  Tab(
-                    icon: Icon(
-                      Icons.home,
-                      size: 35,
-                    ),
-                    child: Text(
-                      '굿즈',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    iconMargin: EdgeInsets.only(bottom: 4),
-                  ),
+                  NavigationTab(),
                   Tab(
                     icon: Icon(
                       Icons.shopping_bag,
@@ -114,6 +101,9 @@ class MyApp extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
                     // top
                     Container(
                       height: 50,
@@ -404,6 +394,30 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class NavigationTab extends StatelessWidget {
+  const NavigationTab({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Tab(
+      icon: Icon(
+        Icons.home,
+        size: 35,
+      ),
+      child: Text(
+        '굿즈',
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      iconMargin: EdgeInsets.only(bottom: 4),
+    );
+  }
+}
+
 @override
 class ProfileIcon extends StatelessWidget {
   // final String userName;
@@ -416,7 +430,7 @@ class ProfileIcon extends StatelessWidget {
     return Container(
       width: 50,
       height: 50,
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         right: 30,
       ),
       padding: const EdgeInsets.all(2.5),
@@ -432,7 +446,7 @@ class ProfileIcon extends StatelessWidget {
         ),
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xFFD9D9D9),
+            color: const Color(0xFFD9D9D9),
             shape: BoxShape.circle,
             image: DecorationImage(
               image: AssetImage(profilePicture),
