@@ -14,89 +14,10 @@ class MyApp extends StatelessWidget {
       home: DefaultTabController(
         length: 5,
         child: Scaffold(
-          bottomNavigationBar: SafeArea(
-            child: Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 0.1),
-                ),
-                borderRadius: BorderRadius.horizontal(
-                  right: Radius.circular(20),
-                  left: Radius.circular(20),
-                ),
-              ),
-              height: 75,
-              child: const TabBar(
-                indicatorColor: Colors.transparent,
-                labelColor: Colors.black,
-                // controller: _tabController,
-                tabs: <Widget>[
-                  NavigationTab(),
-                  Tab(
-                    icon: Icon(
-                      Icons.shopping_bag,
-                      size: 35,
-                    ),
-                    child: Text(
-                      '위시',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    iconMargin: EdgeInsets.only(bottom: 4),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.add_box,
-                      size: 35,
-                    ),
-                    child: Text(
-                      '추가',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    iconMargin: EdgeInsets.only(bottom: 4),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.search,
-                      size: 35,
-                    ),
-                    child: Text(
-                      '검색',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    iconMargin: EdgeInsets.only(bottom: 4),
-                  ),
-                  Tab(
-                    icon: Icon(
-                      Icons.star,
-                      size: 35,
-                    ),
-                    child: Text(
-                      '즐겨찾기',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    iconMargin: EdgeInsets.only(
-                      bottom: 4,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          bottomNavigationBar: const BottomNavigation(),
           body: SafeArea(
             child: Padding(
-              padding: EdgeInsets.only(left: 30),
+              padding: const EdgeInsets.only(left: 30),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -394,26 +315,80 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class BottomNavigation extends StatelessWidget {
+  const BottomNavigation({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        border: Border(
+          top: BorderSide(width: 0.1),
+        ),
+        borderRadius: BorderRadius.horizontal(
+          right: Radius.circular(20),
+          left: Radius.circular(20),
+        ),
+      ),
+      height: 75,
+      child: const TabBar(
+        indicatorColor: Colors.transparent,
+        labelColor: Colors.black,
+        // controller: _tabController,
+        tabs: <Widget>[
+          NavigationTab(
+            icon: Icons.home,
+            text: '굿즈',
+          ),
+          NavigationTab(
+            icon: Icons.shopping_bag,
+            text: '위시',
+          ),
+          NavigationTab(
+            icon: Icons.add_box,
+            text: '추가',
+          ),
+          NavigationTab(
+            icon: Icons.search,
+            text: '검색',
+          ),
+          NavigationTab(
+            icon: Icons.star,
+            text: '즐겨찾기',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class NavigationTab extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
   const NavigationTab({
     super.key,
+    required this.icon,
+    required this.text,
   });
 
   @override
   Widget build(BuildContext context) {
     return Tab(
       icon: Icon(
-        Icons.home,
+        icon,
         size: 35,
       ),
       child: Text(
-        '굿즈',
-        style: TextStyle(
+        text,
+        style: const TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.bold,
         ),
       ),
-      iconMargin: EdgeInsets.only(bottom: 4),
+      iconMargin: const EdgeInsets.only(bottom: 4),
     );
   }
 }
