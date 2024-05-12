@@ -26,29 +26,7 @@ class MyApp extends StatelessWidget {
                       height: 20,
                     ),
                     // top
-                    Container(
-                      height: 50,
-                      // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          // page title
-                          Text(
-                            'GoodsList',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.1,
-                            ),
-                          ),
-
-                          // profile icon
-
-                          ProfileIcon(profilePicture: 'assets/profile.png'),
-                        ],
-                      ),
-                    ),
+                    const TopWithProfile(),
                     const SizedBox(
                       height: 20,
                     ),
@@ -315,6 +293,39 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class TopWithProfile extends StatelessWidget {
+  const TopWithProfile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 50,
+      // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // page title
+          Text(
+            'GoodsList',
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.1,
+            ),
+          ),
+
+          // profile icon
+
+          ProfileIcon(profilePicture: 'assets/profile.png'),
+        ],
+      ),
+    );
+  }
+}
+
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({
     super.key,
@@ -381,6 +392,7 @@ class NavigationTab extends StatelessWidget {
         icon,
         size: 35,
       ),
+      iconMargin: const EdgeInsets.only(bottom: 4),
       child: Text(
         text,
         style: const TextStyle(
@@ -388,7 +400,6 @@ class NavigationTab extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      iconMargin: const EdgeInsets.only(bottom: 4),
     );
   }
 }
