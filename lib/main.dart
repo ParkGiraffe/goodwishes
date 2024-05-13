@@ -77,6 +77,12 @@ class CategoryList extends StatelessWidget {
             secondImageRoute: 'assets/goods.jpeg',
             secondItemName: 'CategoryName',
           ),
+          CategoryListRow(
+            firstImageRoute: 'assets/goods.jpeg',
+            firstItemName: 'CategoryName',
+            secondImageRoute: 'assets/goods.jpeg',
+            secondItemName: 'CategoryName',
+          ),
         ],
       ),
     );
@@ -309,43 +315,45 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        border: Border(
-          top: BorderSide(width: 0.1),
+    return SafeArea(
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(width: 0.1),
+          ),
+          borderRadius: BorderRadius.horizontal(
+            right: Radius.circular(20),
+            left: Radius.circular(20),
+          ),
         ),
-        borderRadius: BorderRadius.horizontal(
-          right: Radius.circular(20),
-          left: Radius.circular(20),
+        height: 75,
+        child: const TabBar(
+          indicatorColor: Colors.transparent,
+          labelColor: Colors.black,
+          // controller: _tabController,
+          tabs: <Widget>[
+            NavigationTab(
+              icon: Icons.home,
+              text: '굿즈',
+            ),
+            NavigationTab(
+              icon: Icons.shopping_bag,
+              text: '위시',
+            ),
+            NavigationTab(
+              icon: Icons.add_box,
+              text: '추가',
+            ),
+            NavigationTab(
+              icon: Icons.search,
+              text: '검색',
+            ),
+            NavigationTab(
+              icon: Icons.star,
+              text: '즐겨찾기',
+            ),
+          ],
         ),
-      ),
-      height: 75,
-      child: const TabBar(
-        indicatorColor: Colors.transparent,
-        labelColor: Colors.black,
-        // controller: _tabController,
-        tabs: <Widget>[
-          NavigationTab(
-            icon: Icons.home,
-            text: '굿즈',
-          ),
-          NavigationTab(
-            icon: Icons.shopping_bag,
-            text: '위시',
-          ),
-          NavigationTab(
-            icon: Icons.add_box,
-            text: '추가',
-          ),
-          NavigationTab(
-            icon: Icons.search,
-            text: '검색',
-          ),
-          NavigationTab(
-            icon: Icons.star,
-            text: '즐겨찾기',
-          ),
-        ],
       ),
     );
   }
