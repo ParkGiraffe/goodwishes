@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,14 +31,7 @@ class MyApp extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          '최근에 추가된 굿즈들',
-                          style: TextStyle(
-                            fontSize: 19,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 0.1,
-                          ),
-                        ),
+                        const SectionTitle(titleText: '최근에 추가된 굿즈들'),
                         SizedBox(
                           height: 10,
                         ),
@@ -150,17 +140,10 @@ class MyApp extends StatelessWidget {
                           height: 20,
                         ),
                         // feeds
-                        Column(
+                        const Column(
                           children: [
-                            const Text(
-                              'Category',
-                              style: TextStyle(
-                                fontSize: 19,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 0.1,
-                              ),
-                            ),
-                            const SizedBox(
+                            SectionTitle(titleText: 'Category'),
+                            SizedBox(
                               height: 10,
                             ),
                           ],
@@ -183,7 +166,7 @@ class MyApp extends StatelessWidget {
                                           color: Colors.grey,
                                           borderRadius:
                                               BorderRadius.circular(15),
-                                          image: DecorationImage(
+                                          image: const DecorationImage(
                                             fit: BoxFit.cover,
                                             image:
                                                 AssetImage('assets/goods.jpeg'),
@@ -288,6 +271,24 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SectionTitle extends StatelessWidget {
+  final String titleText;
+
+  const SectionTitle({super.key, required this.titleText});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      titleText,
+      style: const TextStyle(
+        fontSize: 19,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 0.1,
       ),
     );
   }
