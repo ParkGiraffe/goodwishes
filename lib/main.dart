@@ -1,168 +1,52 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: DefaultTabController(
         length: 5,
         child: Scaffold(
-          bottomNavigationBar: const BottomNavigation(),
+          bottomNavigationBar: BottomNavigation(),
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(left: 30),
+              padding: EdgeInsets.only(left: 30),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 20,
                     ),
                     // top
-                    const TopWithProfile(),
-                    const SizedBox(
+                    TopWithProfile(),
+                    SizedBox(
                       height: 20,
                     ),
                     // body
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SectionTitle(titleText: '최근에 추가된 굿즈들'),
-                        const SizedBox(
+                        SectionTitle(titleText: '최근에 추가된 굿즈들'),
+                        SizedBox(
                           height: 10,
                         ),
                         HorizonList(),
-                        const SizedBox(
+                        SizedBox(
                           height: 20,
                         ),
                         // feeds
-                        const Column(
-                          children: [
-                            SectionTitle(titleText: 'Category'),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
+                        SectionTitle(titleText: 'Category'),
+                        SizedBox(
+                          height: 10,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 30),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 150,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey,
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                          image: const DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image:
-                                                AssetImage('assets/goods.jpeg'),
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        'CategoryName',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 150,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                        ),
-                                      ),
-                                      Text(
-                                        'CategoryName',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 150,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                        ),
-                                      ),
-                                      Text(
-                                        'CategoryName',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 150,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                        ),
-                                      ),
-                                      Text(
-                                        'CategoryName',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                        CategoryList(),
                       ],
                     ),
                   ],
@@ -172,6 +56,109 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CategoryList extends StatelessWidget {
+  const CategoryList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(right: 30),
+      child: Column(
+        children: [
+          CategoryListRow(
+            firstImageRoute: 'assets/goods.jpeg',
+            firstItemName: 'CategoryName',
+            secondImageRoute: 'assets/goods.jpeg',
+            secondItemName: 'CategoryName',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CategoryListRow extends StatelessWidget {
+  final String firstImageRoute;
+  final String firstItemName;
+  final String secondImageRoute;
+  final String secondItemName;
+
+  const CategoryListRow({
+    super.key,
+    required this.firstImageRoute,
+    required this.firstItemName,
+    required this.secondImageRoute,
+    required this.secondItemName,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CategoryListEl(
+              imageRoute: firstImageRoute,
+              itemName: firstItemName,
+            ),
+            const SizedBox(
+              width: 30,
+            ),
+            CategoryListEl(
+              imageRoute: secondImageRoute,
+              itemName: secondItemName,
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 14,
+        ),
+      ],
+    );
+  }
+}
+
+class CategoryListEl extends StatelessWidget {
+  final String imageRoute;
+  final String itemName;
+
+  const CategoryListEl({
+    super.key,
+    required this.imageRoute,
+    required this.itemName,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 150,
+          width: 150,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(imageRoute),
+            ),
+          ),
+        ),
+        Text(
+          itemName,
+          style: const TextStyle(
+            fontSize: 15,
+          ),
+        ),
+      ],
     );
   }
 }
