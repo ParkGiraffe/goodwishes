@@ -12,7 +12,7 @@ class GoodsMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(left: 30),
+      padding: EdgeInsets.only(left: 24),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -42,7 +42,10 @@ class GoodsMainPage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                CategoryList(),
+                Padding(
+                  padding: EdgeInsets.only(right: 24.0),
+                  child: CategoryList(),
+                ),
               ],
             ),
           ],

@@ -10,7 +10,7 @@ class SectionTitle extends StatelessWidget {
     return Text(
       titleText,
       style: const TextStyle(
-        fontSize: 19,
+        fontSize: 20,
         fontWeight: FontWeight.bold,
         letterSpacing: 0.1,
       ),

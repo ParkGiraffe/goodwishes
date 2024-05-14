@@ -8,24 +8,21 @@ class CategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(right: 30),
-      child: Column(
-        children: [
-          CategoryListRow(
-            firstImageRoute: 'assets/goods.jpeg',
-            firstItemName: 'CategoryName',
-            secondImageRoute: 'assets/goods.jpeg',
-            secondItemName: 'CategoryName',
-          ),
-          CategoryListRow(
-            firstImageRoute: 'assets/goods.jpeg',
-            firstItemName: 'CategoryName',
-            secondImageRoute: 'assets/goods.jpeg',
-            secondItemName: 'CategoryName',
-          ),
-        ],
-      ),
+    return const Column(
+      children: [
+        CategoryListRow(
+          firstImageRoute: 'assets/goods.jpeg',
+          firstItemName: 'CategoryName',
+          secondImageRoute: 'assets/goods.jpeg',
+          secondItemName: 'CategoryName',
+        ),
+        CategoryListRow(
+          firstImageRoute: 'assets/goods.jpeg',
+          firstItemName: 'CategoryName',
+          secondImageRoute: 'assets/goods.jpeg',
+          secondItemName: 'CategoryName',
+        ),
+      ],
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:goodwishes/widgets/category_list.dart';
+import 'package:goodwishes/widgets/goods_detail_list_el.dart';
+import 'package:goodwishes/widgets/section_title.dart';
 
 class GoodsDetailPage extends StatelessWidget {
   const GoodsDetailPage({
@@ -106,13 +108,15 @@ class GoodsDetailPage extends StatelessWidget {
             ),
           ),
           // 굿즈 디테일 정보들 출력
-          const SizedBox(
-            height: 30,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 22.0),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 30,
+                ),
                 GoodsDetailListEl(
                   leftText: '소지 수량',
                   rightText: '3장',
@@ -129,54 +133,32 @@ class GoodsDetailPage extends StatelessWidget {
                   leftText: '보관 장소',
                   rightText: '카드 바인더',
                 ),
+                SizedBox(
+                  height: 5,
+                ),
+                SectionTitle(titleText: '메모'),
+                Container(
+                  height: 240,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFD9D9D9),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                SectionTitle(titleText: '같은 카테고리의 물건들'),
+                SizedBox(
+                  height: 15,
+                ),
+                CategoryList(),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class GoodsDetailListEl extends StatelessWidget {
-  final String leftText;
-  final String rightText;
-
-  const GoodsDetailListEl({
-    super.key,
-    required this.leftText,
-    required this.rightText,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              leftText,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(
-              width: 35,
-            ),
-            Text(
-              rightText,
-              style: const TextStyle(
-                fontSize: 19,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 22,
-        ),
-      ],
     );
   }
 }

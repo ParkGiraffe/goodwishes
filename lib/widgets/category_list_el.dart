@@ -16,8 +16,8 @@ class CategoryListEl extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 150,
-          width: 150,
+          height: 160,
+          width: 160,
           decoration: BoxDecoration(
             color: Colors.grey,
             borderRadius: BorderRadius.circular(15),

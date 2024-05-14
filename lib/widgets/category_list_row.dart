@@ -20,14 +20,11 @@ class CategoryListRow extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CategoryListEl(
               imageRoute: firstImageRoute,
               itemName: firstItemName,
-            ),
-            const SizedBox(
-              width: 30,
             ),
             CategoryListEl(
               imageRoute: secondImageRoute,
