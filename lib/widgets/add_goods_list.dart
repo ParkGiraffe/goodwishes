@@ -37,13 +37,13 @@ class AddGoodsList extends StatelessWidget {
               hintText: '카테고리',
             ),
           ),
+          AddGoodsListEl(leftText: '태그 설정', rightWidget: Tag()),
           AddGoodsListEl(
-            leftText: '구매 일자',
+            leftText: '소지 수량',
             rightWidget: TextInput(
-              hintText: '2024.xx.xx',
+              hintText: '소지 수량',
             ),
           ),
-          AddGoodsListEl(leftText: '태그 설정', rightWidget: Tag()),
           AddGoodsListEl(
             leftText: '구매 가격',
             rightWidget: TextInput(

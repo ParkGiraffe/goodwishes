@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/widgets/add_goods_list.dart';
-import 'package:goodwishes/widgets/goods_detail_thumb.dart';
+import 'package:goodwishes/widgets/add_photo.dart';
+import 'package:goodwishes/widgets/change_goods_wish_button.dart';
 import 'package:goodwishes/widgets/stack_top_navigation_bar.dart';
 
 class AddGoodsPage extends StatelessWidget {
@@ -15,7 +16,11 @@ class AddGoodsPage extends StatelessWidget {
       child: Column(
         children: [
           StackTopNavigationBar(),
-          GoodsDetailThumb(),
+          ChangeGoodsWishButton(),
+          SizedBox(
+            height: 20,
+          ),
+          AddPhoto(),
           AddGoodsList(),
         ],
       ),
