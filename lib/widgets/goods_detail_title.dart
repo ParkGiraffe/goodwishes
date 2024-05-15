@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/widgets/tag.dart';
 
 class GoodsDetailTitle extends StatelessWidget {
   const GoodsDetailTitle({
@@ -55,25 +56,7 @@ class GoodsDetailTitle extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Container(
-                              width: 84,
-                              height: 27,
-                              decoration: const BoxDecoration(
-                                color: Color(0xFFD9D9D9),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5),
-                                ),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'TagName',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13.5,
-                                  ),
-                                ),
-                              ),
-                            ),
+                            Tag(),
                             const SizedBox(
                               width: 7,
                             ),
