@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/pages/add_goods_page.dart';
+import 'package:goodwishes/pages/search_page.dart';
 import 'package:goodwishes/pages/wishlist_main_page.dart';
 import 'package:goodwishes/widgets/bottom_navigation.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           bottomNavigationBar: BottomNavigation(),
           body: SafeArea(
-            child: AddGoodsPage(),
+            child: SearchPage(),
           ),
         ),
       ),
