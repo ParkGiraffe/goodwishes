@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/widgets/profile_icon.dart';
 
 class TopWithProfile extends StatelessWidget {
+  final String title;
   const TopWithProfile({
     super.key,
+    required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 50,
       // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
       child: Row(
@@ -17,8 +19,8 @@ class TopWithProfile extends StatelessWidget {
         children: [
           // page title
           Text(
-            'GoodsList',
-            style: TextStyle(
+            title,
+            style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
               letterSpacing: 0.1,
@@ -27,7 +29,7 @@ class TopWithProfile extends StatelessWidget {
 
           // profile icon
 
-          ProfileIcon(profilePicture: 'assets/profile.png'),
+          const ProfileIcon(profilePicture: 'assets/profile.png'),
         ],
       ),
     );

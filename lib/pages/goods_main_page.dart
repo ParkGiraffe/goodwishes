@@ -21,7 +21,9 @@ class GoodsMainPage extends StatelessWidget {
               height: 20,
             ),
             // top
-            TopWithProfile(),
+            TopWithProfile(
+              title: 'GoodsList',
+            ),
             SizedBox(
               height: 20,
             ),

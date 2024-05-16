@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/widgets/add_goods_list.dart';
-import 'package:goodwishes/widgets/add_photo.dart';
-import 'package:goodwishes/widgets/change_goods_wish_button.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/stack_top_navigation_bar.dart';
 
@@ -38,10 +35,10 @@ class SearchPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SectionTitle(
+                const SectionTitle(
                   titleText: '최근 검색어',
                 ),
-                SearchedList()
+                const SearchedList()
               ],
             ),
           ),

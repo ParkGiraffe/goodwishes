@@ -12,7 +12,7 @@ class WishlistMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(left: 30),
+      padding: EdgeInsets.only(left: 24),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -21,7 +21,9 @@ class WishlistMainPage extends StatelessWidget {
               height: 20,
             ),
             // top
-            TopWithProfile(),
+            TopWithProfile(
+              title: 'WishList',
+            ),
             SizedBox(
               height: 20,
             ),
@@ -42,7 +44,10 @@ class WishlistMainPage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                CategoryList(),
+                Padding(
+                  padding: EdgeInsets.only(right: 24.0),
+                  child: CategoryList(),
+                ),
               ],
             ),
           ],
