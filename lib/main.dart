@@ -21,7 +21,15 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           bottomNavigationBar: BottomNavigation(),
           body: SafeArea(
-            child: SearchPage(),
+            child: TabBarView(
+              children: [
+                GoodsMainPage(),
+                WishlistMainPage(),
+                AddGoodsPage(),
+                SearchPage(),
+                GoodsMainPage(),
+              ],
+            ),
           ),
         ),
       ),
