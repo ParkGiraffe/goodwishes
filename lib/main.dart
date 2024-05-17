@@ -4,7 +4,6 @@ import 'package:goodwishes/pages/favorite_page.dart';
 import 'package:goodwishes/pages/search_page.dart';
 import 'package:goodwishes/pages/wishlist_main_page.dart';
 import 'package:goodwishes/widgets/bottom_navigation.dart';
-import 'package:goodwishes/pages/goods_detail_page.dart';
 import 'package:goodwishes/pages/goods_main_page.dart';
 
 void main() {

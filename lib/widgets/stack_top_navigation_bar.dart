@@ -9,10 +9,10 @@ class StackTopNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SizedBox(
             height: 50,
             // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
@@ -21,13 +21,19 @@ class StackTopNavigationBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // page title
-                Icon(
-                  Icons.arrow_back,
-                  size: iconSize,
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(
+                    Icons.arrow_back,
+                  ),
+                  iconSize: iconSize,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
 
                 // profile icon
-                Row(
+                const Row(
                   children: [
                     Icon(
                       Icons.home,
@@ -46,7 +52,7 @@ class StackTopNavigationBar extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 7,
         ),
       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/pages/goods_detail_page.dart';
 
 class CategoryListEl extends StatelessWidget {
   final String imageRoute;
@@ -12,28 +13,40 @@ class CategoryListEl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 160,
-          width: 160,
-          decoration: BoxDecoration(
-            color: Colors.grey,
-            borderRadius: BorderRadius.circular(15),
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(imageRoute),
+    return TextButton(
+      style:
+          const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const GoodsDetailPage(),
+          ),
+        );
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 160,
+            width: 160,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(15),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(imageRoute),
+              ),
             ),
           ),
-        ),
-        Text(
-          itemName,
-          style: const TextStyle(
-            fontSize: 15,
+          Text(
+            itemName,
+            style: const TextStyle(
+              fontSize: 15,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

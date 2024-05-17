@@ -11,15 +11,19 @@ class GoodsDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          StackTopNavigationBar(),
-          GoodsDetailThumb(),
-          GoodsDetailTitle(),
-          GoodsDetailList(),
-        ],
+    return const Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              StackTopNavigationBar(),
+              GoodsDetailThumb(),
+              GoodsDetailTitle(),
+              GoodsDetailList(),
+            ],
+          ),
+        ),
       ),
     );
   }
