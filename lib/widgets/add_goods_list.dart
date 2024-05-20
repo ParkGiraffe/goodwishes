@@ -27,24 +27,32 @@ class AddGoodsList extends StatelessWidget {
               hintText: '굿즈 이름',
             ),
           ),
-          AddGoodsListEl(leftText: '구매 일자', rightWidget: DatePicker()),
+          AddGoodsListEl(
+            leftText: '구매 일자',
+            rightWidget: DatePicker(),
+          ),
           AddGoodsListEl(
             leftText: '굿즈 분류',
             rightWidget: TextInput(
               hintText: '굿즈 분류',
             ),
           ),
-          AddGoodsListEl(leftText: '태그 설정', rightWidget: Tag()),
+          AddGoodsListEl(
+            leftText: '태그 설정',
+            rightWidget: Tag(),
+          ),
           AddGoodsListEl(
             leftText: '소지 수량',
             rightWidget: TextInput(
               hintText: '소지 수량',
+              keyboardType: TextInputType.number,
             ),
           ),
           AddGoodsListEl(
             leftText: '구매 가격',
             rightWidget: TextInput(
               hintText: '구매 가격',
+              keyboardType: TextInputType.number,
             ),
           ),
           AddGoodsListEl(
