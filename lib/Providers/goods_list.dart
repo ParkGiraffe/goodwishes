@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Goods {
-  Image thumbnail;
+  String thumbnail;
   String goodsName, date, category, location, wayToBuy, memo;
   int amount, price;
   List<String> tagList;
@@ -21,7 +21,19 @@ class Goods {
 }
 
 class GoodsListProvider with ChangeNotifier {
-  final List<Goods> _goodsList = [];
+  final List<Goods> _goodsList = [
+    Goods(
+        thumbnail: 'assets/goods.jpeg',
+        goodsName: 'goodsName',
+        date: '2024.xx.xx',
+        category: 'category',
+        location: 'location',
+        wayToBuy: 'wayToBuy',
+        memo: 'memo',
+        amount: 1,
+        price: 10000,
+        tagList: ['tagList', 'tagList'])
+  ];
   List<Goods> get goodsList => _goodsList;
 
   void addGoods(Goods element) {
@@ -33,16 +45,4 @@ class GoodsListProvider with ChangeNotifier {
     _goodsList.remove(element);
     notifyListeners();
   }
-
-  // int _count = 0;
-
-  // void increment() {
-  //   _count++;
-  //   notifyListeners(); // 값 증가 후 상태 변경 알림
-  // }
-
-  // void decrement() {
-  //   notifyListeners(); // 값 감소 후 상태 변경 알림
-  //   _count--;
-  // }
 }
