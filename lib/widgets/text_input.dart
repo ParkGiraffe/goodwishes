@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 
 class TextInput extends StatelessWidget {
   const TextInput({
     super.key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
+    required this.onSaved,
   });
 
+  final FormFieldSetter<String> onSaved;
   final String hintText;
   final TextInputType keyboardType;
 
@@ -15,7 +17,17 @@ class TextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TextFormField(
+        onSaved: onSaved,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return '아이디를 입력해주세요.';
+          }
+          return null;
+        },
         keyboardType: keyboardType,
+        inputFormatters: keyboardType == TextInputType.number
+            ? [FilteringTextInputFormatter.digitsOnly]
+            : [],
         style: const TextStyle(
           fontSize: 17,
         ),

@@ -29,10 +29,10 @@ class BottomNavigation extends StatelessWidget {
               icon: Icons.home,
               text: '굿즈',
             ),
-            NavigationTab(
-              icon: Icons.shopping_bag,
-              text: '위시',
-            ),
+            // NavigationTab(
+            //   icon: Icons.shopping_bag,
+            //   text: '위시',
+            // ),
             NavigationTab(
               icon: Icons.add_box,
               text: '추가',
