@@ -5,7 +5,10 @@ import 'dart:io';
 class AddPhoto extends StatefulWidget {
   const AddPhoto({
     super.key,
+    required this.onUpload,
   });
+
+  final Function onUpload;
 
   @override
   State<AddPhoto> createState() => _AddPhotoState();
@@ -22,6 +25,7 @@ class _AddPhotoState extends State<AddPhoto> {
     if (pickedFile != null) {
       setState(() {
         image = XFile(pickedFile.path);
+        widget.onUpload(image!.path);
       });
     }
   }

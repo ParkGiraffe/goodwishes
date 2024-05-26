@@ -36,7 +36,11 @@ class _AddGoodsListState extends State<AddGoodsList> {
       key: formKey,
       child: Column(
         children: [
-          const AddPhoto(),
+          AddPhoto(
+            onUpload: (val) {
+              thumbnail = val;
+            },
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Column(
@@ -142,7 +146,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                         price: int.parse(price),
                         tagList: tagList,
                       );
-                      print(newGoods);
+                      print(newGoods.thumbnail);
                     }
                   },
                   child: const Text('submit'),
