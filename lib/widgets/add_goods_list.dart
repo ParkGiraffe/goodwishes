@@ -7,6 +7,7 @@ import 'package:goodwishes/widgets/memo_text_input.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/tag.dart';
 import 'package:goodwishes/widgets/text_input.dart';
+import 'package:provider/provider.dart';
 
 class AddGoodsList extends StatefulWidget {
   const AddGoodsList({
@@ -32,6 +33,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
 
   @override
   Widget build(BuildContext context) {
+    final goodsList = Provider.of<GoodsListProvider>(context);
     return Form(
       key: formKey,
       child: Column(
@@ -146,7 +148,8 @@ class _AddGoodsListState extends State<AddGoodsList> {
                         price: int.parse(price),
                         tagList: tagList,
                       );
-                      print(newGoods.thumbnail);
+                      // print(newGoods.thumbnail);
+                      goodsList.addGoods(newGoods);
                     }
                   },
                   child: const Text('submit'),

@@ -39,6 +39,7 @@ class GoodsListProvider with ChangeNotifier {
   void addGoods(Goods element) {
     _goodsList.add(element);
     notifyListeners(); // 값 변경 후 상태 변경 알림
+    print(_goodsList);
   }
 
   void removeGoods(Goods element) {
