@@ -149,8 +149,9 @@ class _AddGoodsListState extends State<AddGoodsList> {
                         tagList: tagList,
                       );
                       // print(newGoods.thumbnail);
-                      // goodsList.addGoods(newGoods);
-                      context.read<GoodsListProvider>().addGoods(newGoods);
+                      goodsList.addGoods(newGoods);
+                      // context.read<GoodsListProvider>().addGoods(newGoods);
+                      print(goodsList.goodsList);
                     }
                   },
                   child: const Text('submit'),

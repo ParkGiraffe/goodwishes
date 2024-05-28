@@ -13,20 +13,17 @@ class AddGoodsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => GoodsListProvider(),
-      child: const SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            StackTopNavigationBar(),
-            ChangeGoodsWishButton(),
-            SizedBox(
-              height: 20,
-            ),
-            AddGoodsList(),
-          ],
-        ),
+    return const SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          StackTopNavigationBar(),
+          ChangeGoodsWishButton(),
+          SizedBox(
+            height: 20,
+          ),
+          AddGoodsList(),
+        ],
       ),
     );
   }

@@ -10,8 +10,8 @@ class HorizonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List<Goods> goodsList = Provider.of<GoodsListProvider>(context).goodsList;
-    List<Goods> goodsList = context.watch<GoodsListProvider>().goodsList;
+    List<Goods> goodsList = Provider.of<GoodsListProvider>(context).goodsList;
+    // final goodsList = context.select((GoodsListProvider i) => i.goodsList);
     // List<Goods> goodsList = context.select<GoodsListProvider>((state) => state.goodsList);
     print(goodsList);
 
