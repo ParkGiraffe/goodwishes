@@ -13,7 +13,7 @@ class GoodsMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider<GoodsListProvider>(
       create: (BuildContext context) => GoodsListProvider(),
       child: const Padding(
         padding: EdgeInsets.only(left: 24),

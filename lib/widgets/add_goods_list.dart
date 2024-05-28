@@ -33,7 +33,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
 
   @override
   Widget build(BuildContext context) {
-    final goodsList = Provider.of<GoodsListProvider>(context);
+    final goodsList = Provider.of<GoodsListProvider>(context, listen: false);
     return Form(
       key: formKey,
       child: Column(
@@ -149,7 +149,8 @@ class _AddGoodsListState extends State<AddGoodsList> {
                         tagList: tagList,
                       );
                       // print(newGoods.thumbnail);
-                      goodsList.addGoods(newGoods);
+                      // goodsList.addGoods(newGoods);
+                      context.read<GoodsListProvider>().addGoods(newGoods);
                     }
                   },
                   child: const Text('submit'),

@@ -10,22 +10,27 @@ class HorizonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final goodsList = Provider.of<GoodsListProvider>(context).goodsList;
+    // List<Goods> goodsList = Provider.of<GoodsListProvider>(context).goodsList;
+    List<Goods> goodsList = context.watch<GoodsListProvider>().goodsList;
+    // List<Goods> goodsList = context.select<GoodsListProvider>((state) => state.goodsList);
+    print(goodsList);
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          HorizonListEl(
-            imageRoute: goodsList[0].thumbnail,
-            goodsName: goodsList[0].goodsName,
-            date: goodsList[0].date,
-          ),
-          const HorizonListEl(
-            imageRoute: 'assets/goods.jpeg',
-            goodsName: 'GoodsName',
-            date: '2024.xx.xx',
-          ),
+          for (Goods goods in goodsList)
+            HorizonListEl(
+              // imageRoute: 'assets/goods.jpeg',
+              imageRoute: goods.thumbnail,
+              goodsName: goods.goodsName,
+              date: goods.date,
+            ),
+          // const HorizonListEl(
+          //   imageRoute: 'assets/goods.jpeg',
+          //   goodsName: 'GoodsName',
+          //   date: '2024.xx.xx',
+          // ),
         ],
       ),
     );
