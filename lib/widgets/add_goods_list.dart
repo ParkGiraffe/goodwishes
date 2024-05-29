@@ -22,7 +22,8 @@ class _AddGoodsListState extends State<AddGoodsList> {
   final formKey = GlobalKey<FormState>();
   String thumbnail = '';
   String goodsName = '';
-  String date = '';
+  String date =
+      "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
   String category = '';
   String location = '';
   String wayToBuy = '';
@@ -33,7 +34,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
 
   @override
   Widget build(BuildContext context) {
-    final goodsList = Provider.of<GoodsListProvider>(context, listen: false);
+    final goodsList = Provider.of<GoodsListProvider>(context);
     return Form(
       key: formKey,
       child: Column(
@@ -137,6 +138,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       Goods newGoods = Goods(
+                        id: goodsList.goodsList.length.toString(),
                         thumbnail: thumbnail,
                         goodsName: goodsName,
                         date: date,
@@ -151,7 +153,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       // print(newGoods.thumbnail);
                       goodsList.addGoods(newGoods);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
-                      print(goodsList.goodsList);
+                      print(goodsList);
                     }
                   },
                   child: const Text('submit'),

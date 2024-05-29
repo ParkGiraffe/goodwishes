@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Goods {
-  String thumbnail;
+  String thumbnail, id;
   String goodsName, date, category, location, wayToBuy, memo;
   int amount, price;
   List<String> tagList;
 
   Goods({
+    required this.id,
     required this.thumbnail,
     required this.goodsName,
     required this.date,
@@ -23,6 +24,7 @@ class Goods {
 class GoodsListProvider with ChangeNotifier {
   final List<Goods> _goodsList = [
     Goods(
+        id: 'dummy',
         thumbnail: 'assets/goods.jpeg',
         goodsName: 'goodsName',
         date: '2024.xx.xx',
