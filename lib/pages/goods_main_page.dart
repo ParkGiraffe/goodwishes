@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/goods_list.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/horizon_list.dart';

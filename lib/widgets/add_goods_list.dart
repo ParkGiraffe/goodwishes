@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/goods_list.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/add_goods_list_el.dart';
 import 'package:goodwishes/widgets/add_photo.dart';
 import 'package:goodwishes/widgets/date_picker.dart';

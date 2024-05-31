@@ -16,4 +16,14 @@ class CategoryListProvider with ChangeNotifier {
   ];
 
   List<Category> get categoryList => _categoryList;
+
+  void addCategory(Category element) {
+    _categoryList.add(element);
+    notifyListeners(); // 값 변경 후 상태 변경 알림
+  }
+
+  void removeCategory(Category element) {
+    _categoryList.remove(element);
+    notifyListeners();
+  }
 }

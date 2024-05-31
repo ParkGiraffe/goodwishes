@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:goodwishes/Providers/goods_list.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/horizon_list_el.dart';
 import 'package:provider/provider.dart';
 
