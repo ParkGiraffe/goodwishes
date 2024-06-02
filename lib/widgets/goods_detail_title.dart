@@ -9,7 +9,7 @@ class GoodsDetailTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140,
+      height: 150,
       width: MediaQuery.of(context).size.width,
       color: const Color(0xFFDBCACA),
       padding: const EdgeInsets.symmetric(
@@ -47,16 +47,18 @@ class GoodsDetailTitle extends StatelessWidget {
                       fontSize: 13,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
                         Row(
                           children: [
-                            Tag(),
+                            Tag(
+                              onNavigate: () {},
+                            ),
                             const SizedBox(
                               width: 7,
                             ),

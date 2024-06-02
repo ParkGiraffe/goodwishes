@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/pages/add_goods_page.dart';
 import 'package:goodwishes/pages/favorite_page.dart';
@@ -31,8 +32,15 @@ class MyApp extends StatelessWidget {
         length: 4,
         child: Scaffold(
           bottomNavigationBar: const BottomNavigation(),
-          body: ChangeNotifierProvider(
-            create: (BuildContext context) => GoodsListProvider(),
+          body: MultiProvider(
+            providers: [
+              ChangeNotifierProvider(
+                create: (BuildContext context) => GoodsListProvider(),
+              ),
+              ChangeNotifierProvider(
+                create: (BuildContext context) => CategoryListProvider(),
+              ),
+            ],
             child: const SafeArea(
               child: TabBarView(
                 children: [

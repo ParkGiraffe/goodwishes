@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/pages/add_category_page.dart';
 import 'package:goodwishes/widgets/add_goods_list_el.dart';
 import 'package:goodwishes/widgets/add_photo.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
@@ -34,6 +36,33 @@ class _AddGoodsListState extends State<AddGoodsList> {
 
   @override
   Widget build(BuildContext context) {
+    // void categoryButtonHandler() {
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => AddCategoryPage(),
+    //     ),
+    //   );
+    // }
+
+    final categoryList = context.read<CategoryListProvider>();
+
+    void categoryButtonHandler() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              ChangeNotifierProvider<CategoryListProvider>.value(
+            value: categoryList,
+            builder: (context, child) {
+              print(categoryList.categoryList);
+              return const AddCategoryPage();
+            },
+          ),
+        ),
+      );
+    }
+
     final goodsList = Provider.of<GoodsListProvider>(context);
     return Form(
       key: formKey,
@@ -72,16 +101,15 @@ class _AddGoodsListState extends State<AddGoodsList> {
                 ),
                 AddGoodsListEl(
                   leftText: '굿즈 분류',
-                  rightWidget: TextInput(
-                    onSaved: (val) {
-                      category = val!;
-                    },
-                    hintText: '굿즈 분류',
+                  rightWidget: Tag(
+                    onNavigate: categoryButtonHandler,
                   ),
                 ),
-                const AddGoodsListEl(
+                AddGoodsListEl(
                   leftText: '태그 설정',
-                  rightWidget: Tag(),
+                  rightWidget: Tag(
+                    onNavigate: categoryButtonHandler,
+                  ),
                 ),
                 AddGoodsListEl(
                   leftText: '소지 수량',

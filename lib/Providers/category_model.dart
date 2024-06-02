@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 class Category {
+  String id;
   String categoryName;
   int count;
 
   Category({
+    required this.id,
     required this.categoryName,
     required this.count,
   });
@@ -12,7 +14,8 @@ class Category {
 
 class CategoryListProvider with ChangeNotifier {
   final List<Category> _categoryList = [
-    Category(categoryName: 'sample', count: 0),
+    Category(id: '1', categoryName: 'sample', count: 0),
+    Category(id: '2', categoryName: 'sample', count: 0),
   ];
 
   List<Category> get categoryList => _categoryList;
