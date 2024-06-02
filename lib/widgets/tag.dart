@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class Tag extends StatelessWidget {
   final Function onNavigate;
+  final String tagName;
   const Tag({
     super.key,
     required this.onNavigate,
+    required this.tagName,
   });
 
   @override
@@ -13,10 +15,11 @@ class Tag extends StatelessWidget {
       style:
           const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
-        onNavigate();
+        onNavigate(context);
       },
       child: Container(
-        width: 84,
+        // width: 84,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         height: 27,
         decoration: const BoxDecoration(
           color: Color(0xFFD9D9D9),
@@ -24,10 +27,10 @@ class Tag extends StatelessWidget {
             Radius.circular(5),
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            'TagName',
-            style: TextStyle(
+            tagName,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 13.5,
             ),

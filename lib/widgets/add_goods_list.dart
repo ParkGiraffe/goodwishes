@@ -26,7 +26,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
   String goodsName = '';
   String date =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
-  String category = '';
+  String category = '일반';
   String location = '';
   String wayToBuy = '';
   String memo = '';
@@ -36,34 +36,32 @@ class _AddGoodsListState extends State<AddGoodsList> {
 
   @override
   Widget build(BuildContext context) {
-    // void categoryButtonHandler() {
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //       builder: (context) => AddCategoryPage(),
-    //     ),
-    //   );
-    // }
-
     final categoryList = context.read<CategoryListProvider>();
+    final goodsList = Provider.of<GoodsListProvider>(context);
 
-    void categoryButtonHandler() {
-      Navigator.push(
+    Future<void> categoryButtonHandler(BuildContext context) async {
+      // final categoryList = context.read<CategoryListProvider>();
+      final pickedCategory = await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) =>
               ChangeNotifierProvider<CategoryListProvider>.value(
             value: categoryList,
             builder: (context, child) {
-              print(categoryList.categoryList);
+              // print(categoryList.categoryList);
               return const AddCategoryPage();
             },
           ),
         ),
       );
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        category = pickedCategory;
+      });
     }
 
-    final goodsList = Provider.of<GoodsListProvider>(context);
     return Form(
       key: formKey,
       child: Column(
@@ -102,12 +100,14 @@ class _AddGoodsListState extends State<AddGoodsList> {
                 AddGoodsListEl(
                   leftText: '굿즈 분류',
                   rightWidget: Tag(
+                    tagName: category,
                     onNavigate: categoryButtonHandler,
                   ),
                 ),
                 AddGoodsListEl(
                   leftText: '태그 설정',
                   rightWidget: Tag(
+                    tagName: 'sample',
                     onNavigate: categoryButtonHandler,
                   ),
                 ),
@@ -181,7 +181,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       // print(newGoods.thumbnail);
                       goodsList.addGoods(newGoods);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
-                      print(goodsList);
+                      // print(goodsList);
                     }
                   },
                   child: const Text('submit'),

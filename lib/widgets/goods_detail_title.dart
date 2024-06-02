@@ -57,6 +57,7 @@ class GoodsDetailTitle extends StatelessWidget {
                         Row(
                           children: [
                             Tag(
+                              tagName: 'sample',
                               onNavigate: () {},
                             ),
                             const SizedBox(

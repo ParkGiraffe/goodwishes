@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
-  final String category;
+  final Category category;
   // final Function(Category) onCheckedCategory;
-  // final Function(String) onDeleteCategory;
+  final Function(String) onDeleteCategory;
 
   const CategoryItem({
     super.key,
     required this.category,
     // required this.onCheckedCategory,
-    // required this.onDeleteCategory,
+    required this.onDeleteCategory,
   });
 
   @override
@@ -24,15 +25,22 @@ class CategoryItem extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                category,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+            child: TextButton(
+              onPressed: () {
+                Navigator.pop(context, category.categoryName);
+              },
+              style: const ButtonStyle(
+                  padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  category.categoryName,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
@@ -55,7 +63,7 @@ class CategoryItem extends StatelessWidget {
                 ),
                 highlightColor: Colors.transparent,
                 onPressed: () {
-                  // onDeleteCategory(Category.id);
+                  onDeleteCategory(category.id);
                 },
               ))
         ],
