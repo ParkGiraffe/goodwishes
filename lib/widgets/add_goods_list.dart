@@ -180,6 +180,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       );
                       // print(newGoods.thumbnail);
                       goodsList.addGoods(newGoods);
+                      categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);
                     }

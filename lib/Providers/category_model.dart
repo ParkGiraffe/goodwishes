@@ -15,8 +15,8 @@ class Category {
 
 class CategoryListProvider with ChangeNotifier {
   final List<Category> _categoryList = [
-    Category(id: '1', categoryName: 'sample', count: 0),
-    Category(id: '2', categoryName: 'sample', count: 0),
+    Category(id: '1', categoryName: '일반', count: 0),
+    Category(id: '2', categoryName: '일반2', count: 0),
   ];
 
   List<Category> get categoryList => _categoryList;
@@ -40,6 +40,17 @@ class CategoryListProvider with ChangeNotifier {
         } else {
           // AlertDialog()
         }
+        return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
+      }
+    }
+    // _categoryList.removeWhere((element) => element.id == id);
+    notifyListeners();
+  }
+
+  void upCountCategory(String categoryName) {
+    for (var categoryItem in _categoryList) {
+      if (categoryItem.categoryName == categoryName) {
+        categoryItem.count = categoryItem.count + 1;
         return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
       }
     }

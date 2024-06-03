@@ -11,8 +11,10 @@ class CategoryListRow extends StatelessWidget {
     super.key,
     required this.firstImageRoute,
     required this.firstItemName,
-    required this.secondImageRoute,
-    required this.secondItemName,
+    this.secondImageRoute = '',
+    this.secondItemName = '',
+    // String secondImageRoute = '',
+    // String secondItemName = '',
   });
 
   @override
@@ -21,16 +23,23 @@ class CategoryListRow extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CategoryListEl(
-              imageRoute: firstImageRoute,
-              itemName: firstItemName,
-            ),
-            CategoryListEl(
-              imageRoute: secondImageRoute,
-              itemName: secondItemName,
-            ),
-          ],
+          children: secondImageRoute == '' && secondItemName == ''
+              ? [
+                  CategoryListEl(
+                    imageRoute: firstImageRoute,
+                    itemName: firstItemName,
+                  ),
+                ]
+              : [
+                  CategoryListEl(
+                    imageRoute: firstImageRoute,
+                    itemName: firstItemName,
+                  ),
+                  CategoryListEl(
+                    imageRoute: secondImageRoute,
+                    itemName: secondItemName,
+                  ),
+                ],
         ),
         const SizedBox(
           height: 14,
