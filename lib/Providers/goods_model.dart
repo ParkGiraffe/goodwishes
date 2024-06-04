@@ -5,6 +5,7 @@ class Goods {
   String goodsName, date, category, location, wayToBuy, memo;
   int amount, price;
   List<String> tagList;
+  bool isFavorite;
 
   Goods({
     required this.id,
@@ -18,6 +19,7 @@ class Goods {
     required this.amount,
     required this.price,
     required this.tagList,
+    this.isFavorite = false,
   });
 }
 
@@ -37,7 +39,23 @@ class GoodsListProvider with ChangeNotifier {
         tagList: ['tagList', 'tagList']),
   ];
 
+  final List<Goods> _favoriteList = [
+    Goods(
+        id: 'dummy',
+        thumbnail: 'assets/goods.jpeg',
+        goodsName: 'goodsName',
+        date: '2024.xx.xx',
+        category: 'category',
+        location: 'location',
+        wayToBuy: 'wayToBuy',
+        memo: 'memo',
+        amount: 1,
+        price: 10000,
+        tagList: ['tagList', 'tagList']),
+  ];
+
   List<Goods> get goodsList => _goodsList;
+  List<Goods> get favoriteList => _favoriteList;
 
   void addGoods(Goods element) {
     _goodsList.add(element);

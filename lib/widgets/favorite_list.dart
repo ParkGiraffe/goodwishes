@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/category_model.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/favorite_list_row.dart';
+import 'package:provider/provider.dart';
 
 class FavoriteList extends StatelessWidget {
   const FavoriteList({
@@ -8,6 +11,8 @@ class FavoriteList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteList = Provider.of<GoodsListProvider>(context).favoriteList;
+
     return const Column(
       children: [
         FavoriteListRow(
