@@ -14,9 +14,9 @@ class FavoriteListRow extends StatelessWidget {
     required this.leftText,
     required this.leftImage,
     required this.leftDate,
-    required this.rightText,
-    required this.rightImage,
-    required this.rightDate,
+    this.rightText = '',
+    this.rightImage = '',
+    this.rightDate = '',
   });
 
   @override
@@ -25,18 +25,26 @@ class FavoriteListRow extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            FavoriteListEl(
-              text: leftText,
-              date: leftDate,
-              imageRoute: leftImage,
-            ),
-            FavoriteListEl(
-              text: rightText,
-              date: rightDate,
-              imageRoute: rightImage,
-            ),
-          ],
+          children: rightDate == '' && rightImage == '' && rightText == ''
+              ? [
+                  FavoriteListEl(
+                    text: leftText,
+                    date: leftDate,
+                    imageRoute: leftImage,
+                  ),
+                ]
+              : [
+                  FavoriteListEl(
+                    text: leftText,
+                    date: leftDate,
+                    imageRoute: leftImage,
+                  ),
+                  FavoriteListEl(
+                    text: rightText,
+                    date: rightDate,
+                    imageRoute: rightImage,
+                  ),
+                ],
         ),
         const SizedBox(
           height: 18,

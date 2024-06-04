@@ -16,7 +16,7 @@ class FavoritePage extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(left: 24),
-            child: TopWithProfile(title: 'Bookmark'),
+            child: TopWithProfile(title: 'Favorite'),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),

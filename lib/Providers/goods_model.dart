@@ -52,6 +52,30 @@ class GoodsListProvider with ChangeNotifier {
         amount: 1,
         price: 10000,
         tagList: ['tagList', 'tagList']),
+    Goods(
+        id: 'dummy',
+        thumbnail: 'assets/goods.jpeg',
+        goodsName: 'goodsName',
+        date: '2024.xx.xx',
+        category: 'category',
+        location: 'location',
+        wayToBuy: 'wayToBuy',
+        memo: 'memo',
+        amount: 1,
+        price: 10000,
+        tagList: ['tagList', 'tagList']),
+    Goods(
+        id: 'dummy',
+        thumbnail: 'assets/goods.jpeg',
+        goodsName: 'goodsName',
+        date: '2024.xx.xx',
+        category: 'category',
+        location: 'location',
+        wayToBuy: 'wayToBuy',
+        memo: 'memo',
+        amount: 1,
+        price: 10000,
+        tagList: ['tagList', 'tagList']),
   ];
 
   List<Goods> get goodsList => _goodsList;
