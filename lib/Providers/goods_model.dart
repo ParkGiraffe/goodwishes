@@ -90,4 +90,8 @@ class GoodsListProvider with ChangeNotifier {
     _goodsList.remove(element);
     notifyListeners();
   }
+
+  List<Goods> searchGoods(Goods element) {
+    return _goodsList;
+  }
 }
