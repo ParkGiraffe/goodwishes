@@ -91,7 +91,14 @@ class GoodsListProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<Goods> searchGoods(Goods element) {
-    return _goodsList;
+  List<Goods> searchGoods(String query) {
+    if (query.isEmpty) {
+      return [];
+    } else {
+      return _goodsList
+          .where((goods) =>
+              goods.goodsName.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
   }
 }
