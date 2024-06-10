@@ -16,6 +16,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   List<Goods> searchingList = [];
+  List<String> searchedList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _SearchPageState extends State<SearchPage> {
                         // searching = value;
                         searchingList = goodsListProvider.searchGoods(value);
                       });
-                      print(searchingList);
+                      // print(searchingList);
                     },
                     keyboardType: TextInputType.multiline,
                     maxLines: 1,
@@ -59,9 +60,9 @@ class _SearchPageState extends State<SearchPage> {
                 const SectionTitle(
                   titleText: '검색된 굿즈',
                 ),
-                SearchedList(
+                SearchingList(
                   serachingList: searchingList,
-                )
+                ),
               ],
             ),
           ),
@@ -71,28 +72,16 @@ class _SearchPageState extends State<SearchPage> {
   }
 }
 
-class SearchedList extends StatelessWidget {
+class SearchingList extends StatelessWidget {
   final List<Goods> serachingList;
 
-  const SearchedList({
+  const SearchingList({
     super.key,
     required this.serachingList,
   });
 
   @override
   Widget build(BuildContext context) {
-    //   return const Column(
-    //     children: [
-    //       SearchedListEl(
-    //         text: '모코코 키링',
-    //       ),
-    //       SearchedListEl(
-    //         text: '피카츄 인형',
-    //       ),
-    //     ],
-    //   );
-    // }
-
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -116,7 +105,29 @@ class SearchedList extends StatelessWidget {
     );
   }
 }
-/*
+
+class SearchedList extends StatelessWidget {
+  final List<String> serachedList;
+
+  const SearchedList({
+    super.key,
+    required this.serachedList,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        SearchedListEl(
+          text: '모코코 키링',
+        ),
+        SearchedListEl(
+          text: '피카츄 인형',
+        ),
+      ],
+    );
+  }
+}
 
 class SearchedListEl extends StatelessWidget {
   final String text;
@@ -145,4 +156,3 @@ class SearchedListEl extends StatelessWidget {
     );
   }
 }
-*/
