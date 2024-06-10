@@ -95,10 +95,10 @@ class SearchingList extends StatelessWidget {
           );
         } else {
           return CategoryListRow(
-            firstImageRoute: 'assets/goods.jpeg',
-            firstItemName: serachingList[index * 2 + 1].thumbnail,
-            secondImageRoute: 'assets/goods.jpeg',
+            firstImageRoute: serachingList[index * 2].thumbnail,
+            firstItemName: serachingList[index * 2].goodsName,
             secondItemName: serachingList[index * 2 + 1].goodsName,
+            secondImageRoute: serachingList[index * 2 + 1].thumbnail,
           );
         }
       },
