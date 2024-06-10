@@ -15,10 +15,11 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  List<Goods> searchingList = [];
+
   @override
   Widget build(BuildContext context) {
     final goodsListProvider = Provider.of<GoodsListProvider>(context);
-    List<Goods> searchingList = [];
 
     // String searching = '';
 
@@ -99,14 +100,14 @@ class SearchedList extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index * 2 + 1 >= serachingList.length) {
           return CategoryListRow(
-            firstImageRoute: 'assets/goods.jpeg',
+            firstImageRoute: serachingList[index * 2].thumbnail,
             firstItemName: serachingList[index * 2].goodsName,
             // secondItemName: serachingList[index * 2 + 1].goodsName,
           );
         } else {
           return CategoryListRow(
             firstImageRoute: 'assets/goods.jpeg',
-            firstItemName: serachingList[index * 2].goodsName,
+            firstItemName: serachingList[index * 2 + 1].thumbnail,
             secondImageRoute: 'assets/goods.jpeg',
             secondItemName: serachingList[index * 2 + 1].goodsName,
           );

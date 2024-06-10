@@ -26,17 +26,31 @@ class Goods {
 class GoodsListProvider with ChangeNotifier {
   final List<Goods> _goodsList = [
     Goods(
-        id: 'dummy',
-        thumbnail: 'assets/goods.jpeg',
-        goodsName: 'goodsName',
-        date: '2024.xx.xx',
-        category: 'category',
-        location: 'location',
-        wayToBuy: 'wayToBuy',
-        memo: 'memo',
-        amount: 1,
-        price: 10000,
-        tagList: ['tagList', 'tagList']),
+      id: 'dummy',
+      thumbnail: 'assets/goods.jpeg',
+      goodsName: 'goodsName',
+      date: '2024.xx.xx',
+      category: 'category',
+      location: 'location',
+      wayToBuy: 'wayToBuy',
+      memo: 'memo',
+      amount: 1,
+      price: 10000,
+      tagList: ['tagList', 'tagList'],
+    ),
+    Goods(
+      id: 'dummy2',
+      thumbnail: 'assets/goods.jpeg',
+      goodsName: 'dummy',
+      date: '2024.xx.xx',
+      category: 'categodury',
+      location: 'location',
+      wayToBuy: 'wayToBuy',
+      memo: 'memo',
+      amount: 1,
+      price: 10000,
+      tagList: ['tagList', 'tagList'],
+    ),
   ];
 
   final List<Goods> _favoriteList = [
