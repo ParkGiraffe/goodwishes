@@ -91,6 +91,7 @@ class GoodsListProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // 검색 알고리즘
   List<Goods> searchGoods(String query) {
     if (query.isEmpty) {
       return [];
