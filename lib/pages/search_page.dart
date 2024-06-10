@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/widgets/category_list_row.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/stack_top_navigation_bar.dart';
+import 'package:provider/provider.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   const SearchPage({
     super.key,
   });
 
   @override
+  State<SearchPage> createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  @override
   Widget build(BuildContext context) {
+    final goodsListProvider = Provider.of<GoodsListProvider>(context);
+    List<Goods> searchingList = [];
+
+    // String searching = '';
+
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
@@ -23,6 +36,13 @@ class SearchPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   height: 100,
                   child: TextFormField(
+                    onChanged: (value) {
+                      setState(() {
+                        // searching = value;
+                        searchingList = goodsListProvider.searchGoods(value);
+                      });
+                      print(searchingList);
+                    },
                     keyboardType: TextInputType.multiline,
                     maxLines: 1,
                     style: const TextStyle(
@@ -36,9 +56,11 @@ class SearchPage extends StatelessWidget {
                   ),
                 ),
                 const SectionTitle(
-                  titleText: '최근 검색어',
+                  titleText: '검색된 굿즈',
                 ),
-                const SearchedList()
+                SearchedList(
+                  serachingList: searchingList,
+                )
               ],
             ),
           ),
@@ -49,24 +71,51 @@ class SearchPage extends StatelessWidget {
 }
 
 class SearchedList extends StatelessWidget {
+  final List<Goods> serachingList;
+
   const SearchedList({
     super.key,
+    required this.serachingList,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SearchedListEl(
-          text: '모코코 키링',
-        ),
-        SearchedListEl(
-          text: '피카츄 인형',
-        ),
-      ],
+    //   return const Column(
+    //     children: [
+    //       SearchedListEl(
+    //         text: '모코코 키링',
+    //       ),
+    //       SearchedListEl(
+    //         text: '피카츄 인형',
+    //       ),
+    //     ],
+    //   );
+    // }
+
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: (serachingList.length / 2).ceil(),
+      itemBuilder: (context, index) {
+        if (index * 2 + 1 >= serachingList.length) {
+          return CategoryListRow(
+            firstImageRoute: 'assets/goods.jpeg',
+            firstItemName: serachingList[index * 2].goodsName,
+            // secondItemName: serachingList[index * 2 + 1].goodsName,
+          );
+        } else {
+          return CategoryListRow(
+            firstImageRoute: 'assets/goods.jpeg',
+            firstItemName: serachingList[index * 2].goodsName,
+            secondImageRoute: 'assets/goods.jpeg',
+            secondItemName: serachingList[index * 2 + 1].goodsName,
+          );
+        }
+      },
     );
   }
 }
+/*
 
 class SearchedListEl extends StatelessWidget {
   final String text;
@@ -95,3 +144,4 @@ class SearchedListEl extends StatelessWidget {
     );
   }
 }
+*/
