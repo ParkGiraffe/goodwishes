@@ -181,7 +181,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                         tagList: tagList,
                       );
                       // print(newGoods.thumbnail);
-                      goodsList.addGoods(newGoods, createdAt);
+                      goodsList.addGoods(newGoods);
                       categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);

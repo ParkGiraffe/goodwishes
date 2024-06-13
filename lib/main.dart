@@ -8,9 +8,19 @@ import 'package:goodwishes/pages/search_page.dart';
 // import 'package:goodwishes/pages/wishlist_main_page.dart';
 import 'package:goodwishes/widgets/bottom_navigation.dart';
 import 'package:goodwishes/pages/goods_main_page.dart';
+// import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(GoodsAdapter());
+  await Hive.openBox<Goods>('GoodsListBox');
+
+  var box = Hive.box<Goods>('GoodsListBox');
+  box.toMap().forEach((key, value) {
+    print(value);
+  });
   runApp(const MyApp());
 }
 

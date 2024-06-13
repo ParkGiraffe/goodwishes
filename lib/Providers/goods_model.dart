@@ -89,8 +89,16 @@ class GoodsListProvider with ChangeNotifier {
   ];
   */
 
-  var _goodsListBox = Hive.box<Goods>('goodsListBox');
-  Iterable<Goods> _goodsList = [];
+  late Box<Goods> _goodsListBox;
+
+  GoodsListProvider() {
+    _initBox();
+  }
+
+  Future<void> _initBox() async {
+    _goodsListBox = Hive.box<Goods>('goodsListBox');
+    notifyListeners();
+  }
 
   final List<Goods> _favoriteList = [
     Goods(
@@ -131,13 +139,13 @@ class GoodsListProvider with ChangeNotifier {
         tagList: ['tagList', 'tagList']),
   ];
 
-  Iterable<Goods> get goodsList => _goodsList;
+  Iterable<Goods> get goodsList => _goodsListBox.values;
   List<Goods> get favoriteList => _favoriteList;
 
-  void addGoods(Goods element, String id) {
+  void addGoods(Goods element) {
     // _goodsList.add(element);
 
-    _goodsListBox.put(id, element);
+    _goodsListBox.put(element.id, element);
 
     notifyListeners(); // 값 변경 후 상태 변경 알림
   }
@@ -152,7 +160,7 @@ class GoodsListProvider with ChangeNotifier {
     if (query.isEmpty) {
       return [];
     } else {
-      return _goodsList
+      return _goodsListBox.values
           .where((goods) =>
               goods.goodsName.toLowerCase().contains(query.toLowerCase()))
           .toList();

@@ -14,9 +14,10 @@ class HorizonList extends StatelessWidget {
   Widget build(BuildContext context) {
     Iterable<Goods> goodsList =
         Provider.of<GoodsListProvider>(context).goodsList;
+
     // final goodsList = context.select((GoodsListProvider i) => i.goodsList);
     // List<Goods> goodsList = context.select<GoodsListProvider>((state) => state.goodsList);
-    print(goodsList);
+    // print(goodsList);
 
     return SizedBox(
       height: 300,
@@ -25,11 +26,12 @@ class HorizonList extends StatelessWidget {
         shrinkWrap: true,
         itemCount: goodsList.length,
         itemBuilder: (context, index) {
+          int curIdx = goodsList.length - index - 1; // 최신순으로 보게 끔 조정
           return HorizonListEl(
             // imageRoute: 'assets/goods.jpeg',
-            imageRoute: goodsList.elementAt(index).thumbnail,
-            goodsName: goodsList.elementAt(index).goodsName,
-            date: goodsList.elementAt(index).date,
+            imageRoute: goodsList.elementAt(curIdx).thumbnail,
+            goodsName: goodsList.elementAt(curIdx).goodsName,
+            date: goodsList.elementAt(curIdx).date,
           );
         },
       ),
