@@ -1,10 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
+part 'goods_model.g.dart';
+
+@HiveType(typeId: 0)
 class Goods {
-  String thumbnail, id;
-  String goodsName, date, category, location, wayToBuy, memo;
-  int amount, price;
+  @HiveField(0)
+  String id;
+
+  @HiveField(1)
+  String thumbnail;
+
+  @HiveField(2)
+  String goodsName;
+
+  @HiveField(3)
+  String date;
+
+  @HiveField(4)
+  String category;
+
+  @HiveField(5)
+  String location;
+
+  @HiveField(6)
+  String wayToBuy;
+
+  @HiveField(7)
+  String memo;
+
+  @HiveField(8)
+  int amount;
+
+  @HiveField(9)
+  int price;
+
+  @HiveField(10)
   List<String> tagList;
+
+  @HiveField(11)
   bool isFavorite;
 
   Goods({
@@ -24,6 +58,7 @@ class Goods {
 }
 
 class GoodsListProvider with ChangeNotifier {
+  /*
   final List<Goods> _goodsList = [
     Goods(
       id: 'dummy',
@@ -52,6 +87,10 @@ class GoodsListProvider with ChangeNotifier {
       tagList: ['tagList', 'tagList'],
     ),
   ];
+  */
+
+  var _goodsListBox = Hive.box<Goods>('goodsListBox');
+  Iterable<Goods> _goodsList = [];
 
   final List<Goods> _favoriteList = [
     Goods(
@@ -92,16 +131,19 @@ class GoodsListProvider with ChangeNotifier {
         tagList: ['tagList', 'tagList']),
   ];
 
-  List<Goods> get goodsList => _goodsList;
+  Iterable<Goods> get goodsList => _goodsList;
   List<Goods> get favoriteList => _favoriteList;
 
-  void addGoods(Goods element) {
-    _goodsList.add(element);
+  void addGoods(Goods element, String id) {
+    // _goodsList.add(element);
+
+    _goodsListBox.put(id, element);
+
     notifyListeners(); // 값 변경 후 상태 변경 알림
   }
 
   void removeGoods(Goods element) {
-    _goodsList.remove(element);
+    // _goodsList.remove(element);
     notifyListeners();
   }
 

@@ -165,8 +165,10 @@ class _AddGoodsListState extends State<AddGoodsList> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
+
+                      String createdAt = DateTime.now().toString();
                       Goods newGoods = Goods(
-                        id: goodsList.goodsList.length.toString(),
+                        id: createdAt,
                         thumbnail: thumbnail,
                         goodsName: goodsName,
                         date: date,
@@ -179,7 +181,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                         tagList: tagList,
                       );
                       // print(newGoods.thumbnail);
-                      goodsList.addGoods(newGoods);
+                      goodsList.addGoods(newGoods, createdAt);
                       categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);

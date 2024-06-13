@@ -12,7 +12,8 @@ class HorizonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Goods> goodsList = Provider.of<GoodsListProvider>(context).goodsList;
+    Iterable<Goods> goodsList =
+        Provider.of<GoodsListProvider>(context).goodsList;
     // final goodsList = context.select((GoodsListProvider i) => i.goodsList);
     // List<Goods> goodsList = context.select<GoodsListProvider>((state) => state.goodsList);
     print(goodsList);
@@ -26,9 +27,9 @@ class HorizonList extends StatelessWidget {
         itemBuilder: (context, index) {
           return HorizonListEl(
             // imageRoute: 'assets/goods.jpeg',
-            imageRoute: goodsList[index].thumbnail,
-            goodsName: goodsList[index].goodsName,
-            date: goodsList[index].date,
+            imageRoute: goodsList.elementAt(index).thumbnail,
+            goodsName: goodsList.elementAt(index).goodsName,
+            date: goodsList.elementAt(index).date,
           );
         },
       ),
