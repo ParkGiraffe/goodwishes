@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/tag.dart';
 
 class GoodsDetailTitle extends StatelessWidget {
+  final Goods goods;
+
   const GoodsDetailTitle({
     super.key,
+    required this.goods,
   });
 
   @override
@@ -25,25 +29,25 @@ class GoodsDetailTitle extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'categoryName',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  // const Text(
+                  //   'categoryName',
+                  //   style: TextStyle(
+                  //     fontSize: 13,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
-                    'GoodsName',
-                    style: TextStyle(
+                  Text(
+                    goods.goodsName,
+                    style: const TextStyle(
                       fontSize: 18,
                     ),
                   ),
-                  const Text(
-                    '2024.xx.xx',
-                    style: TextStyle(
+                  Text(
+                    goods.date,
+                    style: const TextStyle(
                       fontSize: 13,
                     ),
                   ),
@@ -57,7 +61,7 @@ class GoodsDetailTitle extends StatelessWidget {
                         Row(
                           children: [
                             Tag(
-                              tagName: 'sample',
+                              tagName: goods.category,
                               onNavigate: () {},
                             ),
                             const SizedBox(

@@ -1,18 +1,22 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
+import 'package:provider/provider.dart';
 
 class HorizonListEl extends StatelessWidget {
   final Uint8List image;
   final String goodsName;
   final String date;
+  final String id;
 
   const HorizonListEl({
     super.key,
     required this.image,
     required this.goodsName,
     required this.date,
+    required this.id,
   });
 
   @override
@@ -24,7 +28,7 @@ class HorizonListEl extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const GoodsDetailPage(),
+            builder: (context) => GoodsDetailPage(id: id),
           ),
         );
       },

@@ -19,16 +19,19 @@ class SearchingList extends StatelessWidget {
       itemBuilder: (context, index) {
         if (index * 2 + 1 >= serachingList.length) {
           return SearchingListRow(
-            firstImageRoute: serachingList[index * 2].thumbnail,
-            firstItemName: serachingList[index * 2].goodsName,
+            firstItem: serachingList[index * 2],
+            // firstImageRoute: serachingList[index * 2].thumbnail,
+            // firstItemName: serachingList[index * 2].goodsName,
             // secondItemName: serachingList[index * 2 + 1].goodsName,
           );
         } else {
           return SearchingListRow(
-            firstImageRoute: serachingList[index * 2].thumbnail,
-            firstItemName: serachingList[index * 2].goodsName,
-            secondItemName: serachingList[index * 2 + 1].goodsName,
-            secondImageRoute: serachingList[index * 2 + 1].thumbnail,
+            firstItem: serachingList[index * 2],
+            secondItem: serachingList[index * 2 + 1],
+            // firstImageRoute: serachingList[index * 2].thumbnail,
+            // firstItemName: serachingList[index * 2].goodsName,
+            // secondItemName: serachingList[index * 2 + 1].goodsName,
+            // secondImageRoute: serachingList[index * 2 + 1].thumbnail,
           );
         }
       },

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 
 class GoodsDetailThumb extends StatelessWidget {
+  final Goods goods;
+
   const GoodsDetailThumb({
     super.key,
+    required this.goods,
   });
 
   @override
@@ -10,10 +14,10 @@ class GoodsDetailThumb extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.width,
       width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/goods.jpeg'),
+          image: MemoryImage(goods.thumbnail),
         ),
       ),
     );

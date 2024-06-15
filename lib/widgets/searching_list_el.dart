@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
+import 'package:provider/provider.dart';
 
 class SearchingListEl extends StatelessWidget {
-  final Uint8List imageRoute;
-  final String itemName;
+  // final Uint8List imageRoute;
+  // final String itemName;
+  final Goods item;
 
   const SearchingListEl({
     super.key,
-    required this.imageRoute,
-    required this.itemName,
+    required this.item,
+
+    // required this.imageRoute,
+    // required this.itemName,
   });
 
   @override
@@ -21,7 +25,7 @@ class SearchingListEl extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const GoodsDetailPage(),
+            builder: (context) => GoodsDetailPage(id: item.id),
           ),
         );
       },
@@ -36,12 +40,12 @@ class SearchingListEl extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: MemoryImage(imageRoute),
+                image: MemoryImage(item.thumbnail),
               ),
             ),
           ),
           Text(
-            itemName,
+            item.goodsName,
             style: const TextStyle(
               fontSize: 15,
             ),

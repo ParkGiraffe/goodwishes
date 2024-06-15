@@ -32,6 +32,7 @@ class HorizonList extends StatelessWidget {
             image: goodsList.elementAt(curIdx).thumbnail,
             goodsName: goodsList.elementAt(curIdx).goodsName,
             date: goodsList.elementAt(curIdx).date,
+            id: goodsList.elementAt(curIdx).id,
           );
         },
       ),

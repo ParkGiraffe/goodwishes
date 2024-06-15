@@ -18,12 +18,12 @@ class CategoryListEl extends StatelessWidget {
       style:
           const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const GoodsDetailPage(),
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => const GoodsDetailPage(),
+        //   ),
+        // );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

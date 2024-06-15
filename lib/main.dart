@@ -5,10 +5,8 @@ import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/pages/add_goods_page.dart';
 import 'package:goodwishes/pages/favorite_page.dart';
 import 'package:goodwishes/pages/search_page.dart';
-// import 'package:goodwishes/pages/wishlist_main_page.dart';
 import 'package:goodwishes/widgets/bottom_navigation.dart';
 import 'package:goodwishes/pages/goods_main_page.dart';
-// import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +17,19 @@ void main() async {
   await Hive.openBox<Goods>('GoodsListBox');
   await Hive.openBox<Category>('CategoryListBox');
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (BuildContext context) => GoodsListProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (BuildContext context) => CategoryListProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -35,30 +45,20 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
+    return const MaterialApp(
       home: DefaultTabController(
         length: 4,
         child: Scaffold(
-          bottomNavigationBar: const BottomNavigation(),
-          body: MultiProvider(
-            providers: [
-              ChangeNotifierProvider(
-                create: (BuildContext context) => GoodsListProvider(),
-              ),
-              ChangeNotifierProvider(
-                create: (BuildContext context) => CategoryListProvider(),
-              ),
-            ],
-            child: const SafeArea(
-              child: TabBarView(
-                children: [
-                  GoodsMainPage(),
-                  // WishlistMainPage(),
-                  AddGoodsPage(),
-                  SearchPage(),
-                  FavoritePage(),
-                ],
-              ),
+          bottomNavigationBar: BottomNavigation(),
+          body: SafeArea(
+            child: TabBarView(
+              children: [
+                GoodsMainPage(),
+                // WishlistMainPage(),
+                AddGoodsPage(),
+                SearchPage(),
+                FavoritePage(),
+              ],
             ),
           ),
         ),

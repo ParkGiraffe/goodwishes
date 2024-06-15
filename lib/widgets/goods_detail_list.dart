@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/category_list.dart';
 import 'package:goodwishes/widgets/goods_detail_list_el.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 
 class GoodsDetailList extends StatelessWidget {
+  final Goods goods;
+
   const GoodsDetailList({
     super.key,
+    required this.goods,
   });
 
   @override
@@ -18,21 +22,21 @@ class GoodsDetailList extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          const GoodsDetailListEl(
+          GoodsDetailListEl(
             leftText: '소지 수량',
-            rightText: '3장',
+            rightText: goods.amount.toString(),
           ),
-          const GoodsDetailListEl(
+          GoodsDetailListEl(
             leftText: '구매 가격',
-            rightText: '10,000₩ / 개당',
+            rightText: goods.price.toString(),
           ),
-          const GoodsDetailListEl(
+          GoodsDetailListEl(
             leftText: '구매 방법',
-            rightText: '번개장터',
+            rightText: goods.wayToBuy,
           ),
-          const GoodsDetailListEl(
+          GoodsDetailListEl(
             leftText: '보관 장소',
-            rightText: '카드 바인더',
+            rightText: goods.location,
           ),
           const SizedBox(
             height: 5,
@@ -40,21 +44,24 @@ class GoodsDetailList extends StatelessWidget {
           const SectionTitle(titleText: '메모'),
           Container(
             height: 240,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.all(17),
             decoration: const BoxDecoration(
-              color: Color(0xFFD9D9D9),
+              color: Color.fromARGB(255, 228, 228, 228),
               borderRadius: BorderRadius.all(
                 Radius.circular(15),
               ),
             ),
+            child: Text(goods.memo),
           ),
           const SizedBox(
             height: 50,
           ),
-          const SectionTitle(titleText: '같은 카테고리의 물건들'),
-          const SizedBox(
-            height: 15,
-          ),
-          const CategoryList(),
+          // const SectionTitle(titleText: '같은 카테고리의 물건들'),
+          // const SizedBox(
+          //   height: 15,
+          // ),
+          // const CategoryList(),
         ],
       ),
     );
