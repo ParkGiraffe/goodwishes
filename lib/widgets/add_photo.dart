@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -22,10 +24,12 @@ class _AddPhotoState extends State<AddPhoto> {
   Future getImage(ImageSource imageSource) async {
     // pickedFile에 ImagePicker로 가져온 이미지가 담긴다.
     final XFile? pickedFile = await picker.pickImage(source: imageSource);
+
     if (pickedFile != null) {
+      List<int> imageBytes = await pickedFile.readAsBytes();
       setState(() {
         image = XFile(pickedFile.path);
-        widget.onUpload(image!.path);
+        widget.onUpload(Uint8List.fromList(imageBytes));
       });
     }
   }

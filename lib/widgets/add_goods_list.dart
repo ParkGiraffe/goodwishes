@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
@@ -22,7 +24,7 @@ class AddGoodsList extends StatefulWidget {
 
 class _AddGoodsListState extends State<AddGoodsList> {
   final formKey = GlobalKey<FormState>();
-  String thumbnail = '';
+  Uint8List thumbnail = Uint8List.fromList([]);
   String goodsName = '';
   String date =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";

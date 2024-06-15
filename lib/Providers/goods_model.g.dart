@@ -18,7 +18,7 @@ class GoodsAdapter extends TypeAdapter<Goods> {
     };
     return Goods(
       id: fields[0] as String,
-      thumbnail: fields[1] as String,
+      thumbnail: fields[1] as dynamic,
       goodsName: fields[2] as String,
       date: fields[3] as String,
       category: fields[4] as String,

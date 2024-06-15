@@ -1,14 +1,16 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
 
 class HorizonListEl extends StatelessWidget {
-  final String imageRoute;
+  final Uint8List image;
   final String goodsName;
   final String date;
 
   const HorizonListEl({
     super.key,
-    required this.imageRoute,
+    required this.image,
     required this.goodsName,
     required this.date,
   });
@@ -35,8 +37,8 @@ class HorizonListEl extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage(
-              imageRoute,
+            image: MemoryImage(
+              image,
             ),
           ),
         ),

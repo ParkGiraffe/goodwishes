@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
 
-class CategoryListEl extends StatelessWidget {
+class SearchingListEl extends StatelessWidget {
   final Uint8List imageRoute;
   final String itemName;
 
-  const CategoryListEl({
+  const SearchingListEl({
     super.key,
     required this.imageRoute,
     required this.itemName,

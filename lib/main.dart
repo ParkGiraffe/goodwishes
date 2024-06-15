@@ -15,12 +15,10 @@ import 'package:provider/provider.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(GoodsAdapter());
+  Hive.registerAdapter(CategoryAdapter());
   await Hive.openBox<Goods>('GoodsListBox');
+  await Hive.openBox<Category>('CategoryListBox');
 
-  var box = Hive.box<Goods>('GoodsListBox');
-  box.toMap().forEach((key, value) {
-    print(value);
-  });
   runApp(const MyApp());
 }
 

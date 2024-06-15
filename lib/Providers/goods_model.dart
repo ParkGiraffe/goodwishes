@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+// import 'dart:typed_data';
 
 part 'goods_model.g.dart';
 
@@ -9,7 +10,7 @@ class Goods {
   String id;
 
   @HiveField(1)
-  String thumbnail;
+  dynamic thumbnail;
 
   @HiveField(2)
   String goodsName;
@@ -100,44 +101,7 @@ class GoodsListProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  final List<Goods> _favoriteList = [
-    Goods(
-        id: 'dummy',
-        thumbnail: 'assets/goods.jpeg',
-        goodsName: 'goodsName',
-        date: '2024.xx.xx',
-        category: 'category',
-        location: 'location',
-        wayToBuy: 'wayToBuy',
-        memo: 'memo',
-        amount: 1,
-        price: 10000,
-        tagList: ['tagList', 'tagList']),
-    Goods(
-        id: 'dummy',
-        thumbnail: 'assets/goods.jpeg',
-        goodsName: 'goodsName',
-        date: '2024.xx.xx',
-        category: 'category',
-        location: 'location',
-        wayToBuy: 'wayToBuy',
-        memo: 'memo',
-        amount: 1,
-        price: 10000,
-        tagList: ['tagList', 'tagList']),
-    Goods(
-        id: 'dummy',
-        thumbnail: 'assets/goods.jpeg',
-        goodsName: 'goodsName',
-        date: '2024.xx.xx',
-        category: 'category',
-        location: 'location',
-        wayToBuy: 'wayToBuy',
-        memo: 'memo',
-        amount: 1,
-        price: 10000,
-        tagList: ['tagList', 'tagList']),
-  ];
+  final List<Goods> _favoriteList = [];
 
   Iterable<Goods> get goodsList => _goodsListBox.values;
   List<Goods> get favoriteList => _favoriteList;

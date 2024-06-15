@@ -1,15 +1,17 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 class FavoriteListEl extends StatelessWidget {
   final String text;
   final String date;
-  final String imageRoute;
+  final Uint8List image;
 
   const FavoriteListEl({
     super.key,
     required this.text,
     required this.date,
-    required this.imageRoute,
+    required this.image,
   });
 
   @override
@@ -22,9 +24,7 @@ class FavoriteListEl extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(
-            imageRoute,
-          ),
+          image: MemoryImage(image),
         ),
       ),
       child: Column(

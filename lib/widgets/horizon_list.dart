@@ -29,7 +29,7 @@ class HorizonList extends StatelessWidget {
           int curIdx = goodsList.length - index - 1; // 최신순으로 보게 끔 조정
           return HorizonListEl(
             // imageRoute: 'assets/goods.jpeg',
-            imageRoute: goodsList.elementAt(curIdx).thumbnail,
+            image: goodsList.elementAt(curIdx).thumbnail,
             goodsName: goodsList.elementAt(curIdx).goodsName,
             date: goodsList.elementAt(curIdx).date,
           );

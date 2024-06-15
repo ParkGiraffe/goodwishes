@@ -2,14 +2,15 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:goodwishes/widgets/category_list_el.dart';
+import 'package:goodwishes/widgets/searching_list_el.dart';
 
-class CategoryListRow extends StatelessWidget {
+class SearchingListRow extends StatelessWidget {
   final Uint8List firstImageRoute;
   final String firstItemName;
   final Uint8List? secondImageRoute;
   final String secondItemName;
 
-  const CategoryListRow({
+  const SearchingListRow({
     super.key,
     required this.firstImageRoute,
     required this.firstItemName,
@@ -27,17 +28,17 @@ class CategoryListRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: secondImageRoute == null && secondItemName == ''
               ? [
-                  CategoryListEl(
+                  SearchingListEl(
                     imageRoute: firstImageRoute,
                     itemName: firstItemName,
                   ),
                 ]
               : [
-                  CategoryListEl(
+                  SearchingListEl(
                     imageRoute: firstImageRoute,
                     itemName: firstItemName,
                   ),
-                  CategoryListEl(
+                  SearchingListEl(
                     imageRoute: secondImageRoute!,
                     itemName: secondItemName,
                   ),

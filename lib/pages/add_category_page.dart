@@ -66,7 +66,7 @@ class CategoryList extends StatelessWidget {
             );
           } else {
             return CategoryItem(
-              category: categoryListProvider.categoryList[index - 1],
+              category: categoryListProvider.categoryList.elementAt(index - 1),
               // onCheckedTodo: _handleCheckTodoItem,
               onDeleteCategory: deleteCategoryHandler,
             );
@@ -117,7 +117,12 @@ class CategoryAddBox extends StatelessWidget {
           IconButton(
             onPressed: () {
               if (newCategory != '') {
-                categoryListProvider.addCategory(newCategory);
+                categoryListProvider.addCategory(
+                  Category(
+                      id: DateTime.now().toString(),
+                      categoryName: newCategory,
+                      count: 0),
+                );
                 newCategory = '';
                 controller.clear();
               }

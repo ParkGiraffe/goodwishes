@@ -1,12 +1,15 @@
+import 'dart:typed_data';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:goodwishes/widgets/favorite_list_el.dart';
 
 class FavoriteListRow extends StatelessWidget {
   final String leftText;
-  final String leftImage;
+  final Uint8List leftImage;
   final String leftDate;
   final String rightText;
-  final String rightImage;
+  final Uint8List? rightImage;
   final String rightDate;
 
   const FavoriteListRow({
@@ -15,7 +18,7 @@ class FavoriteListRow extends StatelessWidget {
     required this.leftImage,
     required this.leftDate,
     this.rightText = '',
-    this.rightImage = '',
+    this.rightImage,
     this.rightDate = '',
   });
 
@@ -25,24 +28,24 @@ class FavoriteListRow extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: rightDate == '' && rightImage == '' && rightText == ''
+          children: rightDate == '' && rightImage != null && rightText == ''
               ? [
                   FavoriteListEl(
                     text: leftText,
                     date: leftDate,
-                    imageRoute: leftImage,
+                    image: leftImage,
                   ),
                 ]
               : [
                   FavoriteListEl(
                     text: leftText,
                     date: leftDate,
-                    imageRoute: leftImage,
+                    image: leftImage,
                   ),
                   FavoriteListEl(
                     text: rightText,
                     date: rightDate,
-                    imageRoute: rightImage,
+                    image: rightImage!,
                   ),
                 ],
         ),
