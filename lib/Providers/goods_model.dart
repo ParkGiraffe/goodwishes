@@ -101,10 +101,9 @@ class GoodsListProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  final List<Goods> _favoriteList = [];
-
   Iterable<Goods> get goodsList => _goodsListBox.values;
-  List<Goods> get favoriteList => _favoriteList;
+  List<Goods> get favoriteList =>
+      _goodsListBox.values.where((goods) => goods.isFavorite == true).toList();
 
   void addGoods(Goods element) {
     // _goodsList.add(element);
@@ -128,6 +127,16 @@ class GoodsListProvider with ChangeNotifier {
           .where((goods) =>
               goods.goodsName.toLowerCase().contains(query.toLowerCase()))
           .toList();
+    }
+  }
+
+  // 즐겨찾기 등록, 해제
+  void updateIsFavorite(String id) {
+    Goods? goods = _goodsListBox.get(id);
+    if (goods != null) {
+      goods.isFavorite = !goods.isFavorite;
+      _goodsListBox.put(id, goods);
+      notifyListeners(); // 값 변경 후 상태 변경 알림
     }
   }
 }

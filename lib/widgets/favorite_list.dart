@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/favorite_list_row.dart';
+import 'package:goodwishes/widgets/searching_list_row.dart';
 import 'package:provider/provider.dart';
 
 class FavoriteList extends StatelessWidget {
@@ -11,7 +12,31 @@ class FavoriteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favoriteList = Provider.of<GoodsListProvider>(context).favoriteList;
-
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: (favoriteList.length / 2).ceil(),
+      itemBuilder: (context, index) {
+        if (index * 2 + 1 >= favoriteList.length) {
+          return SearchingListRow(
+            firstItem: favoriteList[index * 2],
+            // firstImageRoute: favoriteList[index * 2].thumbnail,
+            // firstItemName: favoriteList[index * 2].goodsName,
+            // secondItemName: favoriteList[index * 2 + 1].goodsName,
+          );
+        } else {
+          return SearchingListRow(
+            firstItem: favoriteList[index * 2],
+            secondItem: favoriteList[index * 2 + 1],
+            // firstImageRoute: favoriteList[index * 2].thumbnail,
+            // firstItemName: favoriteList[index * 2].goodsName,
+            // secondItemName: favoriteList[index * 2 + 1].goodsName,
+            // secondImageRoute: favoriteList[index * 2 + 1].thumbnail,
+          );
+        }
+      },
+    );
+/*
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
@@ -51,5 +76,6 @@ class FavoriteList extends StatelessWidget {
     //     ),
     //   ],
     // );
+    */
   }
 }

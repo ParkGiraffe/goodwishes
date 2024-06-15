@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/tag.dart';
+import 'package:provider/provider.dart';
 
 class GoodsDetailTitle extends StatelessWidget {
   final Goods goods;
@@ -74,7 +75,15 @@ class GoodsDetailTitle extends StatelessWidget {
                   )
                 ],
               ),
-              const Icon(Icons.bookmark)
+              IconButton(
+                icon: !goods.isFavorite
+                    ? const Icon(Icons.bookmark_add_outlined)
+                    : const Icon(Icons.bookmark_added_rounded),
+                onPressed: () {
+                  Provider.of<GoodsListProvider>(context, listen: false)
+                      .updateIsFavorite(goods.id);
+                },
+              )
             ],
           ),
         ],
