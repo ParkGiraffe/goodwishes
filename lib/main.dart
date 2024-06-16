@@ -17,6 +17,12 @@ void main() async {
   await Hive.openBox<Goods>('GoodsListBox');
   await Hive.openBox<Category>('CategoryListBox');
 
+  var categories = Hive.box<Category>('CategoryListBox');
+  if (categories.get('default') == null) {
+    categories.put(
+        'default', Category(id: 'default', categoryName: '일반', count: 0));
+  }
+
   runApp(
     MultiProvider(
       providers: [
