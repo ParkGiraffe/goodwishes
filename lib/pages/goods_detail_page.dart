@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/goods_detail_list.dart';
 import 'package:goodwishes/widgets/goods_detail_thumb.dart';
@@ -16,10 +17,31 @@ class GoodsDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Goods goods = context
-        .watch<GoodsListProvider>()
-        .goodsList
-        .firstWhere((element) => element.id == id);
+    Goods goods = context.watch<GoodsListProvider>().goodsList.firstWhere(
+          (element) => element.id == id,
+          orElse: () => Goods(
+            id: '',
+            thumbnail: Uint8List(0),
+            goodsName: '',
+            date: '',
+            category: '',
+            location: '',
+            wayToBuy: '',
+            memo: '',
+            amount: 0,
+            price: 0,
+            tagList: [],
+          ),
+        );
+
+    if (goods.id.isEmpty) {
+      // Handle the case where the goods is not found
+      return const Scaffold(
+        body: Center(
+          child: Text('Goods not found'),
+        ),
+      );
+    }
 
     return Scaffold(
       body: SafeArea(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/category_list.dart';
+import 'package:goodwishes/widgets/delete_button.dart';
 import 'package:goodwishes/widgets/goods_detail_list_el.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 
@@ -55,13 +56,14 @@ class GoodsDetailList extends StatelessWidget {
             child: Text(goods.memo),
           ),
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
           // const SectionTitle(titleText: '같은 카테고리의 물건들'),
           // const SizedBox(
           //   height: 15,
           // ),
           // const CategoryList(),
+          DeleteButton(id: goods.id),
         ],
       ),
     );

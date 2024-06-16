@@ -113,8 +113,8 @@ class GoodsListProvider with ChangeNotifier {
     notifyListeners(); // 값 변경 후 상태 변경 알림
   }
 
-  void removeGoods(Goods element) {
-    // _goodsList.remove(element);
+  void removeGoods(String id) {
+    _goodsListBox.delete(id);
     notifyListeners();
   }
 
