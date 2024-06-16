@@ -21,9 +21,9 @@ class WishlistMainPage extends StatelessWidget {
               height: 20,
             ),
             // top
-            TopWithProfile(
-              title: 'WishList',
-            ),
+            // TopWithProfile(
+            //   title: 'WishList',
+            // ),
             SizedBox(
               height: 20,
             ),

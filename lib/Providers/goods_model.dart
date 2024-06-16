@@ -123,8 +123,6 @@ class GoodsListProvider with ChangeNotifier {
       _goodsListBox.values.where((goods) => goods.isFavorite == true).toList();
 
   void addGoods(Goods element) {
-    // _goodsList.add(element);
-
     _goodsListBox.put(element.id, element);
 
     notifyListeners(); // 값 변경 후 상태 변경 알림
@@ -154,6 +152,18 @@ class GoodsListProvider with ChangeNotifier {
       goods.isFavorite = !goods.isFavorite;
       _goodsListBox.put(id, goods);
       notifyListeners(); // 값 변경 후 상태 변경 알림
+    }
+  }
+
+  // 카테고리 검색 알고리즘
+  List<Goods> getCategoryGoods(String query) {
+    if (query.isEmpty) {
+      return [];
+    } else {
+      return _goodsListBox.values
+          .where((goods) =>
+              goods.category.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     }
   }
 }

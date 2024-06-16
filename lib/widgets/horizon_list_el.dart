@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +36,7 @@ class HorizonListEl extends StatelessWidget {
       child: Container(
         height: 300,
         width: 250,
-        margin: const EdgeInsets.only(right: 30),
+        margin: const EdgeInsets.only(left: UIDefault.pageHorizontalPadding),
         decoration: BoxDecoration(
           color: Colors.grey,
           borderRadius: BorderRadius.circular(15),

@@ -20,7 +20,7 @@ class TextInput extends StatelessWidget {
         onSaved: onSaved,
         validator: (value) {
           if (value!.isEmpty) {
-            return '아이디를 입력해주세요.';
+            return '다시 입력해주세요';
           }
           return null;
         },

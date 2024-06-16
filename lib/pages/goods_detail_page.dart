@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/goods_detail_list.dart';
 import 'package:goodwishes/widgets/goods_detail_thumb.dart';
@@ -31,15 +30,12 @@ class GoodsDetailPage extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: StackTopNavigationBar(),
-              ),
               GoodsDetailThumb(
                 goods: goods,
               ),

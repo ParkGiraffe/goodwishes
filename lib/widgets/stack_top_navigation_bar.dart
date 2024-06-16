@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 
 class StackTopNavigationBar extends StatelessWidget {
-  static const double iconSize = 36;
+  static const double iconSize = UIDefault.buttonSize;
 
   const StackTopNavigationBar({
     super.key,
@@ -12,7 +13,7 @@ class StackTopNavigationBar extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 50,
+          height: UIDefault.sizedBoxHeight * 2.5,
           // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,6 +31,7 @@ class StackTopNavigationBar extends StatelessWidget {
                 },
               ),
 
+              /*
               // profile icon
               const Row(
                 children: [
@@ -46,6 +48,7 @@ class StackTopNavigationBar extends StatelessWidget {
                   ),
                 ],
               )
+              */
             ],
           ),
         ),

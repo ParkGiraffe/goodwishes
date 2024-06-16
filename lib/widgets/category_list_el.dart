@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:typed_data';
+
+import 'package:goodwishes/pages/category_detail_page.dart';
 // import 'dart:core';
 
 class CategoryListEl extends StatelessWidget {
@@ -18,12 +20,12 @@ class CategoryListEl extends StatelessWidget {
       style:
           const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => const GoodsDetailPage(),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryDetailPage(categoryName: itemName),
+          ),
+        );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

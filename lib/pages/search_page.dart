@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/searching_list.dart';
 
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/stack_top_navigation_bar.dart';
+import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
@@ -28,11 +30,16 @@ class _SearchPageState extends State<SearchPage> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(
+            horizontal: UIDefault.pageHorizontalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const StackTopNavigationBar(),
+            // const StackTopNavigationBar(),
+            const TopWithProfile(title: 'Search'),
+            const SizedBox(
+              height: UIDefault.sizedBoxHeight,
+            ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 100,

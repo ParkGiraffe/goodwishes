@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:goodwishes/Providers/category_model.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/category_item.dart';
 import 'package:goodwishes/widgets/stack_top_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +17,8 @@ class AddCategoryPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(
+              horizontal: UIDefault.pageHorizontalPadding),
           child: Column(
             children: [
               const StackTopNavigationBar(),

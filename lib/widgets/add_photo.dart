@@ -28,7 +28,7 @@ class _AddPhotoState extends State<AddPhoto> {
     if (pickedFile != null) {
       List<int> imageBytes = await pickedFile.readAsBytes();
       setState(() {
-        image = XFile(pickedFile.path);
+        // image = XFile(pickedFile.path);
         widget.onUpload(Uint8List.fromList(imageBytes));
       });
     }

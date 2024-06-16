@@ -104,7 +104,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                   leftText: '굿즈 분류',
                   rightWidget: Tag(
                     tagName: category,
-                    onNavigate: categoryButtonHandler,
+                    // onNavigate: categoryButtonHandler,
                   ),
                 ),
                 // AddGoodsListEl(

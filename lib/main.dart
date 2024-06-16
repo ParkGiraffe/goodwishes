@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Providers/profile_model.dart';
 import 'package:goodwishes/pages/add_goods_page.dart';
 import 'package:goodwishes/pages/favorite_page.dart';
 import 'package:goodwishes/pages/search_page.dart';
@@ -14,13 +15,20 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(GoodsAdapter());
   Hive.registerAdapter(CategoryAdapter());
+  Hive.registerAdapter(ProfileAdapter());
   await Hive.openBox<Goods>('GoodsListBox');
   await Hive.openBox<Category>('CategoryListBox');
+  await Hive.openBox<Profile>('ProfileBox');
 
   var categories = Hive.box<Category>('CategoryListBox');
   if (categories.get('default') == null) {
     categories.put(
         'default', Category(id: 'default', categoryName: '일반', count: 0));
+  }
+
+  var profile = Hive.box<Profile>('ProfileBox');
+  if (profile.get('profile') == null) {
+    profile.put('profile', Profile([], true));
   }
 
   runApp(
@@ -31,6 +39,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (BuildContext context) => CategoryListProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (BuildContext context) => ProfiletProvider(),
         ),
       ],
       child: const MyApp(),

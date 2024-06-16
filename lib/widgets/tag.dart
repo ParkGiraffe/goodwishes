@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/pages/category_detail_page.dart';
 
 class Tag extends StatelessWidget {
-  final Function onNavigate;
+  // final Function onNavigate;
   final String tagName;
   const Tag({
     super.key,
-    required this.onNavigate,
+    // required this.onNavigate,
     required this.tagName,
   });
 
@@ -18,7 +19,12 @@ class Tag extends StatelessWidget {
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       onPressed: () {
-        onNavigate(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryDetailPage(categoryName: tagName),
+          ),
+        );
       },
       child: Container(
         // width: 84,

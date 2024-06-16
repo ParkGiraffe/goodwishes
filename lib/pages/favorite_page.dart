@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/change_goods_wish_button.dart';
 import 'package:goodwishes/widgets/favorite_list.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
@@ -15,19 +16,17 @@ class FavoritePage extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 24),
-            child: TopWithProfile(title: 'Favorite'),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            padding: EdgeInsets.symmetric(
+                horizontal: UIDefault.pageHorizontalPadding),
             child: Column(
               children: [
+                TopWithProfile(title: 'Favorite'),
                 SizedBox(
-                  height: 20,
+                  height: UIDefault.sizedBoxHeight,
                 ),
-                ChangeGoodsWishButton(),
+                // ChangeGoodsWishButton(),
                 SizedBox(
-                  height: 20,
+                  height: UIDefault.sizedBoxHeight,
                 ),
                 FavoriteList(),
               ],

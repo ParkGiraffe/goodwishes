@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/tag.dart';
 import 'package:provider/provider.dart';
 
@@ -53,9 +54,12 @@ class GoodsDetailTitle extends StatelessWidget {
                     ),
                   ),
 
+                  const SizedBox(
+                    height: UIDefault.sizedBoxHeight,
+                  ),
                   Tag(
                     tagName: goods.category,
-                    onNavigate: () {},
+                    // onNavigate: () {},
                   ),
 
                   // const SizedBox(
@@ -83,7 +87,8 @@ class GoodsDetailTitle extends StatelessWidget {
               ),
               IconButton(
                 style: const ButtonStyle(
-                    padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+                    padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                    iconSize: MaterialStatePropertyAll(UIDefault.buttonSize)),
                 icon: !goods.isFavorite
                     ? const Icon(Icons.bookmark_add_outlined)
                     : const Icon(Icons.bookmark_added_rounded),
