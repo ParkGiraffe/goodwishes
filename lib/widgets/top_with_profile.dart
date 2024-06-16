@@ -21,7 +21,7 @@ class _TopWithProfileState extends State<TopWithProfile> {
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfiletProvider>(context);
 
-    XFile? image;
+    // XFile? image;
     final ImagePicker picker = ImagePicker();
 
     // 이미지를 가져오는 함수
@@ -32,7 +32,7 @@ class _TopWithProfileState extends State<TopWithProfile> {
       if (pickedFile != null) {
         List<int> imageBytes = await pickedFile.readAsBytes();
         setState(() {
-          image = XFile(pickedFile.path);
+          // image = XFile(pickedFile.path);
           profileProvider.changeProfile(Uint8List.fromList(imageBytes));
         });
       }

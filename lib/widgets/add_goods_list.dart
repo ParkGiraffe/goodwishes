@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
+import 'package:goodwishes/pages/submit_dialog.dart';
 import 'package:goodwishes/widgets/add_goods_list_el.dart';
 import 'package:goodwishes/widgets/add_photo.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
@@ -193,6 +194,11 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const SubmitDialog();
+                          });
                     }
                   },
                   child: const SubmitButton(),
