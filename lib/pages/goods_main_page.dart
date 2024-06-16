@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/horizon_list.dart';
 import 'package:goodwishes/widgets/category_list.dart';
-import 'package:provider/provider.dart';
 
 class GoodsMainPage extends StatelessWidget {
   const GoodsMainPage({

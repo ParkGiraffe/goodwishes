@@ -4,7 +4,6 @@ import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/searching_list.dart';
 
 import 'package:goodwishes/widgets/section_title.dart';
-import 'package:goodwishes/widgets/stack_top_navigation_bar.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:provider/provider.dart';
 

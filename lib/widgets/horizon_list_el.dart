@@ -1,10 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
-import 'package:provider/provider.dart';
 
 class HorizonListEl extends StatelessWidget {
   final Uint8List image;

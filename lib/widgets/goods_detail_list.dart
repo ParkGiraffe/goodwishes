@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
-import 'package:goodwishes/widgets/category_list.dart';
 import 'package:goodwishes/widgets/delete_button.dart';
 import 'package:goodwishes/widgets/goods_detail_list_el.dart';
 import 'package:goodwishes/widgets/section_title.dart';

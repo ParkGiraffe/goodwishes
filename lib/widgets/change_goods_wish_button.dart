@@ -36,8 +36,8 @@ class GoodsButton extends StatelessWidget {
           topRight: Radius.circular(0),
         ),
       ),
-      child: Center(
-        child: const Text(
+      child: const Center(
+        child: Text(
           'GoodsList',
           style: TextStyle(
             fontWeight: FontWeight.bold,

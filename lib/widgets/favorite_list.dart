@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
-import 'package:goodwishes/widgets/favorite_list_row.dart';
 import 'package:goodwishes/widgets/searching_list_row.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/add_goods_list.dart';
-// import 'package:goodwishes/widgets/add_photo.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 
 class AddGoodsPage extends StatelessWidget {
