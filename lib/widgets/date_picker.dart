@@ -14,10 +14,10 @@ class _DatePickerState extends State<DatePicker> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: const ButtonStyle(
-        padding: MaterialStatePropertyAll(
-          EdgeInsets.zero,
-        ),
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+        minimumSize: MaterialStateProperty.all<Size>(Size.zero),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(

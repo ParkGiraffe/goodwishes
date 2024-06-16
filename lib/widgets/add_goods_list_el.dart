@@ -11,8 +11,9 @@ class AddGoodsListEl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      // height: 60,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

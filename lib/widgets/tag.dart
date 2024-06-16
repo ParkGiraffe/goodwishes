@@ -22,7 +22,7 @@ class Tag extends StatelessWidget {
       },
       child: Container(
         // width: 84,
-        margin: const EdgeInsets.symmetric(vertical: 15),
+        // margin: const EdgeInsets.symmetric(vertical: 15),
         padding: const EdgeInsets.symmetric(horizontal: 12),
         // margin: EdgeInsets.zero,
         height: 27,
