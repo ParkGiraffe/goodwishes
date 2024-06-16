@@ -36,7 +36,10 @@ class GoodsDetailPage extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              const StackTopNavigationBar(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: StackTopNavigationBar(),
+              ),
               GoodsDetailThumb(
                 goods: goods,
               ),

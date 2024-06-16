@@ -27,47 +27,43 @@ class _SearchPageState extends State<SearchPage> {
 
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          const StackTopNavigationBar(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 100,
-                  child: TextFormField(
-                    onChanged: (value) {
-                      setState(() {
-                        // searching = value;
-                        searchingList = goodsListProvider.searchGoods(value);
-                      });
-                      // print(searchingList);
-                    },
-                    keyboardType: TextInputType.multiline,
-                    maxLines: 1,
-                    style: const TextStyle(
-                      fontSize: 17,
-                    ),
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      // contentPadding: const EdgeInsets.only(bottom: 0),
-                      hintText: '검색어를 입력하세요',
-                    ),
-                  ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const StackTopNavigationBar(),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 100,
+              child: TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    // searching = value;
+                    searchingList = goodsListProvider.searchGoods(value);
+                  });
+                  // print(searchingList);
+                },
+                keyboardType: TextInputType.multiline,
+                maxLines: 1,
+                style: const TextStyle(
+                  fontSize: 17,
                 ),
-                const SectionTitle(
-                  titleText: '검색된 굿즈',
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  // contentPadding: const EdgeInsets.only(bottom: 0),
+                  hintText: '검색어를 입력하세요',
                 ),
-                SearchingList(
-                  serachingList: searchingList,
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+            const SectionTitle(
+              titleText: '검색된 굿즈',
+            ),
+            SearchingList(
+              serachingList: searchingList,
+            ),
+          ],
+        ),
       ),
     );
   }

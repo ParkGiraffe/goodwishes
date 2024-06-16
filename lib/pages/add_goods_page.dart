@@ -15,7 +15,10 @@ class AddGoodsPage extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          StackTopNavigationBar(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: StackTopNavigationBar(),
+          ),
           ChangeGoodsWishButton(),
           SizedBox(
             height: 20,
