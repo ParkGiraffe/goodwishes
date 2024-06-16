@@ -52,30 +52,38 @@ class GoodsDetailTitle extends StatelessWidget {
                       fontSize: 13,
                     ),
                   ),
+
+                  Tag(
+                    tagName: goods.category,
+                    onNavigate: () {},
+                  ),
+
                   // const SizedBox(
                   //   height: 10,
                   // ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Row(
-                          children: [
-                            Tag(
-                              tagName: goods.category,
-                              onNavigate: () {},
-                            ),
-                            const SizedBox(
-                              width: 7,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  )
+                  // SingleChildScrollView(
+                  //   scrollDirection: Axis.horizontal,
+                  //   child: Row(
+                  //     children: [
+                  //       Row(
+                  //         children: [
+                  //           Tag(
+                  //             tagName: goods.category,
+                  //             onNavigate: () {},
+                  //           ),
+                  //           const SizedBox(
+                  //             width: 7,
+                  //           ),
+                  //         ],
+                  //       )
+                  //     ],
+                  //   ),
+                  // )
                 ],
               ),
               IconButton(
+                style: const ButtonStyle(
+                    padding: MaterialStatePropertyAll(EdgeInsets.zero)),
                 icon: !goods.isFavorite
                     ? const Icon(Icons.bookmark_add_outlined)
                     : const Icon(Icons.bookmark_added_rounded),

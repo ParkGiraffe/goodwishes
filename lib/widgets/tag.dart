@@ -12,14 +12,19 @@ class Tag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style:
-          const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+        minimumSize: MaterialStateProperty.all<Size>(Size.zero),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
       onPressed: () {
         onNavigate(context);
       },
       child: Container(
         // width: 84,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        // margin: EdgeInsets.zero,
         height: 27,
         decoration: const BoxDecoration(
           color: Color(0xFFD9D9D9),

@@ -9,6 +9,7 @@ import 'package:goodwishes/widgets/add_photo.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
 import 'package:goodwishes/widgets/memo_text_input.dart';
 import 'package:goodwishes/widgets/section_title.dart';
+import 'package:goodwishes/widgets/submit_button.dart';
 import 'package:goodwishes/widgets/tag.dart';
 import 'package:goodwishes/widgets/text_input.dart';
 import 'package:provider/provider.dart';
@@ -163,7 +164,12 @@ class _AddGoodsListState extends State<AddGoodsList> {
                     memo = val!;
                   },
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 TextButton(
+                  style: const ButtonStyle(
+                      padding: MaterialStatePropertyAll(EdgeInsets.zero)),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
@@ -189,7 +195,10 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       // print(goodsList);
                     }
                   },
-                  child: const Text('submit'),
+                  child: const SubmitButton(),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),
