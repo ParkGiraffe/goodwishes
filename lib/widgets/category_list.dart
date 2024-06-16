@@ -1,6 +1,4 @@
-import 'dart:ffi';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
@@ -17,50 +15,35 @@ class CategoryList extends StatelessWidget {
     final categoryList =
         Provider.of<CategoryListProvider>(context).categoryList;
     final goodsList = Provider.of<GoodsListProvider>(context);
-    // return const Column(
-    //   children: [
-    //     CategoryListRow(
-    //       firstImageRoute: 'assets/goods.jpeg',
-    //       firstItemName: 'CategoryName',
-    //       secondImageRoute: 'assets/goods.jpeg',
-    //       secondItemName: 'CategoryName',
-    //     ),
-    //   ],
-    // );
 
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: (categoryList.length / 2).ceil(),
       itemBuilder: (context, index) {
-        Uint8List leftImage = goodsList.goodsList
-            .firstWhere(
-                (element) =>
-                    element.category ==
-                    categoryList.elementAt(index * 2).categoryName,
-                orElse: () => goodsList.goodsList.elementAt(0))
-            .thumbnail;
+        Goods leftGoods = goodsList.goodsList.firstWhere(
+            (element) =>
+                element.category ==
+                categoryList.elementAt(index * 2).categoryName,
+            orElse: () => Goods.createEmptyGoods());
 
         if (index * 2 + 1 >= categoryList.length) {
           return CategoryListRow(
-            firstImageRoute: leftImage,
+            firstImage: leftGoods.id == '' ? null : leftGoods.thumbnail,
             firstItemName: categoryList.elementAt(index * 2).categoryName,
             // secondItemName: categoryList.elementAt(index * 2 + 1).categoryName,
           );
         } else {
-          Uint8List rightImage = goodsList.goodsList
-              .firstWhere(
-                  (element) =>
-                      element.category ==
-                      categoryList.elementAt(index * 2 + 1).categoryName,
-                  orElse: () => goodsList.goodsList.elementAt(0))
-              .thumbnail;
+          Goods rightGoods = goodsList.goodsList.firstWhere(
+              (element) =>
+                  element.category ==
+                  categoryList.elementAt(index * 2 + 1).categoryName,
+              orElse: () => Goods.createEmptyGoods());
 
-          // print(rightImage);
           return CategoryListRow(
-            firstImageRoute: leftImage,
+            firstImage: leftGoods.id == '' ? null : leftGoods.thumbnail,
             firstItemName: categoryList.elementAt(index * 2).categoryName,
-            secondImageRoute: rightImage,
+            secondImage: rightGoods.id == '' ? null : rightGoods.thumbnail,
             secondItemName: categoryList.elementAt(index * 2 + 1).categoryName,
           );
         }

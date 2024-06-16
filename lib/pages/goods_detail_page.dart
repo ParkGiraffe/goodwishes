@@ -18,21 +18,8 @@ class GoodsDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Goods goods = context.watch<GoodsListProvider>().goodsList.firstWhere(
-          (element) => element.id == id,
-          orElse: () => Goods(
-            id: '',
-            thumbnail: Uint8List(0),
-            goodsName: '',
-            date: '',
-            category: '',
-            location: '',
-            wayToBuy: '',
-            memo: '',
-            amount: 0,
-            price: 0,
-            tagList: [],
-          ),
-        );
+        (element) => element.id == id,
+        orElse: () => Goods.createEmptyGoods());
 
     if (goods.id.isEmpty) {
       // Handle the case where the goods is not found

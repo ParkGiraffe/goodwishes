@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/widgets/category_list_el.dart';
 
 class CategoryListRow extends StatelessWidget {
-  final Uint8List firstImageRoute;
+  final Uint8List? firstImage;
   final String firstItemName;
-  final Uint8List? secondImageRoute;
+  final Uint8List? secondImage;
   final String secondItemName;
 
   const CategoryListRow({
     super.key,
-    required this.firstImageRoute,
+    required this.firstImage,
     required this.firstItemName,
-    this.secondImageRoute,
+    this.secondImage,
     this.secondItemName = '',
-    // String secondImageRoute = '',
+    // String secondImage = '',
     // String secondItemName = '',
   });
 
@@ -25,20 +25,20 @@ class CategoryListRow extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: secondImageRoute == null && secondItemName == ''
+          children: secondImage == null && secondItemName == ''
               ? [
                   CategoryListEl(
-                    imageRoute: firstImageRoute,
+                    image: firstImage,
                     itemName: firstItemName,
                   ),
                 ]
               : [
                   CategoryListEl(
-                    imageRoute: firstImageRoute,
+                    image: firstImage,
                     itemName: firstItemName,
                   ),
                   CategoryListEl(
-                    imageRoute: secondImageRoute!,
+                    image: secondImage,
                     itemName: secondItemName,
                   ),
                 ],

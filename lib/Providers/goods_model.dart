@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
-// import 'dart:typed_data';
+import 'dart:typed_data';
 
 part 'goods_model.g.dart';
 
@@ -56,6 +57,22 @@ class Goods {
     required this.tagList,
     this.isFavorite = false,
   });
+
+  static Goods createEmptyGoods() {
+    return Goods(
+      id: '',
+      thumbnail: Uint8List(0),
+      goodsName: '',
+      date: '',
+      category: '',
+      location: '',
+      wayToBuy: '',
+      memo: '',
+      amount: 0,
+      price: 0,
+      tagList: [],
+    );
+  }
 }
 
 class GoodsListProvider with ChangeNotifier {

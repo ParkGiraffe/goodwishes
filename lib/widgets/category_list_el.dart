@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:goodwishes/pages/goods_detail_page.dart';
+import 'dart:typed_data';
+// import 'dart:core';
 
 class CategoryListEl extends StatelessWidget {
-  final Uint8List imageRoute;
+  final Uint8List? image;
   final String itemName;
 
   const CategoryListEl({
     super.key,
-    required this.imageRoute,
+    required this.image,
     required this.itemName,
   });
 
@@ -34,10 +34,17 @@ class CategoryListEl extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey,
               borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: MemoryImage(imageRoute),
-              ),
+              image: image != null
+                  ? DecorationImage(
+                      fit: BoxFit.cover,
+                      // image: AssetImage('assets/goods.jpeg'),
+                      image: MemoryImage(image!),
+                    )
+                  : const DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/goods.jpeg'),
+                      // image: MemoryImage(image!),
+                    ),
             ),
           ),
           Text(
