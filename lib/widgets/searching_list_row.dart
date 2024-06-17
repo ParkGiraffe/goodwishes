@@ -11,12 +11,6 @@ class SearchingListRow extends StatelessWidget {
     super.key,
     required this.firstItem,
     this.secondItem,
-    // required this.firstImageRoute,
-    // required this.firstItemName,
-    // this.secondImageRoute,
-    // this.secondItemName = '',
-    // String secondImageRoute = '',
-    // String secondItemName = '',
   });
 
   @override
