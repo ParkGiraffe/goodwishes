@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/horizon_list.dart';
 import 'package:goodwishes/widgets/category_list.dart';
+import 'package:goodwishes/widgets/top_with_profile.dart';
 
 class WishlistMainPage extends StatelessWidget {
   const WishlistMainPage({
@@ -20,9 +21,9 @@ class WishlistMainPage extends StatelessWidget {
               height: 20,
             ),
             // top
-            // TopWithProfile(
-            //   title: 'WishList',
-            // ),
+            TopWithProfile(
+              title: 'WishList',
+            ),
             SizedBox(
               height: 20,
             ),
