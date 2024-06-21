@@ -1,57 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/section_title.dart';
+import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/horizon_list.dart';
 import 'package:goodwishes/widgets/category_list.dart';
-import 'package:goodwishes/widgets/top_with_profile.dart';
 
-class WishlistMainPage extends StatelessWidget {
-  const WishlistMainPage({
+class WishMainPage extends StatelessWidget {
+  const WishMainPage({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 24),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
+    return const SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: UIDefault.pageHorizontalPadding,
             ),
-            // top
-            TopWithProfile(
+            child: TopWithProfile(
               title: 'WishList',
             ),
-            SizedBox(
-              height: 20,
-            ),
-            // body
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SectionTitle(titleText: '내가 갖고 싶은 굿즈들'),
-                SizedBox(
-                  height: 10,
+          ),
+
+          // top
+          SizedBox(
+            height: UIDefault.sizedBoxHeight,
+          ),
+          // body
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: UIDefault.pageHorizontalPadding,
                 ),
-                HorizonList(),
-                SizedBox(
-                  height: 20,
+                child: SectionTitle(titleText: '최근에 추가된 굿즈들'),
+              ),
+              SizedBox(
+                height: UIDefault.sizedBoxHeight - 5,
+              ),
+              HorizonList(),
+              SizedBox(
+                height: UIDefault.sizedBoxHeight,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: UIDefault.pageHorizontalPadding,
                 ),
-                // feeds
-                SectionTitle(titleText: 'Category'),
-                SizedBox(
-                  height: 10,
+                child: SectionTitle(titleText: 'Category'),
+              ),
+              SizedBox(
+                height: UIDefault.sizedBoxHeight - 5,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: UIDefault.pageHorizontalPadding,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 24.0),
-                  child: CategoryList(),
-                ),
-              ],
-            ),
-          ],
-        ),
+                child: CategoryList(),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
