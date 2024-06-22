@@ -37,7 +37,7 @@ class WishMainPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: UIDefault.pageHorizontalPadding,
                 ),
-                child: SectionTitle(titleText: '최근에 추가된 굿즈들'),
+                child: SectionTitle(titleText: '최근에 추가된 위시들'),
               ),
               SizedBox(
                 height: UIDefault.sizedBoxHeight - 5,
