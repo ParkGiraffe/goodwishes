@@ -16,9 +16,11 @@ import 'package:provider/provider.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(GoodsAdapter());
+  Hive.registerAdapter(WishAdapter());
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(ProfileAdapter());
   await Hive.openBox<Goods>('GoodsListBox');
+  await Hive.openBox<Wish>('WishListBox');
   await Hive.openBox<Category>('CategoryListBox');
   await Hive.openBox<Profile>('ProfileBox');
 

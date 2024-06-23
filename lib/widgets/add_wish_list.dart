@@ -139,7 +139,7 @@ class _AddWishListState extends State<AddWishList> {
                   leftText: '최저 가격',
                   rightWidget: TextInput(
                     onSaved: (val) {
-                      wishPrice = val!;
+                      rowPrice = val!;
                     },
                     hintText: '최저 가격',
                     keyboardType: TextInputType.number,
