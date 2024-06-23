@@ -7,7 +7,7 @@ import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/pages/add_goods_page.dart';
 import 'package:goodwishes/pages/favorite_page.dart';
 import 'package:goodwishes/pages/search_page.dart';
-import 'package:goodwishes/pages/wishlist_main_page.dart';
+import 'package:goodwishes/pages/wish_main_page.dart';
 import 'package:goodwishes/widgets/bottom_navigation.dart';
 import 'package:goodwishes/pages/goods_main_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';

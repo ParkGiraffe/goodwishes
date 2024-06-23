@@ -3,19 +3,22 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
+import 'package:goodwishes/pages/wish_detail_page.dart';
 
 class HorizonListEl extends StatelessWidget {
   final Uint8List image;
   final String goodsName;
   final String date;
   final String id;
+  bool isGoods;
 
-  const HorizonListEl({
+  HorizonListEl({
     super.key,
     required this.image,
     required this.goodsName,
     required this.date,
     required this.id,
+    this.isGoods = true,
   });
 
   @override
@@ -24,12 +27,19 @@ class HorizonListEl extends StatelessWidget {
       style:
           const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => GoodsDetailPage(id: id),
-          ),
-        );
+        isGoods
+            ? Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GoodsDetailPage(id: id),
+                ),
+              )
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WishDetailPage(id: id),
+                ),
+              );
       },
       child: Container(
         height: 300,

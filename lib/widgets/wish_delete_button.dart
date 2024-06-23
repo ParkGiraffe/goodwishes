@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:provider/provider.dart';
 
-class DeleteButton extends StatelessWidget {
+class WishDeleteButton extends StatelessWidget {
   final String id;
-  const DeleteButton({
+  const WishDeleteButton({
     super.key,
     required this.id,
   });
@@ -15,7 +16,7 @@ class DeleteButton extends StatelessWidget {
       style:
           const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
-        Provider.of<GoodsListProvider>(context, listen: false).removeGoods(id);
+        Provider.of<WishListProvider>(context, listen: false).removeWish(id);
         if (context.mounted) {
           Navigator.pop(context);
         }

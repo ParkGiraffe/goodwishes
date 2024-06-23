@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/widgets/goods_delete_button.dart';
 import 'package:goodwishes/widgets/goods_detail_list_el.dart';
 import 'package:goodwishes/widgets/section_title.dart';
+import 'package:goodwishes/widgets/wish_delete_button.dart';
+import 'package:goodwishes/widgets/wish_detail_list_el.dart';
 
-class GoodsDetailList extends StatelessWidget {
-  final Goods goods;
+class WishDetailList extends StatelessWidget {
+  final Wish wish;
 
-  const GoodsDetailList({
+  const WishDetailList({
     super.key,
-    required this.goods,
+    required this.wish,
   });
 
   @override
@@ -22,21 +25,21 @@ class GoodsDetailList extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          GoodsDetailListEl(
+          WishDetailListEl(
             leftText: '소지 수량',
-            rightText: goods.amount.toString(),
+            rightText: wish.amount.toString(),
           ),
-          GoodsDetailListEl(
-            leftText: '구매 가격',
-            rightText: goods.price.toString(),
+          WishDetailListEl(
+            leftText: '희망 가격',
+            rightText: wish.wishPrice.toString(),
           ),
-          GoodsDetailListEl(
-            leftText: '구매 방법',
-            rightText: goods.wayToBuy,
+          WishDetailListEl(
+            leftText: '최저 가격',
+            rightText: wish.rowPrice.toString(),
           ),
-          GoodsDetailListEl(
-            leftText: '보관 장소',
-            rightText: goods.location,
+          WishDetailListEl(
+            leftText: '발견 장소',
+            rightText: wish.location,
           ),
           const SizedBox(
             height: 5,
@@ -52,7 +55,7 @@ class GoodsDetailList extends StatelessWidget {
                 Radius.circular(15),
               ),
             ),
-            child: Text(goods.memo),
+            child: Text(wish.memo),
           ),
           const SizedBox(
             height: 30,
@@ -62,7 +65,7 @@ class GoodsDetailList extends StatelessWidget {
           //   height: 15,
           // ),
           // const CategoryList(),
-          GoodsDeleteButton(id: goods.id),
+          WishDeleteButton(id: wish.id),
         ],
       ),
     );

@@ -32,6 +32,7 @@ class HorizonListWish extends StatelessWidget {
             goodsName: wishList.elementAt(curIdx).wishName,
             date: wishList.elementAt(curIdx).date,
             id: wishList.elementAt(curIdx).id,
+            isGoods: false,
           );
         },
       ),

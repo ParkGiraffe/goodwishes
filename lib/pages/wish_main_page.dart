@@ -3,7 +3,6 @@ import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/horizon_list_wish.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
-import 'package:goodwishes/widgets/horizon_list_goods.dart';
 import 'package:goodwishes/widgets/category_list.dart';
 
 class WishMainPage extends StatelessWidget {
