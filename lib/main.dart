@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/Providers/profile_model.dart';
+import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/pages/add_goods_page.dart';
 import 'package:goodwishes/pages/favorite_page.dart';
 import 'package:goodwishes/pages/search_page.dart';
@@ -43,6 +44,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (BuildContext context) => ProfiletProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (BuildContext context) => WishListProvider(),
         ),
       ],
       child: const MyApp(),
