@@ -5,8 +5,8 @@ import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/horizon_list_el.dart';
 import 'package:provider/provider.dart';
 
-class HorizonList extends StatelessWidget {
-  const HorizonList({
+class HorizonListGoods extends StatelessWidget {
+  const HorizonListGoods({
     super.key,
   });
 
