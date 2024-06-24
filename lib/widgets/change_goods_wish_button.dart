@@ -1,25 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 
 class ChangeGoodsWishButton extends StatelessWidget {
+  final bool isGoods;
+  final Function onClick;
+
   const ChangeGoodsWishButton({
     super.key,
+    required this.isGoods,
+    required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        GoodsButton(),
-        WishButton(),
-      ],
+    return GestureDetector(
+      onTap: () {
+        onClick();
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GoodsButton(
+            isGoods: isGoods,
+          ),
+          WishButton(
+            isGoods: isGoods,
+          ),
+        ],
+      ),
     );
   }
 }
 
 class GoodsButton extends StatelessWidget {
+  final bool isGoods;
   const GoodsButton({
     super.key,
+    required this.isGoods,
   });
 
   @override
@@ -27,9 +44,9 @@ class GoodsButton extends StatelessWidget {
     return Container(
       height: 30,
       width: 100,
-      decoration: const BoxDecoration(
-        color: Color(0xFFDBCACA),
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: isGoods ? UIDefault.activeColor : UIDefault.inactiveColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(5),
           bottomLeft: Radius.circular(5),
           bottomRight: Radius.circular(0),
@@ -49,8 +66,10 @@ class GoodsButton extends StatelessWidget {
 }
 
 class WishButton extends StatelessWidget {
+  final bool isGoods;
   const WishButton({
     super.key,
+    required this.isGoods,
   });
 
   @override
@@ -58,9 +77,9 @@ class WishButton extends StatelessWidget {
     return Container(
       height: 30,
       width: 100,
-      decoration: const BoxDecoration(
-        color: Color(0xAADBCACA),
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: isGoods ? UIDefault.inactiveColor : UIDefault.activeColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(0),
           bottomLeft: Radius.circular(0),
           bottomRight: Radius.circular(5),

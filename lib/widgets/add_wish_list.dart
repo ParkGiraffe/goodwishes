@@ -93,7 +93,7 @@ class _AddWishListState extends State<AddWishList> {
                   ),
                 ),
                 AddWishListEl(
-                  leftText: '구매 일자',
+                  leftText: '추가 일자',
                   rightWidget: DatePicker(
                     callback: (DateTime newDate) {
                       date =
@@ -116,12 +116,12 @@ class _AddWishListState extends State<AddWishList> {
                 //   ),
                 // ),
                 AddWishListEl(
-                  leftText: '소지 수량',
+                  leftText: '희망 수량',
                   rightWidget: TextInput(
                     onSaved: (val) {
                       amount = val!;
                     },
-                    hintText: '소지 수량',
+                    hintText: '희망 수량',
                     keyboardType: TextInputType.number,
                   ),
                 ),

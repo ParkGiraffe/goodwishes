@@ -1,33 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
+import 'package:goodwishes/widgets/add_goods_list.dart';
 import 'package:goodwishes/widgets/add_wish_list.dart';
+import 'package:goodwishes/widgets/change_goods_wish_button.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 
-class AddGoodsPage extends StatelessWidget {
+class AddGoodsPage extends StatefulWidget {
   const AddGoodsPage({
     super.key,
   });
 
   @override
+  State<AddGoodsPage> createState() => _AddGoodsPageState();
+}
+
+class _AddGoodsPageState extends State<AddGoodsPage> {
+  bool isGoods = true;
+  @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    void isGoodsChangeHandler() {
+      setState(() {
+        isGoods = !isGoods;
+      });
+    }
+
+    return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
                 horizontal: UIDefault.pageHorizontalPadding),
-            child: TopWithProfile(title: 'Add Goods'),
+            child: TopWithProfile(title: isGoods ? 'Add Goods' : 'Add Wish'),
           ),
-          SizedBox(
+          const SizedBox(
             height: UIDefault.sizedBoxHeight,
           ),
-          // ChangeGoodsWishButton(),
-          SizedBox(
+          ChangeGoodsWishButton(
+            isGoods: isGoods,
+            onClick: isGoodsChangeHandler,
+          ),
+          const SizedBox(
             height: UIDefault.sizedBoxHeight,
           ),
-          // AddGoodsList(),
-          AddWishList(),
+          isGoods ? const AddGoodsList() : const AddWishList(),
         ],
       ),
     );
