@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/Providers/profile_model.dart';
+import 'package:goodwishes/Providers/wish_category_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/pages/add_goods_page.dart';
 import 'package:goodwishes/pages/favorite_page.dart';
@@ -19,14 +20,21 @@ void main() async {
   Hive.registerAdapter(WishAdapter());
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(ProfileAdapter());
-  await Hive.openBox<Goods>('GoodsListBox');
-  await Hive.openBox<Wish>('WishListBox');
-  await Hive.openBox<Category>('CategoryListBox');
-  await Hive.openBox<Profile>('ProfileBox');
+  Hive.registerAdapter(WishCategoryAdapter());
+  await Hive.openBox<Goods>('goodsListBox');
+  await Hive.openBox<Wish>('wishListBox');
+  await Hive.openBox<Category>('categoryListBox');
+  await Hive.openBox<Profile>('profileBox');
+  await Hive.openBox<Category>('wishCategoryListBox');
 
-  var categories = Hive.box<Category>('CategoryListBox');
+  var categories = Hive.box<Category>('categoryListBox');
   if (categories.get('default') == null) {
     categories.put(
+        'default', Category(id: 'default', categoryName: '일반', count: 0));
+  }
+  var wishCategories = Hive.box<Category>('wishCategoryListBox');
+  if (wishCategories.get('default') == null) {
+    wishCategories.put(
         'default', Category(id: 'default', categoryName: '일반', count: 0));
   }
 
