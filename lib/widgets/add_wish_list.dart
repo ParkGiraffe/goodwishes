@@ -2,8 +2,10 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/category_model.dart';
+import 'package:goodwishes/Providers/wish_category_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
+import 'package:goodwishes/pages/add_wish_category_page.dart';
 import 'package:goodwishes/pages/submit_dialog.dart';
 import 'package:goodwishes/widgets/add_photo.dart';
 import 'package:goodwishes/widgets/add_wish_list_el.dart';
@@ -40,20 +42,20 @@ class _AddWishListState extends State<AddWishList> {
 
   @override
   Widget build(BuildContext context) {
-    final categoryList = context.read<CategoryListProvider>();
+    final wishCategoryList = context.read<WishCategoryListProvider>();
     final wishList = Provider.of<WishListProvider>(context);
 
     Future<void> categoryButtonHandler(BuildContext context) async {
-      // final categoryList = context.read<CategoryListProvider>();
+      // final wishCategoryList = context.read<CategoryListProvider>();
       final pickedCategory = await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) =>
-              ChangeNotifierProvider<CategoryListProvider>.value(
-            value: categoryList,
+              ChangeNotifierProvider<WishCategoryListProvider>.value(
+            value: wishCategoryList,
             builder: (context, child) {
-              // print(categoryList.categoryList);
-              return const AddCategoryPage();
+              // print(wishCategoryList.wishCategoryList);
+              return const AddWishCategoryPage();
             },
           ),
         ),
@@ -193,7 +195,7 @@ class _AddWishListState extends State<AddWishList> {
                       );
                       // print(newWish.thumbnail);
                       wishList.addWish(newWish);
-                      categoryList.upCountCategory(category);
+                      wishCategoryList.upCountCategory(category);
                       // context.read<wishListProvider>().addGoods(newWish);
                       // print(wishList);
                       showDialog(

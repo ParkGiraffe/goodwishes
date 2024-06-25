@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/category_detail_list.dart';
 import 'package:goodwishes/widgets/section_title.dart';
+import 'package:goodwishes/widgets/wish_category_detail_list.dart';
 
 import 'package:provider/provider.dart';
 
-class CategoryDetailPage extends StatelessWidget {
+class WishCategoryDetailPage extends StatelessWidget {
   final String categoryName;
 
-  const CategoryDetailPage({
+  const WishCategoryDetailPage({
     super.key,
     required this.categoryName,
   });
@@ -17,7 +19,7 @@ class CategoryDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categoryList =
-        Provider.of<GoodsListProvider>(context).getCategoryGoods(categoryName);
+        Provider.of<WishListProvider>(context).getCategoryWish(categoryName);
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +47,7 @@ class CategoryDetailPage extends StatelessWidget {
                     // SizedBox(
                     //   height: UIDefault.sizedBoxHeight,
                     // ),
-                    CategoryDetailList(serachingList: categoryList),
+                    WishCategoryDetailList(serachingList: categoryList),
                   ],
                 ),
               ),

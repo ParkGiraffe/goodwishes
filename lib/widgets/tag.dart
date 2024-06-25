@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/pages/category_detail_page.dart';
+import 'package:goodwishes/pages/wish_category_detail_page.dart';
 
 class Tag extends StatelessWidget {
   Function? onNavigate;
   final String tagName;
+  final bool isWish;
+
   Tag({
     super.key,
     this.onNavigate,
     required this.tagName,
+    this.isWish = false,
   });
 
   @override
@@ -22,12 +26,21 @@ class Tag extends StatelessWidget {
         if (onNavigate != null) {
           onNavigate!(context);
         } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CategoryDetailPage(categoryName: tagName),
-            ),
-          );
+          isWish
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        WishCategoryDetailPage(categoryName: tagName),
+                  ),
+                )
+              : Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryDetailPage(categoryName: tagName),
+                  ),
+                );
         }
       },
       child: Container(

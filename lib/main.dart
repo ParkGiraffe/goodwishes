@@ -20,7 +20,6 @@ void main() async {
   Hive.registerAdapter(WishAdapter());
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(ProfileAdapter());
-  Hive.registerAdapter(WishCategoryAdapter());
   await Hive.openBox<Goods>('goodsListBox');
   await Hive.openBox<Wish>('wishListBox');
   await Hive.openBox<Category>('categoryListBox');
@@ -57,6 +56,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (BuildContext context) => WishListProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (BuildContext context) => WishCategoryListProvider(),
         ),
       ],
       child: const MyApp(),

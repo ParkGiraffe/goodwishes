@@ -60,6 +60,7 @@ class WishDetailTitle extends StatelessWidget {
                   ),
                   Tag(
                     tagName: wish.category,
+                    isWish: true,
                     // onNavigate: () {},
                   ),
 
@@ -94,7 +95,7 @@ class WishDetailTitle extends StatelessWidget {
                     ? const Icon(Icons.bookmark_add_outlined)
                     : const Icon(Icons.bookmark_added_rounded),
                 onPressed: () {
-                  Provider.of<GoodsListProvider>(context, listen: false)
+                  Provider.of<WishListProvider>(context, listen: false)
                       .updateIsFavorite(wish.id);
                 },
               )

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:hive/hive.dart';
 
-part 'wish_category_model.g.dart';
-
 class WishCategoryListProvider with ChangeNotifier {
   late Box<Category> _wishCategoryListBox;
 
