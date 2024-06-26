@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
-import 'package:goodwishes/widgets/goods_detail_list.dart';
-import 'package:goodwishes/widgets/goods_detail_thumb.dart';
-import 'package:goodwishes/widgets/goods_detail_title.dart';
+import 'package:goodwishes/widgets/goods/goods_detail_list.dart';
+import 'package:goodwishes/widgets/goods/goods_detail_thumb.dart';
+import 'package:goodwishes/widgets/goods/goods_detail_title.dart';
 import 'package:provider/provider.dart';
 
 class GoodsDetailPage extends StatelessWidget {

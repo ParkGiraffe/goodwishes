@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/widgets/section_title.dart';
-import 'package:goodwishes/widgets/wish_delete_button.dart';
-import 'package:goodwishes/widgets/wish_detail_list_el.dart';
+import 'package:goodwishes/widgets/wish/wish_delete_button.dart';
+import 'package:goodwishes/widgets/wish/wish_detail_list_el.dart';
 
 class WishDetailList extends StatelessWidget {
   final Wish wish;

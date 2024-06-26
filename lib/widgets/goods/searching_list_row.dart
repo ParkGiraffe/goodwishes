@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 
-import 'package:goodwishes/widgets/searching_list_el.dart';
+import 'package:goodwishes/widgets/goods/searching_list_el.dart';
 
 class SearchingListRow extends StatelessWidget {
   final Goods firstItem;

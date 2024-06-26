@@ -1,15 +1,16 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:goodwishes/widgets/category_list_el.dart';
+import 'package:goodwishes/widgets/goods/category_list_el.dart';
+import 'package:goodwishes/widgets/wish/wish_category_list_el.dart';
 
-class CategoryListRow extends StatelessWidget {
+class WishCategoryListRow extends StatelessWidget {
   final Uint8List? firstImage;
   final String firstItemName;
   final Uint8List? secondImage;
   final String secondItemName;
 
-  const CategoryListRow({
+  const WishCategoryListRow({
     super.key,
     required this.firstImage,
     required this.firstItemName,
@@ -27,17 +28,17 @@ class CategoryListRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: secondImage == null && secondItemName == ''
               ? [
-                  CategoryListEl(
+                  WishCategoryListEl(
                     image: firstImage,
                     itemName: firstItemName,
                   ),
                 ]
               : [
-                  CategoryListEl(
+                  WishCategoryListEl(
                     image: firstImage,
                     itemName: firstItemName,
                   ),
-                  CategoryListEl(
+                  WishCategoryListEl(
                     image: secondImage,
                     itemName: secondItemName,
                   ),

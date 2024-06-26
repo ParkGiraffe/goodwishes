@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
-import 'package:goodwishes/widgets/searching_list.dart';
+import 'package:goodwishes/widgets/change_goods_wish_button.dart';
+import 'package:goodwishes/widgets/goods/searching_list.dart';
 
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
+import 'package:goodwishes/widgets/wish/wish_searching_list.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
@@ -17,12 +20,21 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  bool isGoods = true;
   List<Goods> searchingList = [];
-  List<String> searchedList = [];
+  List<Wish> searchingListWish = [];
+  // List<String> searchedList = [];
 
   @override
   Widget build(BuildContext context) {
+    void isGoodsChangeHandler() {
+      setState(() {
+        isGoods = !isGoods;
+      });
+    }
+
     final goodsListProvider = Provider.of<GoodsListProvider>(context);
+    final wishListProvider = Provider.of<WishListProvider>(context);
 
     // String searching = '';
 
@@ -39,6 +51,11 @@ class _SearchPageState extends State<SearchPage> {
             const SizedBox(
               height: UIDefault.sizedBoxHeight,
             ),
+            ChangeGoodsWishButton(
+                isGoods: isGoods, onClick: isGoodsChangeHandler),
+            const SizedBox(
+              height: UIDefault.sizedBoxHeight,
+            ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 100,
@@ -46,7 +63,10 @@ class _SearchPageState extends State<SearchPage> {
                 onChanged: (value) {
                   setState(() {
                     // searching = value;
-                    searchingList = goodsListProvider.searchGoods(value);
+                    isGoods
+                        ? searchingList = goodsListProvider.searchGoods(value)
+                        : searchingListWish =
+                            wishListProvider.searchWish(value);
                   });
                   // print(searchingList);
                 },
@@ -62,12 +82,21 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
             ),
-            const SectionTitle(
-              titleText: '검색된 굿즈',
-            ),
-            SearchingList(
-              serachingList: searchingList,
-            ),
+            isGoods
+                ? const SectionTitle(
+                    titleText: '검색된 굿즈',
+                  )
+                : const SectionTitle(
+                    titleText: '검색된 위시',
+                  ),
+
+            isGoods
+                ? SearchingList(
+                    serachingList: searchingList,
+                  )
+                : WishSearchingList(
+                    serachingList: searchingListWish,
+                  ),
           ],
         ),
       ),

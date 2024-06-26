@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
-import 'package:goodwishes/widgets/category_detail_list.dart';
+import 'package:goodwishes/widgets/goods/category_detail_list.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 
 import 'package:provider/provider.dart';
