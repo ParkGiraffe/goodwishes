@@ -79,25 +79,67 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return const MaterialApp(
-      home: DefaultTabController(
-        animationDuration: Duration.zero,
-        length: 5,
-        child: Scaffold(
-          bottomNavigationBar: BottomNavigation(),
-          body: SafeArea(
-            child: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                GoodsMainPage(),
-                WishMainPage(),
-                AddGoodsPage(),
-                SearchPage(),
-                FavoritePage(),
-              ],
-            ),
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const GoodsMainPage(),
+    const WishMainPage(),
+    const AddGoodsPage(),
+    const SearchPage(),
+    const FavoritePage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: _pages[_selectedIndex],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Goods',
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Wish',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Add Goods',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
