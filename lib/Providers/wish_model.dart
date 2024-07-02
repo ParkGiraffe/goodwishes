@@ -87,6 +87,7 @@ class WishListProvider with ChangeNotifier {
   }
 
   Iterable<Wish> get wishList => _wishListBox.values;
+  int get wishAmount => _wishListBox.values.length;
   List<Wish> get favoriteList =>
       _wishListBox.values.where((wish) => wish.isFavorite == true).toList();
 

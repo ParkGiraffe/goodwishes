@@ -3,26 +3,26 @@ import 'package:goodwishes/Providers/profile_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 @override
-class ProfileIcon extends StatelessWidget {
+class ProfileIconBig extends StatelessWidget {
   // final String userName;
   final Profile profile;
-  final Function onClick;
+  final Function onUpload;
 
-  const ProfileIcon({
+  const ProfileIconBig({
     super.key,
     required this.profile,
-    required this.onClick,
+    required this.onUpload,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onClick();
+        onUpload(ImageSource.gallery);
       },
       child: Container(
-        width: 50,
-        height: 50,
+        width: 200,
+        height: 200,
         // margin: const EdgeInsets.only(
         //   right: 30,
         // ),

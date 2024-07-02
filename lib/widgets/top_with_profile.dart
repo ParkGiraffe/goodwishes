@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goodwishes/Providers/profile_model.dart';
+import 'package:goodwishes/pages/profile_page.dart';
 import 'package:goodwishes/widgets/profile_icon.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-class TopWithProfile extends StatefulWidget {
+class TopWithProfile extends StatelessWidget {
   final String title;
   const TopWithProfile({
     super.key,
@@ -13,29 +14,16 @@ class TopWithProfile extends StatefulWidget {
   });
 
   @override
-  State<TopWithProfile> createState() => _TopWithProfileState();
-}
-
-class _TopWithProfileState extends State<TopWithProfile> {
-  @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfiletProvider>(context);
 
-    // XFile? image;
-    final ImagePicker picker = ImagePicker();
-
-    // 이미지를 가져오는 함수
-    Future getImage(ImageSource imageSource) async {
-      // pickedFile에 ImagePicker로 가져온 이미지가 담긴다.
-      final XFile? pickedFile = await picker.pickImage(source: imageSource);
-
-      if (pickedFile != null) {
-        List<int> imageBytes = await pickedFile.readAsBytes();
-        setState(() {
-          // image = XFile(pickedFile.path);
-          profileProvider.changeProfile(Uint8List.fromList(imageBytes));
-        });
-      }
+    void profileClickHandler() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ProfilePage(),
+        ),
+      );
     }
 
     return SizedBox(
@@ -47,7 +35,7 @@ class _TopWithProfileState extends State<TopWithProfile> {
         children: [
           // page title
           Text(
-            widget.title,
+            title,
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -59,7 +47,7 @@ class _TopWithProfileState extends State<TopWithProfile> {
 
           ProfileIcon(
             profile: profileProvider.profile,
-            onUpload: getImage,
+            onClick: profileClickHandler,
           ),
         ],
       ),

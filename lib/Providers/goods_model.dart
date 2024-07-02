@@ -87,6 +87,8 @@ class GoodsListProvider with ChangeNotifier {
   }
 
   Iterable<Goods> get goodsList => _goodsListBox.values;
+  int get goodsAmount => _goodsListBox.values.length;
+
   List<Goods> get favoriteList =>
       _goodsListBox.values.where((goods) => goods.isFavorite == true).toList();
 
