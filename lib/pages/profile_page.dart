@@ -6,8 +6,6 @@ import 'package:goodwishes/Providers/profile_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/profile_icon_big.dart';
-import 'package:goodwishes/widgets/goods/category_detail_list.dart';
-import 'package:goodwishes/widgets/profile_icon.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -101,7 +99,7 @@ class AmountText extends StatelessWidget {
         Text(
           '$text : $amount',
           style: const TextStyle(
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
