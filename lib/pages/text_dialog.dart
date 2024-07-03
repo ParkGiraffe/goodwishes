@@ -32,13 +32,13 @@ class TextDialog extends StatelessWidget {
         ),
       ),
       actions: [
-        GestureDetector(
-          onTap: () {
+        TextButton(
+          onPressed: () {
             Navigator.pop(context);
           },
           child: const Center(
             child: Text(
-              '완료',
+              'OK',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,

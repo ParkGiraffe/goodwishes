@@ -6,4 +6,7 @@ class UIDefault {
   static const double buttonSize = 32.0;
   static const Color activeColor = Color(0xFFDBCACA);
   static const Color inactiveColor = Color(0xAADBCACA);
+
+  static const String defaultBackgroundImageRoute =
+      'assets/default_background_image.jpeg';
 }
