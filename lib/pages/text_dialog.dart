@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 
-class SubmitDialog extends StatelessWidget {
-  const SubmitDialog({
+class TextDialog extends StatelessWidget {
+  final String text;
+
+  const TextDialog({
     super.key,
+    required this.text,
   });
 
   @override
@@ -19,10 +22,10 @@ class SubmitDialog extends StatelessWidget {
       content: const SizedBox(
         height: UIDefault.sizedBoxHeight - 20,
       ),
-      title: const Center(
+      title: Center(
         child: Text(
-          '등록되었습니다',
-          style: TextStyle(
+          text,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),

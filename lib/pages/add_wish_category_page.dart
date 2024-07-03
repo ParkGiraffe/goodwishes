@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/wish_category_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
+import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:goodwishes/widgets/category_item.dart';
 import 'package:goodwishes/widgets/stack_top_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +46,17 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void deleteCategoryHandler(String id) {
-      wishCategoryListProvider.removeCategory(id);
+      bool result = wishCategoryListProvider.removeCategory(id);
+      if (!result) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const TextDialog(
+              text: '카테고리에 담긴 위시가 있습니다. 카테고리 안의 위시를 비운 후 제거하세요.',
+            );
+          },
+        );
+      }
     }
 
     return Expanded(

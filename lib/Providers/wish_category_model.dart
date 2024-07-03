@@ -22,8 +22,22 @@ class WishCategoryListProvider with ChangeNotifier {
     notifyListeners(); // 값 변경 후 상태 변경 알림
   }
 
-  void removeCategory(String id) {
-    _wishCategoryListBox.delete(id);
+  removeCategory(String id) {
+    for (var categoryItem in _wishCategoryListBox.values) {
+      if (categoryItem.id == id) {
+        // print(categoryItem.count);
+        // return false;
+        if (categoryItem.count <= 0) {
+          _wishCategoryListBox.delete(id);
+          notifyListeners();
+          return true;
+        } else {
+          notifyListeners();
+          return false;
+        }
+        // return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
+      }
+    }
     notifyListeners();
   }
 
@@ -31,6 +45,18 @@ class WishCategoryListProvider with ChangeNotifier {
     for (var categoryItem in _wishCategoryListBox.values) {
       if (categoryItem.categoryName == categoryName) {
         categoryItem.count = categoryItem.count + 1;
+        _wishCategoryListBox.put(categoryItem.id, categoryItem); // 수정된 값 저장
+        return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
+      }
+    }
+    notifyListeners();
+  }
+
+  void downCountCategory(String categoryName) {
+    for (var categoryItem in _wishCategoryListBox.values) {
+      if (categoryItem.categoryName == categoryName) {
+        categoryItem.count = categoryItem.count - 1;
+        _wishCategoryListBox.put(categoryItem.id, categoryItem); // 수정된 값 저장
         return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
       }
     }

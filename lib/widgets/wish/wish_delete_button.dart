@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Providers/wish_category_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
+import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:provider/provider.dart';
 
 class WishDeleteButton extends StatelessWidget {
   final String id;
+  final String categoryName;
   const WishDeleteButton({
     super.key,
     required this.id,
+    required this.categoryName,
   });
 
   @override
@@ -16,8 +20,18 @@ class WishDeleteButton extends StatelessWidget {
           const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
         Provider.of<WishListProvider>(context, listen: false).removeWish(id);
+        Provider.of<WishCategoryListProvider>(context, listen: false)
+            .downCountCategory(categoryName);
         if (context.mounted) {
           Navigator.pop(context);
+          showDialog(
+            context: context,
+            builder: (context) {
+              return const TextDialog(
+                text: '위시가 제거되었습니다.',
+              );
+            },
+          );
         }
       },
       child: Container(

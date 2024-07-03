@@ -62,7 +62,10 @@ class WishDetailList extends StatelessWidget {
           //   height: 15,
           // ),
           // const CategoryList(),
-          WishDeleteButton(id: wish.id),
+          WishDeleteButton(
+            id: wish.id,
+            categoryName: wish.category,
+          ),
         ],
       ),
     );

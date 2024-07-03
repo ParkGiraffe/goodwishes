@@ -62,7 +62,10 @@ class GoodsDetailList extends StatelessWidget {
           //   height: 15,
           // ),
           // const CategoryList(),
-          GoodsDeleteButton(id: goods.id),
+          GoodsDeleteButton(
+            id: goods.id,
+            categoryName: goods.category,
+          ),
         ],
       ),
     );

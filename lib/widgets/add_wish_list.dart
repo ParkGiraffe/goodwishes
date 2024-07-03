@@ -6,7 +6,7 @@ import 'package:goodwishes/Providers/wish_category_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
 import 'package:goodwishes/pages/add_wish_category_page.dart';
-import 'package:goodwishes/pages/submit_dialog.dart';
+import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:goodwishes/widgets/add_photo.dart';
 import 'package:goodwishes/widgets/add_wish_list_el.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
@@ -201,7 +201,9 @@ class _AddWishListState extends State<AddWishList> {
                       showDialog(
                           context: context,
                           builder: (context) {
-                            return const SubmitDialog();
+                            return const TextDialog(
+                              text: '등록되었습니다',
+                            );
                           });
                     }
                   },

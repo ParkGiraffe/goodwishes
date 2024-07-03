@@ -35,7 +35,7 @@ class CategoryItem extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  category.categoryName,
+                  '${category.categoryName}   - ${category.count}',
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
