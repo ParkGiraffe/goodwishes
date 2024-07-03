@@ -5,6 +5,9 @@ import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/Providers/profile_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
+import 'package:goodwishes/pages/licenses_page.dart';
+import 'package:goodwishes/widgets/amount_text.dart';
+import 'package:goodwishes/widgets/license_button.dart';
 import 'package:goodwishes/widgets/profile_icon_big.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:image_picker/image_picker.dart';
@@ -51,62 +54,44 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(
-                  height: UIDefault.sizedBoxHeight * 2,
+                Column(
+                  children: [
+                    // const SizedBox(
+                    //   height: UIDefault.sizedBoxHeight * 2,
+                    // ),
+                    ProfileIconBig(
+                        profile: profileProvider.profile, onUpload: getImage),
+                    const SizedBox(
+                      height: UIDefault.sizedBoxHeight * 2,
+                    ),
+                    AmountText(
+                      text: '가지고 있는 굿즈의 수',
+                      amount: goodsAmount,
+                    ),
+                    AmountText(
+                      text: '원하는 위시의 수',
+                      amount: wishAmount,
+                    ),
+                  ],
                 ),
-                ProfileIconBig(
-                    profile: profileProvider.profile, onUpload: getImage),
-                const SizedBox(
-                  height: UIDefault.sizedBoxHeight * 2,
-                ),
-                AmountText(
-                  text: '가지고 있는 굿즈의 수',
-                  amount: goodsAmount,
-                ),
-                AmountText(
-                  text: '원하는 위시의 수',
-                  amount: wishAmount,
+                const Column(
+                  children: [
+                    LicenseButton(),
+                    Text('made by ParkGiraffe'),
+                  ],
                 ),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class AmountText extends StatelessWidget {
-  const AmountText({
-    super.key,
-    required this.amount,
-    required this.text,
-  });
-
-  final int amount;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          '$text : $amount',
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(
-          height: UIDefault.sizedBoxHeight,
-        ),
-      ],
     );
   }
 }

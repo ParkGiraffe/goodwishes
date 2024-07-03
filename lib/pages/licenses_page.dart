@@ -1,17 +1,58 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:goodwishes/widgets/section_title.dart';
 import '../../oss_licenses.dart';
 
 class LicensesPage extends StatelessWidget {
   const LicensesPage({super.key});
+
+  /*
+  Scaffold(
+      appBar: AppBar(
+        title: SectionTitle(
+          titleText: categoryName,
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: UIDefault.pageHorizontalPadding,
+                ),
+                child: Column(
+                  children: [
+                    // TopWithProfile(title: categoryName),
+                    // StackTopNavigationBar(),
+                    const SizedBox(
+                      height: UIDefault.sizedBoxHeight,
+                    ),
+                    // ChangeGoodsWishButton(),
+                    // SizedBox(
+                    //   height: UIDefault.sizedBoxHeight,
+                    // ),
+                    CategoryDetailList(serachingList: categoryList),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+   */
 
   @override
   Widget build(BuildContext context) {
     var ossLicenses = dependencies;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text("Licences"),
+        title: SectionTitle(
+          titleText: 'Licenses',
+        ),
       ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
@@ -63,8 +104,9 @@ class LicenceDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(title),
+        title: SectionTitle(
+          titleText: 'Licenses',
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
