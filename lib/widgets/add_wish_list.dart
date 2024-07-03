@@ -1,10 +1,7 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/category_model.dart';
 import 'package:goodwishes/Providers/wish_category_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
-import 'package:goodwishes/pages/add_category_page.dart';
 import 'package:goodwishes/pages/add_wish_category_page.dart';
 import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:goodwishes/widgets/add_photo.dart';

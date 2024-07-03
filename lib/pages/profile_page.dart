@@ -4,7 +4,6 @@ import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/Providers/profile_model.dart';
 import 'package:goodwishes/Providers/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
-import 'package:goodwishes/pages/licenses_page.dart';
 import 'package:goodwishes/widgets/amount_text.dart';
 import 'package:goodwishes/widgets/license_button.dart';
 import 'package:goodwishes/widgets/profile_icon_big.dart';

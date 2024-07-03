@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'dart:typed_data';
-
-import 'package:goodwishes/pages/category_detail_page.dart';
+import 'package:flutter/material.dart';
 import 'package:goodwishes/pages/wish_category_detail_page.dart';
 // import 'dart:core';
 

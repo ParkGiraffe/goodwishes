@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/profile_model.dart';
-import 'package:image_picker/image_picker.dart';
 
 @override
 class ProfileIcon extends StatelessWidget {

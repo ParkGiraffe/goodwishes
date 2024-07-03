@@ -1,7 +1,5 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:goodwishes/widgets/goods/category_list_el.dart';
 import 'package:goodwishes/widgets/wish/wish_category_list_el.dart';
 
 class WishCategoryListRow extends StatelessWidget {
