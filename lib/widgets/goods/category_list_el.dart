@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'dart:typed_data';
 
 import 'package:goodwishes/pages/category_detail_page.dart';
@@ -44,7 +45,7 @@ class CategoryListEl extends StatelessWidget {
                     )
                   : const DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/goods.jpeg'),
+                      image: AssetImage(UIDefault.defaultImageRoute),
                       // image: MemoryImage(image!),
                     ),
             ),

@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/pages/wish_category_detail_page.dart';
 // import 'dart:core';
 
@@ -44,7 +45,7 @@ class WishCategoryListEl extends StatelessWidget {
                     )
                   : const DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/goods.jpeg'),
+                      image: AssetImage(UIDefault.defaultImageRoute),
                       // image: MemoryImage(image!),
                     ),
             ),
