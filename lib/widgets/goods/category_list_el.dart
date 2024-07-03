@@ -45,7 +45,11 @@ class CategoryListEl extends StatelessWidget {
                     )
                   : const DecorationImage(
                       fit: BoxFit.cover,
+<<<<<<< HEAD
                       image: AssetImage(UIDefault.defaultImageRoute),
+=======
+                      image: AssetImage(UIDefault.defaultBackgroundImageRoute),
+>>>>>>> 44eb05bf727c3543ce1ec419a47e375648500b67
                       // image: MemoryImage(image!),
                     ),
             ),
