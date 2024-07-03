@@ -49,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: const SectionTitle(
-          titleText: 'profile',
+          titleText: 'Profile',
         ),
       ),
       body: SafeArea(
