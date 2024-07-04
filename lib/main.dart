@@ -80,6 +80,8 @@ class MyApp extends StatelessWidget {
     );
 
     return const MaterialApp(
+      // 디버그 표시를 없앤다.
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         animationDuration: Duration.zero,
         length: 5,
