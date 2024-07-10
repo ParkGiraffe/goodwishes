@@ -30,7 +30,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
   String goodsName = '';
   String date =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
-  String category = '일반';
+  String category = '카테고리 없음';
   String location = '';
   String wayToBuy = '';
   String memo = '';

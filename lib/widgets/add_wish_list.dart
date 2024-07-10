@@ -29,7 +29,7 @@ class _AddWishListState extends State<AddWishList> {
   String wishName = '';
   String date =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
-  String category = '일반';
+  String category = '카테고리 없음';
   String location = '';
   String memo = '';
   String amount = '';
