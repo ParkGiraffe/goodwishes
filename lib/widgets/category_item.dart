@@ -45,7 +45,8 @@ class CategoryItem extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          if (category.id != 'no_category')
+            Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: Colors.cyan[300],
@@ -65,7 +66,8 @@ class CategoryItem extends StatelessWidget {
                 onPressed: () {
                   onDeleteCategory(category.id);
                 },
-              ))
+              ),
+            )
         ],
       ),
     );

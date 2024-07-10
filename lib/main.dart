@@ -27,14 +27,14 @@ void main() async {
   await Hive.openBox<Category>('wishCategoryListBox');
 
   var categories = Hive.box<Category>('categoryListBox');
-  if (categories.get('default') == null) {
-    categories.put(
-        'default', Category(id: 'default', categoryName: '일반', count: 0));
+  if (categories.get('no_catgory') == null) {
+    categories.put('no_category',
+        Category(id: 'no_category', categoryName: '카테고리 없음', count: 0));
   }
   var wishCategories = Hive.box<Category>('wishCategoryListBox');
-  if (wishCategories.get('default') == null) {
-    wishCategories.put(
-        'default', Category(id: 'default', categoryName: '일반', count: 0));
+  if (wishCategories.get('no_category') == null) {
+    wishCategories.put('no_category',
+        Category(id: 'no_category', categoryName: '카테고리 없음', count: 0));
   }
 
   var profile = Hive.box<Profile>('ProfileBox');
