@@ -27,15 +27,15 @@ class AddGoodsList extends StatefulWidget {
 class _AddGoodsListState extends State<AddGoodsList> {
   final formKey = GlobalKey<FormState>();
   Uint8List thumbnail = Uint8List.fromList([]);
-  String goodsName = '';
+  String goodsName = ' ';
   String date =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
   String category = '카테고리 없음';
-  String location = '';
-  String wayToBuy = '';
-  String memo = '';
-  String amount = '';
-  String price = '';
+  String location = ' ';
+  String wayToBuy = ' ';
+  String memo = ' ';
+  String amount = '0';
+  String price = '0';
   List<String> tagList = [];
 
   @override
@@ -90,6 +90,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       goodsName = val!;
                     },
                     hintText: '굿즈 이름',
+                    //
                   ),
                 ),
                 AddGoodsListEl(
@@ -123,6 +124,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                     },
                     hintText: '소지 수량',
                     keyboardType: TextInputType.number,
+                    initVal: '0',
                   ),
                 ),
                 AddGoodsListEl(
@@ -133,6 +135,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                     },
                     hintText: '구매 가격',
                     keyboardType: TextInputType.number,
+                    initVal: '0',
                   ),
                 ),
                 AddGoodsListEl(

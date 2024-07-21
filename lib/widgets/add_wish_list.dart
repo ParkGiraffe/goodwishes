@@ -132,6 +132,7 @@ class _AddWishListState extends State<AddWishList> {
                     },
                     hintText: '희망 가격',
                     keyboardType: TextInputType.number,
+                    initVal: '0',
                   ),
                 ),
                 AddWishListEl(
@@ -142,6 +143,7 @@ class _AddWishListState extends State<AddWishList> {
                     },
                     hintText: '최저 가격',
                     keyboardType: TextInputType.number,
+                    initVal: '0',
                   ),
                 ),
 

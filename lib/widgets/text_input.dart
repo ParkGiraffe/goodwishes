@@ -7,11 +7,13 @@ class TextInput extends StatelessWidget {
     required this.hintText,
     this.keyboardType = TextInputType.text,
     required this.onSaved,
+    this.initVal = '',
   });
 
   final FormFieldSetter<String> onSaved;
   final String hintText;
   final TextInputType keyboardType;
+  final dynamic initVal;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,12 @@ class TextInput extends StatelessWidget {
       child: TextFormField(
         onSaved: onSaved,
         validator: (value) {
-          if (value!.isEmpty) {
-            return '다시 입력해주세요';
-          }
+          // if (value!.isEmpty) {
+          //   return '다시 입력해주세요';
+          // }
           return null;
         },
+        initialValue: initVal,
         keyboardType: keyboardType,
         inputFormatters: keyboardType == TextInputType.number
             ? [FilteringTextInputFormatter.digitsOnly]
