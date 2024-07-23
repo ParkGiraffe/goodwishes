@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/Providers/goods_model.dart';
 import 'package:goodwishes/widgets/goods/goods_delete_button.dart';
 import 'package:goodwishes/widgets/goods/goods_detail_list_el.dart';
+import 'package:goodwishes/widgets/goods/goods_rewrite_button.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 
 class GoodsDetailList extends StatelessWidget {
@@ -62,6 +63,13 @@ class GoodsDetailList extends StatelessWidget {
           //   height: 15,
           // ),
           // const CategoryList(),
+          GoodsRewriteButton(
+            id: goods.id,
+            categoryName: goods.category,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
           GoodsDeleteButton(
             id: goods.id,
             categoryName: goods.category,
