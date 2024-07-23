@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/profile_model.dart';
+import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/pages/profile_page.dart';
 import 'package:goodwishes/widgets/profile_icon.dart';
 import 'package:provider/provider.dart';

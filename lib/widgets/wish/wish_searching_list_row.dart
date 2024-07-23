@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/wish_model.dart';
+import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/widgets/wish/wish_searching_list_el.dart';
 
 class WishSearchingListRow extends StatelessWidget {

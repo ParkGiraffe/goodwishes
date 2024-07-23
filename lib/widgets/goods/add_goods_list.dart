@@ -1,11 +1,12 @@
 import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Models/wish_category_model.dart';
-import 'package:goodwishes/Models/wish_model.dart';
-import 'package:goodwishes/pages/add_wish_category_page.dart';
+import 'package:goodwishes/Models/category_model.dart';
+import 'package:goodwishes/Models/goods_model.dart';
+import 'package:goodwishes/pages/add_category_page.dart';
 import 'package:goodwishes/pages/text_dialog.dart';
+import 'package:goodwishes/widgets/goods/add_goods_list_el.dart';
 import 'package:goodwishes/widgets/goods/add_photo.dart';
-import 'package:goodwishes/widgets/add_wish_list_el.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
 import 'package:goodwishes/widgets/memo_text_input.dart';
 import 'package:goodwishes/widgets/section_title.dart';
@@ -14,45 +15,45 @@ import 'package:goodwishes/widgets/tag.dart';
 import 'package:goodwishes/widgets/text_input.dart';
 import 'package:provider/provider.dart';
 
-class AddWishList extends StatefulWidget {
-  const AddWishList({
+class AddGoodsList extends StatefulWidget {
+  const AddGoodsList({
     super.key,
   });
 
   @override
-  State<AddWishList> createState() => _AddWishListState();
+  State<AddGoodsList> createState() => _AddGoodsListState();
 }
 
-class _AddWishListState extends State<AddWishList> {
+class _AddGoodsListState extends State<AddGoodsList> {
   final formKey = GlobalKey<FormState>();
   Uint8List thumbnail = Uint8List.fromList([]);
-  String wishName = '';
+  String goodsName = ' ';
   String date =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
   String category = '카테고리 없음';
-  String location = '';
-  String memo = '';
-  String amount = '';
-  String wishPrice = '';
-  String rowPrice = '';
+  String location = ' ';
+  String wayToBuy = ' ';
+  String memo = ' ';
+  String amount = '0';
+  String price = '0';
   List<String> tagList = [];
 
   @override
   Widget build(BuildContext context) {
-    final wishCategoryList = context.read<WishCategoryListProvider>();
-    final wishList = Provider.of<WishListProvider>(context);
+    final categoryList = context.read<CategoryListProvider>();
+    final goodsList = Provider.of<GoodsListProvider>(context);
 
     Future<void> categoryButtonHandler(BuildContext context) async {
-      // final wishCategoryList = context.read<CategoryListProvider>();
+      // final categoryList = context.read<CategoryListProvider>();
       final pickedCategory = await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) =>
-              ChangeNotifierProvider<WishCategoryListProvider>.value(
-            value: wishCategoryList,
+              ChangeNotifierProvider<CategoryListProvider>.value(
+            value: categoryList,
             builder: (context, child) {
-              // print(wishCategoryList.wishCategoryList);
-              return const AddWishCategoryPage();
+              // print(categoryList.categoryList);
+              return const AddCategoryPage();
             },
           ),
         ),
@@ -82,17 +83,18 @@ class _AddWishListState extends State<AddWishList> {
                 const SizedBox(
                   height: 30,
                 ),
-                AddWishListEl(
+                AddGoodsListEl(
                   leftText: '굿즈 이름',
                   rightWidget: TextInput(
                     onSaved: (val) {
-                      wishName = val!;
+                      goodsName = val!;
                     },
                     hintText: '굿즈 이름',
+                    //
                   ),
                 ),
-                AddWishListEl(
-                  leftText: '추가 일자',
+                AddGoodsListEl(
+                  leftText: '구매 일자',
                   rightWidget: DatePicker(
                     callback: (DateTime newDate) {
                       date =
@@ -100,60 +102,58 @@ class _AddWishListState extends State<AddWishList> {
                     },
                   ),
                 ),
-                AddWishListEl(
+                AddGoodsListEl(
                   leftText: '굿즈 분류',
                   rightWidget: Tag(
                     tagName: category,
                     onNavigate: categoryButtonHandler,
                   ),
                 ),
-                // AddWishListEl(
+                // AddGoodsListEl(
                 //   leftText: '태그 설정',
                 //   rightWidget: Tag(
                 //     tagName: 'sample',
                 //     onNavigate: categoryButtonHandler,
                 //   ),
                 // ),
-                AddWishListEl(
-                  leftText: '희망 수량',
+                AddGoodsListEl(
+                  leftText: '소지 수량',
                   rightWidget: TextInput(
                     onSaved: (val) {
                       amount = val!;
                     },
-                    hintText: '희망 수량',
-                    keyboardType: TextInputType.number,
-                  ),
-                ),
-                AddWishListEl(
-                  leftText: '희망 가격',
-                  rightWidget: TextInput(
-                    onSaved: (val) {
-                      wishPrice = val!;
-                    },
-                    hintText: '희망 가격',
+                    hintText: '소지 수량',
                     keyboardType: TextInputType.number,
                     initVal: '0',
                   ),
                 ),
-                AddWishListEl(
-                  leftText: '최저 가격',
+                AddGoodsListEl(
+                  leftText: '구매 가격',
                   rightWidget: TextInput(
                     onSaved: (val) {
-                      rowPrice = val!;
+                      price = val!;
                     },
-                    hintText: '최저 가격',
+                    hintText: '구매 가격',
                     keyboardType: TextInputType.number,
                     initVal: '0',
                   ),
                 ),
-
-                AddWishListEl(
-                  leftText: '발견 위치',
+                AddGoodsListEl(
+                  leftText: '구매 방법',
+                  rightWidget: TextInput(
+                    onSaved: (val) {
+                      wayToBuy = val!;
+                    },
+                    hintText: '구매 방법',
+                  ),
+                ),
+                AddGoodsListEl(
+                  leftText: '보관 장소',
                   rightWidget: TextInput(
                     onSaved: (val) {
                       location = val!;
                     },
-                    hintText: '발견 위치',
+                    hintText: '보관 장소',
                   ),
                 ),
                 const SizedBox(
@@ -179,24 +179,24 @@ class _AddWishListState extends State<AddWishList> {
                       formKey.currentState!.save();
 
                       String createdAt = DateTime.now().toString();
-                      Wish newWish = Wish(
+                      Goods newGoods = Goods(
                         id: createdAt,
                         thumbnail: thumbnail,
-                        wishName: wishName,
+                        goodsName: goodsName,
                         date: date,
                         category: category,
                         location: location,
+                        wayToBuy: wayToBuy,
                         memo: memo,
                         amount: int.parse(amount),
-                        wishPrice: int.parse(wishPrice),
-                        rowPrice: int.parse(rowPrice),
+                        price: int.parse(price),
                         tagList: tagList,
                       );
-                      // print(newWish.thumbnail);
-                      wishList.addWish(newWish);
-                      wishCategoryList.upCountCategory(category);
-                      // context.read<wishListProvider>().addGoods(newWish);
-                      // print(wishList);
+                      // print(newGoods.thumbnail);
+                      goodsList.addGoods(newGoods);
+                      categoryList.upCountCategory(category);
+                      // context.read<GoodsListProvider>().addGoods(newGoods);
+                      // print(goodsList);
                       showDialog(
                           context: context,
                           builder: (context) {

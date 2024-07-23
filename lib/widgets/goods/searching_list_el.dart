@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
 
 class SearchingListEl extends StatelessWidget {

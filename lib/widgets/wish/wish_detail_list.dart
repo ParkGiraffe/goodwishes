@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/wish_model.dart';
+import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/wish/wish_delete_button.dart';
 import 'package:goodwishes/widgets/wish/wish_detail_list_el.dart';

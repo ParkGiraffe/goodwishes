@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/category_model.dart';
-import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Models/category_model.dart';
+import 'package:goodwishes/Models/goods_model.dart';
+import 'package:goodwishes/pages/goods_rewrite_page.dart';
 import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:provider/provider.dart';
 
@@ -19,20 +20,26 @@ class GoodsRewriteButton extends StatelessWidget {
       style:
           const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
-        Provider.of<GoodsListProvider>(context, listen: false).removeGoods(id);
-        Provider.of<CategoryListProvider>(context, listen: false)
-            .downCountCategory(categoryName);
-        if (context.mounted) {
-          Navigator.pop(context);
-          showDialog(
-            context: context,
-            builder: (context) {
-              return const TextDialog(
-                text: '굿즈가 제거되었습니다.',
-              );
-            },
-          );
-        }
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => GoodsRewritePage(id: id),
+          ),
+        );
+        // Provider.of<GoodsListProvider>(context, listen: false).removeGoods(id);
+        // Provider.of<CategoryListProvider>(context, listen: false)
+        //     .downCountCategory(categoryName);
+        // if (context.mounted) {
+        //   Navigator.pop(context);
+        //   showDialog(
+        //     context: context,
+        //     builder: (context) {
+        //       return const TextDialog(
+        //         text: '굿즈가 제거되었습니다.',
+        //       );
+        //     },
+        //   );
+        // }
       },
       child: Container(
         // width: 84,

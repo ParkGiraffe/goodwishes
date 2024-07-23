@@ -1,12 +1,12 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/category_model.dart';
-import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Models/category_model.dart';
+import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
 import 'package:goodwishes/pages/text_dialog.dart';
-import 'package:goodwishes/widgets/add_goods_list_el.dart';
-import 'package:goodwishes/widgets/add_photo.dart';
+import 'package:goodwishes/widgets/goods/add_goods_list_el.dart';
+import 'package:goodwishes/widgets/goods/add_photo.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
 import 'package:goodwishes/widgets/memo_text_input.dart';
 import 'package:goodwishes/widgets/section_title.dart';
@@ -15,33 +15,32 @@ import 'package:goodwishes/widgets/tag.dart';
 import 'package:goodwishes/widgets/text_input.dart';
 import 'package:provider/provider.dart';
 
-class AddGoodsList extends StatefulWidget {
-  const AddGoodsList({
-    super.key,
-  });
+class RewriteGoodsList extends StatefulWidget {
+  final String id;
+  const RewriteGoodsList({super.key, required this.id});
 
   @override
-  State<AddGoodsList> createState() => _AddGoodsListState();
+  State<RewriteGoodsList> createState() => _AddGoodsListState();
 }
 
-class _AddGoodsListState extends State<AddGoodsList> {
-  final formKey = GlobalKey<FormState>();
-  Uint8List thumbnail = Uint8List.fromList([]);
-  String goodsName = ' ';
-  String date =
-      "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
-  String category = '카테고리 없음';
-  String location = ' ';
-  String wayToBuy = ' ';
-  String memo = ' ';
-  String amount = '0';
-  String price = '0';
-  List<String> tagList = [];
-
+class _AddGoodsListState extends State<RewriteGoodsList> {
   @override
   Widget build(BuildContext context) {
     final categoryList = context.read<CategoryListProvider>();
     final goodsList = Provider.of<GoodsListProvider>(context);
+    Goods curGoods = goodsList.findGoods(widget.id)!;
+
+    final formKey = GlobalKey<FormState>();
+    Uint8List thumbnail = curGoods.thumbnail;
+    String goodsName = curGoods.goodsName;
+    String date = curGoods.date;
+    String category = curGoods.category;
+    String location = curGoods.location;
+    String wayToBuy = curGoods.wayToBuy;
+    String memo = curGoods.memo;
+    String amount = curGoods.amount.toString();
+    String price = curGoods.price.toString();
+    List<String> tagList = [];
 
     Future<void> categoryButtonHandler(BuildContext context) async {
       // final categoryList = context.read<CategoryListProvider>();

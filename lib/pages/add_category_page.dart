@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/category_model.dart';
+import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:goodwishes/widgets/category_item.dart';

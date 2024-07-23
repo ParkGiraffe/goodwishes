@@ -92,6 +92,10 @@ class GoodsListProvider with ChangeNotifier {
   List<Goods> get favoriteList =>
       _goodsListBox.values.where((goods) => goods.isFavorite == true).toList();
 
+  Goods? findGoods(String id) {
+    return _goodsListBox.get(id);
+  }
+
   void addGoods(Goods element) {
     _goodsListBox.put(element.id, element);
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/profile_model.dart';
+import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 
 @override

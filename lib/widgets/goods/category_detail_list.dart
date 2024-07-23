@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/goods_model.dart';
+import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/widgets/goods/searching_list_row.dart';
 
 class CategoryDetailList extends StatelessWidget {

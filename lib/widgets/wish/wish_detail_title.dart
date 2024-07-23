@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/wish_model.dart';
+import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/tag.dart';
 import 'package:provider/provider.dart';

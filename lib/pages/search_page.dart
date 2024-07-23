@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Providers/goods_model.dart';
-import 'package:goodwishes/Providers/wish_model.dart';
+import 'package:goodwishes/Models/goods_model.dart';
+import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/change_goods_wish_button.dart';
 import 'package:goodwishes/widgets/goods/searching_list.dart';
