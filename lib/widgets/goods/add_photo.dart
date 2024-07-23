@@ -8,9 +8,11 @@ class AddPhoto extends StatefulWidget {
   const AddPhoto({
     super.key,
     required this.onUpload,
+    this.alreadyImg,
   });
 
   final Function onUpload;
+  final Uint8List? alreadyImg;
 
   @override
   State<AddPhoto> createState() => _AddPhotoState();
@@ -36,13 +38,21 @@ class _AddPhotoState extends State<AddPhoto> {
 
   @override
   Widget build(BuildContext context) {
+    // print(widget.alreadyImg);
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width,
       decoration: image == null
-          ? const BoxDecoration(
-              color: Color(0xFFD9D9D9),
-            )
+          ? widget.alreadyImg == null
+              ? const BoxDecoration(
+                  color: Color(0xFFD9D9D9),
+                )
+              : BoxDecoration(
+                  image: DecorationImage(
+                    image: MemoryImage(widget.alreadyImg!),
+                    fit: BoxFit.contain,
+                  ),
+                )
           : BoxDecoration(
               image: DecorationImage(
                 image: FileImage(
@@ -55,7 +65,7 @@ class _AddPhotoState extends State<AddPhoto> {
           onPressed: () {
             getImage(ImageSource.gallery);
           },
-          child: image == null
+          child: image == null && widget.alreadyImg == null
               ? const Center(
                   child: Text(
                     '사진 추가하기',

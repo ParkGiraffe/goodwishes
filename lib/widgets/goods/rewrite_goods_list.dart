@@ -28,8 +28,8 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
   Widget build(BuildContext context) {
     final categoryList = context.read<CategoryListProvider>();
     final goodsList = Provider.of<GoodsListProvider>(context);
-    Goods curGoods = goodsList.findGoods(widget.id)!;
 
+    Goods curGoods = goodsList.findGoods(widget.id)!;
     final formKey = GlobalKey<FormState>();
     Uint8List thumbnail = curGoods.thumbnail;
     String goodsName = curGoods.goodsName;
@@ -41,6 +41,8 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
     String amount = curGoods.amount.toString();
     String price = curGoods.price.toString();
     List<String> tagList = [];
+
+    // print(widget.id);
 
     Future<void> categoryButtonHandler(BuildContext context) async {
       // final categoryList = context.read<CategoryListProvider>();
@@ -70,6 +72,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
       child: Column(
         children: [
           AddPhoto(
+            alreadyImg: thumbnail,
             onUpload: (val) {
               thumbnail = val;
             },
