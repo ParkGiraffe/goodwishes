@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 
 class DatePicker extends StatefulWidget {
-  const DatePicker({super.key, required this.callback});
+  const DatePicker({
+    super.key,
+    required this.callback,
+    this.initVal,
+  });
   final Function callback;
+  final String? initVal;
 
   @override
   State<DatePicker> createState() => _DatePickerState();
 }
 
 class _DatePickerState extends State<DatePicker> {
-  DateTime date = DateTime.now();
+  late DateTime date;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initVal != null) {
+      date = DateTime.parse(widget.initVal!);
+    } else {
+      date = DateTime.now();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

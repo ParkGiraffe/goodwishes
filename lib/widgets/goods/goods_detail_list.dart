@@ -64,7 +64,7 @@ class GoodsDetailList extends StatelessWidget {
           // ),
           // const CategoryList(),
           GoodsRewriteButton(
-            id: goods.id,
+            goods: goods,
             categoryName: goods.category,
           ),
           const SizedBox(

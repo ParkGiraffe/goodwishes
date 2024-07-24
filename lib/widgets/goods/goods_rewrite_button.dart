@@ -6,11 +6,11 @@ import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:provider/provider.dart';
 
 class GoodsRewriteButton extends StatelessWidget {
-  final String id;
+  final Goods goods;
   final String categoryName;
   const GoodsRewriteButton({
     super.key,
-    required this.id,
+    required this.goods,
     required this.categoryName,
   });
 
@@ -23,7 +23,7 @@ class GoodsRewriteButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => GoodsRewritePage(id: id),
+            builder: (context) => GoodsRewritePage(goods: goods),
           ),
         );
         // Provider.of<GoodsListProvider>(context, listen: false).removeGoods(id);

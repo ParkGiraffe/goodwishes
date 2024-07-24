@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MemoTextInput extends StatelessWidget {
-  const MemoTextInput({
-    super.key,
-    required this.onSaved,
-  });
+  const MemoTextInput({super.key, required this.onSaved, this.initVal = ''});
   final FormFieldSetter<String> onSaved;
+  final String initVal;
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +11,7 @@ class MemoTextInput extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 200,
       child: TextFormField(
+        initialValue: initVal,
         onSaved: onSaved,
         keyboardType: TextInputType.multiline,
         maxLines: 10,

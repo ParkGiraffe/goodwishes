@@ -16,33 +16,48 @@ import 'package:goodwishes/widgets/text_input.dart';
 import 'package:provider/provider.dart';
 
 class RewriteGoodsList extends StatefulWidget {
-  final String id;
-  const RewriteGoodsList({super.key, required this.id});
+  final Goods goods;
+  const RewriteGoodsList({super.key, required this.goods});
 
   @override
-  State<RewriteGoodsList> createState() => _AddGoodsListState();
+  State<RewriteGoodsList> createState() => _RewriteGoodsListState();
 }
 
-class _AddGoodsListState extends State<RewriteGoodsList> {
+class _RewriteGoodsListState extends State<RewriteGoodsList> {
+  final formKey = GlobalKey<FormState>();
+
+  late Uint8List thumbnail;
+  late String goodsName;
+  late String date;
+  late String category;
+  late String location;
+  late String wayToBuy;
+  late String memo;
+  late String amount;
+  late String price;
+  late List<String> tagList;
+
+  @override
+  void initState() {
+    super.initState();
+    thumbnail = widget.goods.thumbnail;
+    goodsName = widget.goods.goodsName;
+    category = widget.goods.category;
+    date = widget.goods.date;
+    location = widget.goods.location;
+    wayToBuy = widget.goods.wayToBuy;
+    memo = widget.goods.memo;
+    amount = widget.goods.amount.toString();
+    price = widget.goods.price.toString();
+    tagList = [];
+  }
+
   @override
   Widget build(BuildContext context) {
     final categoryList = context.read<CategoryListProvider>();
     final goodsList = Provider.of<GoodsListProvider>(context);
 
-    Goods curGoods = goodsList.findGoods(widget.id)!;
     final formKey = GlobalKey<FormState>();
-    Uint8List thumbnail = curGoods.thumbnail;
-    String goodsName = curGoods.goodsName;
-    String date = curGoods.date;
-    String category = curGoods.category;
-    String location = curGoods.location;
-    String wayToBuy = curGoods.wayToBuy;
-    String memo = curGoods.memo;
-    String amount = curGoods.amount.toString();
-    String price = curGoods.price.toString();
-    List<String> tagList = [];
-
-    // print(widget.id);
 
     Future<void> categoryButtonHandler(BuildContext context) async {
       // final categoryList = context.read<CategoryListProvider>();
@@ -62,9 +77,11 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
       if (!mounted) {
         return;
       }
-      setState(() {
-        category = pickedCategory;
-      });
+      if (pickedCategory != null) {
+        setState(() {
+          category = pickedCategory;
+        });
+      }
     }
 
     return Form(
@@ -88,6 +105,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
                 AddGoodsListEl(
                   leftText: '굿즈 이름',
                   rightWidget: TextInput(
+                    initVal: goodsName,
                     onSaved: (val) {
                       goodsName = val!;
                     },
@@ -98,6 +116,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
                 AddGoodsListEl(
                   leftText: '구매 일자',
                   rightWidget: DatePicker(
+                    initVal: date,
                     callback: (DateTime newDate) {
                       date =
                           "${newDate.year.toString()}-${newDate.month.toString().padLeft(2, '0')}-${newDate.day.toString().padLeft(2, '0')}";
@@ -126,7 +145,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
                     },
                     hintText: '소지 수량',
                     keyboardType: TextInputType.number,
-                    initVal: '0',
+                    initVal: amount,
                   ),
                 ),
                 AddGoodsListEl(
@@ -137,7 +156,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
                     },
                     hintText: '구매 가격',
                     keyboardType: TextInputType.number,
-                    initVal: '0',
+                    initVal: price,
                   ),
                 ),
                 AddGoodsListEl(
@@ -147,6 +166,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
                       wayToBuy = val!;
                     },
                     hintText: '구매 방법',
+                    initVal: wayToBuy,
                   ),
                 ),
                 AddGoodsListEl(
@@ -156,6 +176,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
                       location = val!;
                     },
                     hintText: '보관 장소',
+                    initVal: location,
                   ),
                 ),
                 const SizedBox(
@@ -169,6 +190,7 @@ class _AddGoodsListState extends State<RewriteGoodsList> {
                   onSaved: (val) {
                     memo = val!;
                   },
+                  initVal: memo,
                 ),
                 const SizedBox(
                   height: 20,
