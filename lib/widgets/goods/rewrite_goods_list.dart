@@ -26,6 +26,7 @@ class RewriteGoodsList extends StatefulWidget {
 class _RewriteGoodsListState extends State<RewriteGoodsList> {
   final formKey = GlobalKey<FormState>();
 
+  late String id;
   late Uint8List thumbnail;
   late String goodsName;
   late String date;
@@ -40,6 +41,7 @@ class _RewriteGoodsListState extends State<RewriteGoodsList> {
   @override
   void initState() {
     super.initState();
+    id = widget.goods.id;
     thumbnail = widget.goods.thumbnail;
     goodsName = widget.goods.goodsName;
     category = widget.goods.category;
@@ -202,9 +204,8 @@ class _RewriteGoodsListState extends State<RewriteGoodsList> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
 
-                      String createdAt = DateTime.now().toString();
                       Goods newGoods = Goods(
-                        id: createdAt,
+                        id: id,
                         thumbnail: thumbnail,
                         goodsName: goodsName,
                         date: date,
@@ -221,13 +222,15 @@ class _RewriteGoodsListState extends State<RewriteGoodsList> {
                       categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);
+                      Navigator.pop(context);
                       showDialog(
-                          context: context,
-                          builder: (context) {
-                            return const TextDialog(
-                              text: '등록되었습니다',
-                            );
-                          });
+                        context: context,
+                        builder: (context) {
+                          return const TextDialog(
+                            text: '등록되었습니다',
+                          );
+                        },
+                      );
                     }
                   },
                   child: const SubmitButton(),
