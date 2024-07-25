@@ -218,6 +218,8 @@ class _RewriteGoodsListState extends State<RewriteGoodsList> {
                         tagList: tagList,
                       );
                       // print(newGoods.thumbnail);
+                      categoryList.rewriteCount(
+                          widget.goods.category, category);
                       goodsList.addGoods(newGoods);
                       categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
@@ -227,7 +229,7 @@ class _RewriteGoodsListState extends State<RewriteGoodsList> {
                         context: context,
                         builder: (context) {
                           return const TextDialog(
-                            text: '등록되었습니다',
+                            text: '수정되었습니다',
                           );
                         },
                       );
