@@ -5,7 +5,7 @@ import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/pages/add_wish_category_page.dart';
 import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:goodwishes/widgets/goods/add_photo.dart';
-import 'package:goodwishes/widgets/add_wish_list_el.dart';
+import 'package:goodwishes/widgets/wish/add_wish_list_el.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
 import 'package:goodwishes/widgets/memo_text_input.dart';
 import 'package:goodwishes/widgets/section_title.dart';
@@ -26,15 +26,15 @@ class AddWishList extends StatefulWidget {
 class _AddWishListState extends State<AddWishList> {
   final formKey = GlobalKey<FormState>();
   Uint8List thumbnail = Uint8List.fromList([]);
-  String wishName = '';
+  String wishName = ' ';
   String date =
       "${DateTime.now().year.toString()}-${DateTime.now().month.toString().padLeft(2, '0')}-${DateTime.now().day.toString().padLeft(2, '0')}";
   String category = '카테고리 없음';
-  String location = '';
-  String memo = '';
-  String amount = '';
-  String wishPrice = '';
-  String rowPrice = '';
+  String location = ' ';
+  String memo = ' ';
+  String amount = '0';
+  String wishPrice = '0';
+  String rowPrice = '0';
   List<String> tagList = [];
 
   @override
@@ -122,6 +122,7 @@ class _AddWishListState extends State<AddWishList> {
                     },
                     hintText: '희망 수량',
                     keyboardType: TextInputType.number,
+                    initVal: '0',
                   ),
                 ),
                 AddWishListEl(

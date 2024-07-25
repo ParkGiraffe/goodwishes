@@ -8,7 +8,7 @@ import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
 import 'package:goodwishes/pages/add_wish_category_page.dart';
 import 'package:goodwishes/pages/text_dialog.dart';
-import 'package:goodwishes/widgets/add_wish_list_el.dart';
+import 'package:goodwishes/widgets/wish/add_wish_list_el.dart';
 
 import 'package:goodwishes/widgets/date_picker.dart';
 import 'package:goodwishes/widgets/goods/add_photo.dart';
@@ -53,7 +53,7 @@ class _RewriteWishListState extends State<RewriteWishList> {
     location = widget.wish.location;
     memo = widget.wish.memo;
     amount = widget.wish.amount.toString();
-    wishPrice = widget.wish.wishName.toString();
+    wishPrice = widget.wish.wishPrice.toString();
     rowPrice = widget.wish.rowPrice.toString();
     tagList = [];
   }
