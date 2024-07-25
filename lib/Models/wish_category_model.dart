@@ -62,4 +62,22 @@ class WishCategoryListProvider with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  // 카테고리 변경할 때 카운트 이동
+  void rewriteCount(String beforeCate, String afterCate) {
+    for (var categoryItem in _wishCategoryListBox.values) {
+      if (categoryItem.categoryName == beforeCate) {
+        categoryItem.count = categoryItem.count - 1;
+        _wishCategoryListBox.put(categoryItem.id, categoryItem); // 수정된 값 저장
+        return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
+      }
+
+      if (categoryItem.categoryName == afterCate) {
+        categoryItem.count = categoryItem.count + 1;
+        _wishCategoryListBox.put(categoryItem.id, categoryItem); // 수정된 값 저장
+        return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
+      }
+    }
+    notifyListeners();
+  }
 }

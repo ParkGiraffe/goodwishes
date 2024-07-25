@@ -3,6 +3,7 @@ import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/wish/wish_delete_button.dart';
 import 'package:goodwishes/widgets/wish/wish_detail_list_el.dart';
+import 'package:goodwishes/widgets/wish/wish_rewrite_button.dart';
 
 class WishDetailList extends StatelessWidget {
   final Wish wish;
@@ -62,6 +63,13 @@ class WishDetailList extends StatelessWidget {
           //   height: 15,
           // ),
           // const CategoryList(),
+          WishRewriteButton(
+            wish: wish,
+            categoryName: wish.category,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
           WishDeleteButton(
             id: wish.id,
             categoryName: wish.category,
