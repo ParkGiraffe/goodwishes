@@ -4,6 +4,7 @@ import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
+import 'package:goodwishes/pages/backup_restore_page.dart';
 import 'package:goodwishes/widgets/amount_text.dart';
 import 'package:goodwishes/widgets/license_button.dart';
 import 'package:goodwishes/widgets/profile_icon_big.dart';
@@ -76,6 +77,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     AmountText(
                       text: '원하는 위시의 수',
                       amount: wishAmount,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BackupRestorePage(),
+                          ),
+                        );
+                      },
+                      child: const Text('백업 & 복원'),
                     ),
                   ],
                 ),

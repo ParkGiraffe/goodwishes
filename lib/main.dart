@@ -14,20 +14,17 @@ import 'package:goodwishes/pages/goods_main_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(GoodsAdapter());
   Hive.registerAdapter(WishAdapter());
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(ProfileAdapter());
-  await Hive.openBox<Goods>('goodsListBox');
-  await Hive.openBox<Wish>('wishListBox');
-  await Hive.openBox<Category>('categoryListBox');
-  await Hive.openBox<Profile>('profileBox');
-  await Hive.openBox<Category>('wishCategoryListBox');
+
+  await _openHiveBoxes();
 
   var categories = Hive.box<Category>('categoryListBox');
-  if (categories.get('no_catgory') == null) {
+  if (categories.get('no_category') == null) {
     categories.put('no_category',
         Category(id: 'no_category', categoryName: '카테고리 없음', count: 0));
   }
@@ -37,7 +34,7 @@ void main() async {
         Category(id: 'no_category', categoryName: '카테고리 없음', count: 0));
   }
 
-  var profile = Hive.box<Profile>('ProfileBox');
+  var profile = Hive.box<Profile>('profileBox');
   if (profile.get('profile') == null) {
     profile.put('profile', Profile([], true));
   }
@@ -64,6 +61,17 @@ void main() async {
       child: const MyApp(),
     ),
   );
+}
+
+Future<void> _openHiveBoxes() async {
+  List<Future> futures = [
+    Hive.openBox<Goods>('goodsListBox'),
+    Hive.openBox<Wish>('wishListBox'),
+    Hive.openBox<Category>('categoryListBox'),
+    Hive.openBox<Profile>('profileBox'),
+    Hive.openBox<Category>('wishCategoryListBox'),
+  ];
+  await Future.wait(futures);
 }
 
 class MyApp extends StatelessWidget {
