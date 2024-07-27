@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Functions/local_backup.dart';
+import 'package:goodwishes/Functions/local_backup_restore.dart';
 import 'package:goodwishes/Functions/local_restore.dart';
 
 class BackupRestorePage extends StatelessWidget {
@@ -17,7 +18,7 @@ class BackupRestorePage extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () async {
-                await backupHiveData();
+                await backupAllData();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Backup completed')),
                 );
@@ -26,7 +27,7 @@ class BackupRestorePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                await restoreHiveData();
+                await restoreAllData();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Restore completed')),
                 );

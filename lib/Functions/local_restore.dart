@@ -11,11 +11,14 @@ Future<void> restoreHiveData() async {
   final backupDir = Directory('${directory.path}/goodwishes_backup');
 
   if (backupDir.existsSync()) {
-    final backupFiles = backupDir.listSync();
+    List<FileSystemEntity> backupFiles = backupDir.listSync();
+    print('Files in backup directory: $backupFiles'); // 파일 목록 확인
 
     for (var backupFile in backupFiles) {
       if (backupFile is File) {
+        // final fileName = backupFile.uri.pathSegments.last;
         final boxName = backupFile.uri.pathSegments.last.split('.').first;
+        print('Restoring box: $boxName'); // 복원 중인 박스 이름 확인
 
         Box box;
         if (boxName == 'goodsListBox')
@@ -47,7 +50,7 @@ Future<Directory> getDownloadDirectory() async {
 extension on Box {
   Future<void> fromBytes(List<int> bytes) async {
     clear();
-    var entries = String.fromCharCodes(bytes).split(RegExp(r'\r?\n'));
+    var entries = String.fromCharCodes(bytes).split('\n'); // 엔터 대신 줄바꿈으로 분리
     for (var entry in entries) {
       var kv = entry.split(':');
       if (kv.length == 2) {

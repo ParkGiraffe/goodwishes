@@ -37,6 +37,7 @@ Future<void> backupHiveData() async {
 
     File backupFile = File('${backupDir.path}/$boxName.hive');
     await backupFile.writeAsBytes(boxToBytes(box));
+    print(backupFile);
   }
 }
 
