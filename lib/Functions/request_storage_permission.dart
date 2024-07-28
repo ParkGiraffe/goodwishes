@@ -1,23 +1,13 @@
-import 'dart:io';
 import 'package:permission_handler/permission_handler.dart';
 
 Future<void> requestStoragePermission() async {
-  if (await Permission.mediaLibrary.isGranted) {
-    print("Media library permission granted.");
-  } else {
-    await Permission.mediaLibrary.request();
-    if (await Permission.mediaLibrary.isGranted) {
-      print("Media library permission granted.");
-    } else {
-      print("Media library permission not granted.");
-    }
+  // 권한 상태 확인 및 요청
+  var storageStatus = await Permission.manageExternalStorage.status;
+  if (!storageStatus.isGranted) {
+    storageStatus = await Permission.manageExternalStorage.request();
   }
 
-  var status = await Permission.storage.status;
-  if (!status.isGranted) {
-    status = await Permission.storage.request();
-  }
-  if (status.isGranted) {
+  if (storageStatus.isGranted) {
     print("Storage permission granted.");
   } else {
     print("Storage permission not granted.");

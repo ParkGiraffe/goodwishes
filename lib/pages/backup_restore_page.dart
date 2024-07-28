@@ -27,7 +27,7 @@ class BackupRestorePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                await restoreAllData();
+                await restoreAllData(context);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Restore completed')),
                 );

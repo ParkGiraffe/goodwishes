@@ -1,13 +1,19 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:goodwishes/Functions/request_storage_permission.dart';
 import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/Models/wish_model.dart';
+import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> backupHiveBox<T>(String boxName, String backupDirPath) async {
-  final box = await Hive.openBox<T>(boxName);
+  final box = Hive.isBoxOpen(boxName)
+      ? Hive.box<T>(boxName)
+      : await Hive.openBox<T>(boxName);
   final boxPath = box.path!;
   await box.close();
 
@@ -24,6 +30,7 @@ Future<void> backupHiveBox<T>(String boxName, String backupDirPath) async {
 }
 
 Future<void> backupAllData() async {
+  await requestStoragePermission();
   final directory = await getDownloadDirectory();
   final backupDirPath = '${directory.path}/goodwishes_backup';
   final backupDir = Directory(backupDirPath);
@@ -53,7 +60,10 @@ Future<void> backupAllData() async {
 }
 
 Future<void> restoreHiveBox<T>(String boxName, String backupDirPath) async {
-  final box = await Hive.openBox<T>(boxName);
+  final box = Hive.isBoxOpen(boxName)
+      ? Hive.box<T>(boxName)
+      : await Hive.openBox<T>(boxName);
+
   final boxPath = box.path!;
   await box.close();
 
@@ -75,7 +85,8 @@ Future<void> restoreHiveBox<T>(String boxName, String backupDirPath) async {
   }
 }
 
-Future<void> restoreAllData() async {
+Future<void> restoreAllData(BuildContext context) async {
+  await requestStoragePermission();
   final directory = await getDownloadDirectory();
   final backupDirPath = '${directory.path}/goodwishes_backup';
   final backupDir = Directory(backupDirPath);
@@ -103,6 +114,22 @@ Future<void> restoreAllData() async {
   } else {
     print('Backup directory does not exist: $backupDirPath');
   }
+
+  await showDialog(
+      context: context,
+      builder: (context) {
+        return TextDialog(
+          text: '백업 후 앱을 재시작합니다.',
+          onPressed: () {
+            // 앱 종료
+            if (Platform.isIOS) {
+              exit(0);
+            } else {
+              SystemNavigator.pop();
+            }
+          },
+        );
+      });
 }
 
 Future<Directory> getDownloadDirectory() async {
