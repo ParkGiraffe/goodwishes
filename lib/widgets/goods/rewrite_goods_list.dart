@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Functions/show_info_dialog.dart';
 import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
@@ -225,14 +226,7 @@ class _RewriteGoodsListState extends State<RewriteGoodsList> {
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);
                       Navigator.pop(context);
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return const TextDialog(
-                            text: '수정되었습니다',
-                          );
-                        },
-                      );
+                      showInfoDialog(context, '수정되었습니다.', '알림');
                     }
                   },
                   child: const SubmitButton(),

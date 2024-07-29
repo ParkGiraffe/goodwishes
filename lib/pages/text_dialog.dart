@@ -3,9 +3,8 @@ import 'package:goodwishes/constants/ui_numbers.dart';
 
 class TextDialog extends StatelessWidget {
   final String text;
-  final Function? onPressed;
 
-  const TextDialog({super.key, required this.text, this.onPressed});
+  const TextDialog({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +31,7 @@ class TextDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            if (onPressed != null)
-              onPressed!();
-            else
-              Navigator.pop(context);
+            Navigator.pop(context);
           },
           child: const Center(
             child: Text(

@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:goodwishes/Functions/show_info_dialog.dart';
 import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
@@ -197,13 +198,14 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return const TextDialog(
-                              text: '등록되었습니다',
-                            );
-                          });
+                      showInfoDialog(context, '등록되었습니다.', '알림');
+                      // showDialog(
+                      //     context: context,
+                      //     builder: (context) {
+                      //       return const TextDialog(
+                      //         text: '등록되었습니다',
+                      //       );
+                      //     });
                     }
                   },
                   child: const SubmitButton(),
