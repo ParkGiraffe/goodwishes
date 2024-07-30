@@ -78,17 +78,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       text: '원하는 위시의 수',
                       amount: wishAmount,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const BackupRestorePage(),
-                          ),
-                        );
-                      },
-                      child: const Text('백업 & 복원'),
-                    ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const BackupRestorePage(),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: const Text('백업 & 복원'),
+                    // ),
                   ],
                 ),
                 const Column(
