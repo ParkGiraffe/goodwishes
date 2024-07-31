@@ -1,27 +1,14 @@
-// backup_restore_page.dart
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Functions/google_backup.dart';
-import 'package:goodwishes/Functions/google_drive_service.dart';
-import 'package:goodwishes/Functions/google_restore.dart';
+import 'package:goodwishes/Functions/google_backup_restore.dart';
+import 'package:goodwishes/Models/category_model.dart';
+import 'package:goodwishes/Models/goods_model.dart';
+import 'package:goodwishes/Models/profile_model.dart';
+import 'package:goodwishes/Models/wish_model.dart';
 
-class BackupRestorePage extends StatefulWidget {
-  const BackupRestorePage({super.key});
+class BackupRestorePage extends StatelessWidget {
+  final HiveBackupRestore _hiveBackupRestore = HiveBackupRestore();
 
-  @override
-  _BackupRestorePageState createState() => _BackupRestorePageState();
-}
-
-class _BackupRestorePageState extends State<BackupRestorePage> {
-  final GoogleDriveService _googleDriveService = GoogleDriveService();
-  late BackupService _backupService;
-  late RestoreService _restoreService;
-
-  @override
-  void initState() {
-    super.initState();
-    _backupService = BackupService(_googleDriveService);
-    _restoreService = RestoreService(_googleDriveService);
-  }
+  BackupRestorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +22,13 @@ class _BackupRestorePageState extends State<BackupRestorePage> {
           children: <Widget>[
             ElevatedButton(
               onPressed: () async {
-                await _backupService.backupHiveBox('goodsListBox');
+                await _hiveBackupRestore.backupHiveBox<Goods>('goodsListBox');
+                await _hiveBackupRestore.backupHiveBox<Wish>('wishListBox');
+                await _hiveBackupRestore
+                    .backupHiveBox<Category>('categoryListBox');
+                await _hiveBackupRestore.backupHiveBox<Profile>('profileBox');
+                await _hiveBackupRestore
+                    .backupHiveBox<Category>('wishCategoryListBox');
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Backup completed')),
                 );
@@ -44,7 +37,13 @@ class _BackupRestorePageState extends State<BackupRestorePage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                await _restoreService.restoreHiveBox('goodsListBox');
+                await _hiveBackupRestore.restoreHiveBox<Goods>('goodsListBox');
+                await _hiveBackupRestore.restoreHiveBox<Wish>('wishListBox');
+                await _hiveBackupRestore
+                    .restoreHiveBox<Category>('categoryListBox');
+                await _hiveBackupRestore.restoreHiveBox<Profile>('profileBox');
+                await _hiveBackupRestore
+                    .restoreHiveBox<Wish>('wishCategoryListBox');
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Restore completed')),
                 );
