@@ -1,46 +1,55 @@
+// backup_restore_page.dart
 import 'package:flutter/material.dart';
-import 'package:goodwishes/Functions/local_backup_restore.dart';
-import 'package:goodwishes/widgets/section_title.dart';
+import 'package:goodwishes/Functions/google_backup.dart';
+import 'package:goodwishes/Functions/google_drive_service.dart';
+import 'package:goodwishes/Functions/google_restore.dart';
 
-class BackupRestorePage extends StatelessWidget {
+class BackupRestorePage extends StatefulWidget {
   const BackupRestorePage({super.key});
+
+  @override
+  _BackupRestorePageState createState() => _BackupRestorePageState();
+}
+
+class _BackupRestorePageState extends State<BackupRestorePage> {
+  final GoogleDriveService _googleDriveService = GoogleDriveService();
+  late BackupService _backupService;
+  late RestoreService _restoreService;
+
+  @override
+  void initState() {
+    super.initState();
+    _backupService = BackupService(_googleDriveService);
+    _restoreService = RestoreService(_googleDriveService);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SectionTitle(titleText: 'Backup & Restore'),
+        title: Text('Backup & Restore'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(
-              width: 300,
-              child: Text(
-                '백업파일은 다운로드 폴더의\n[ goodWishes_backup ]\n폴더에 저장됩니다.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
+            ElevatedButton(
+              onPressed: () async {
+                await _backupService.backupHiveBox('goodsListBox');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Backup completed')),
+                );
+              },
+              child: Text('Backup to Google Drive'),
             ),
             ElevatedButton(
               onPressed: () async {
-                await backupAllData(context);
+                await _restoreService.restoreHiveBox('goodsListBox');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Restore completed')),
+                );
               },
-              child: Text('백업파일 저장하기'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await restoreAllData(context);
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   SnackBar(content: Text('Restore completed')),
-                // );
-              },
-              child: Text('백업폴더에서 복원하기'),
+              child: Text('Restore from Google Drive'),
             ),
           ],
         ),
