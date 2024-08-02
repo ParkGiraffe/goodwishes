@@ -10,25 +10,27 @@ class GoogleDriveService {
     scopes: [drive.DriveApi.driveAppdataScope],
   );
 
-  GoogleSignInAccount? currentUser;
+  GoogleSignInAccount? _currentUser;
   drive.DriveApi? _driveApi;
+
+  GoogleSignInAccount? get currentUser => _currentUser;
 
   Future<GoogleSignInAccount?> signInGoogle() async {
     try {
-      currentUser =
+      _currentUser =
           await _googleSignIn.signInSilently() ?? await _googleSignIn.signIn();
-      if (currentUser != null) {
-        _driveApi = await getDriveApi(currentUser!);
+      if (_currentUser != null) {
+        _driveApi = await getDriveApi(_currentUser!);
       }
     } catch (e) {
       debugPrint('Error during Google Sign-In: $e');
     }
-    return currentUser;
+    return _currentUser;
   }
 
   Future<void> signOut() async {
     await _googleSignIn.signOut();
-    currentUser = null;
+    _currentUser = null;
     _driveApi = null;
   }
 
@@ -60,7 +62,19 @@ class GoogleDriveService {
       response = await _driveApi!.files.create(driveFile,
           uploadMedia: drive.Media(file.openRead(), file.lengthSync()));
     }
+    print('Uploaded file: ${response.name}');
     return response;
+  }
+
+  Future<void> deleteFile(String driveFileId) async {
+    if (_driveApi == null) return;
+
+    try {
+      await _driveApi!.files.delete(driveFileId);
+      print('Deleted file with ID: $driveFileId');
+    } catch (e) {
+      debugPrint('Error deleting file with ID $driveFileId: $e');
+    }
   }
 
   Future<File?> downloadFile(
@@ -87,12 +101,14 @@ class GoogleDriveService {
     drive.FileList fileList = await _driveApi!.files
         .list(spaces: "appDataFolder", $fields: "files(id,name,modifiedTime)");
     List<drive.File>? files = fileList.files;
+    // print('Files in appDataFolder: ${files?.map((f) => f.name).toList()}');
 
     try {
-      drive.File? driveFile =
-          files?.firstWhere((element) => element.name == filename);
+      drive.File? driveFile = files
+          ?.firstWhere((element) => element.name == filename.toLowerCase());
       return driveFile;
     } catch (e) {
+      debugPrint('File not found: $filename');
       return null;
     }
   }
