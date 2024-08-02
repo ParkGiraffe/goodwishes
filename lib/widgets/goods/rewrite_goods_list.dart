@@ -226,7 +226,11 @@ class _RewriteGoodsListState extends State<RewriteGoodsList> {
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);
                       Navigator.pop(context);
-                      showInfoDialog(context, '수정되었습니다.', '알림');
+                      showInfoDialog(
+                        context,
+                        '알림',
+                        '수정되었습니다.',
+                      );
                     }
                   },
                   child: const SubmitButton(),

@@ -199,7 +199,11 @@ class _AddWishListState extends State<AddWishList> {
                       wishCategoryList.upCountCategory(category);
                       // context.read<wishListProvider>().addGoods(newWish);
                       // print(wishList);
-                      showInfoDialog(context, '등록되었습니다.', '알림');
+                      showInfoDialog(
+                        context,
+                        '알림',
+                        '등록되었습니다.',
+                      );
                     }
                   },
                   child: const SubmitButton(),

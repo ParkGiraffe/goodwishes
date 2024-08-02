@@ -232,7 +232,11 @@ class _RewriteWishListState extends State<RewriteWishList> {
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(wishList);
                       Navigator.pop(context);
-                      showInfoDialog(context, '수정되었습니다.', '알림');
+                      showInfoDialog(
+                        context,
+                        '알림',
+                        '수정되었습니다.',
+                      );
                     }
                   },
                   child: const SubmitButton(),

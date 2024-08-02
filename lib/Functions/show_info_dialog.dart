@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 Future<void> showInfoDialog(
   BuildContext context,
-  String message,
-  String title, {
+  String title,
+  String message, {
   Function? onPressed,
   bool? onCancled,
 }) async {

@@ -25,7 +25,11 @@ class GoodsDeleteButton extends StatelessWidget {
             .downCountCategory(categoryName);
         if (context.mounted) {
           Navigator.pop(context);
-          showInfoDialog(context, '굿즈가 제거되었습니다.', '알림');
+          showInfoDialog(
+            context,
+            '알림',
+            '굿즈가 제거되었습니다.',
+          );
         }
       },
       child: Container(

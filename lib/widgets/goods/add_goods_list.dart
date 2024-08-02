@@ -198,7 +198,11 @@ class _AddGoodsListState extends State<AddGoodsList> {
                       categoryList.upCountCategory(category);
                       // context.read<GoodsListProvider>().addGoods(newGoods);
                       // print(goodsList);
-                      showInfoDialog(context, '등록되었습니다.', '알림');
+                      showInfoDialog(
+                        context,
+                        '알림',
+                        '등록되었습니다.',
+                      );
                       // showDialog(
                       //     context: context,
                       //     builder: (context) {
