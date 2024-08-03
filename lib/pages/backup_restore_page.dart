@@ -79,6 +79,12 @@ class BackupRestorePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SectionTitle(
+              titleText: '구글 드라이브 계정이 필요합니다',
+            ),
+            const SizedBox(
+              height: 40,
+            ),
             ElevatedButton(
               onPressed: () async {
                 backupAllData();
