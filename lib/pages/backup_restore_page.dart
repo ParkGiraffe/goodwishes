@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goodwishes/Functions/google_backup_restore.dart';
 import 'package:goodwishes/Functions/show_info_dialog.dart';
+import 'package:goodwishes/Functions/show_loading_dialog.dart';
 import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/Models/profile_model.dart';
@@ -24,14 +25,16 @@ class BackupRestorePage extends StatelessWidget {
         '백업을 진행하면, 기존의 백업데이터는 사라집니다.',
         onCancled: true,
         onPressed: () async {
+          Navigator.pop(context);
+          showLoadingDialog(context);
           await _hiveBackupRestore.backupHiveBox<Goods>('goodsListBox');
           await _hiveBackupRestore.backupHiveBox<Wish>('wishListBox');
           await _hiveBackupRestore.backupHiveBox<Category>('categoryListBox');
           await _hiveBackupRestore.backupHiveBox<Profile>('profileBox');
           await _hiveBackupRestore
               .backupHiveBox<Category>('wishCategoryListBox');
-
-          showInfoDialog(
+          Navigator.pop(context);
+          await showInfoDialog(
             context,
             '알림',
             '백업이 완료됐습니다.',
@@ -47,14 +50,17 @@ class BackupRestorePage extends StatelessWidget {
         '복원을 진행하면, 앱이 재시작됩니다.',
         onCancled: true,
         onPressed: () async {
+          Navigator.pop(context);
+          showLoadingDialog(context);
           await _hiveBackupRestore.restoreHiveBox<Goods>('goodsListBox');
           await _hiveBackupRestore.restoreHiveBox<Wish>('wishListBox');
           await _hiveBackupRestore.restoreHiveBox<Category>('categoryListBox');
           await _hiveBackupRestore.restoreHiveBox<Profile>('profileBox');
           await _hiveBackupRestore
               .restoreHiveBox<Category>('wishCategoryListBox');
+          Navigator.pop(context);
 
-          await showInfoDialog(
+          showInfoDialog(
             context,
             '알림',
             '앱이 재시작됩니다.',
@@ -87,13 +93,13 @@ class BackupRestorePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                backupAllData();
+                await backupAllData();
               },
               child: const Text('구글 드라이브에 백업파일 저장하기'),
             ),
             ElevatedButton(
               onPressed: () async {
-                restoreAllData();
+                await restoreAllData();
               },
               child: const Text('구글 드라이브에 백업파일 복원하기'),
             ),

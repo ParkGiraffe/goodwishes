@@ -47,9 +47,9 @@ Future<void> showInfoDialog(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (onPressed != null) {
-                      onPressed();
+                      await onPressed();
                     }
                     Navigator.of(context).pop();
                   },
