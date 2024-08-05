@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Models/goods_model.dart';
@@ -78,17 +79,19 @@ class _ProfilePageState extends State<ProfilePage> {
                       text: '원하는 위시의 수',
                       amount: wishAmount,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BackupRestorePage(),
-                          ),
-                        );
-                      },
-                      child: const Text('백업 & 복원'),
-                    ),
+
+                    if (Platform.isAndroid)
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BackupRestorePage(),
+                            ),
+                          );
+                        },
+                        child: const Text('백업 & 복원'),
+                      ),
                   ],
                 ),
                 const Column(
