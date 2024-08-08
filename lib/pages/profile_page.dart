@@ -80,18 +80,18 @@ class _ProfilePageState extends State<ProfilePage> {
                       amount: wishAmount,
                     ),
 
-                    if (Platform.isAndroid)
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BackupRestorePage(),
-                            ),
-                          );
-                        },
-                        child: const Text('백업 & 복원'),
-                      ),
+                    // if (Platform.isAndroid)
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BackupRestorePage(),
+                          ),
+                        );
+                      },
+                      child: const Text('백업 & 복원'),
+                    ),
                   ],
                 ),
                 const Column(
