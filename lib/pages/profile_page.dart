@@ -80,7 +80,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       amount: wishAmount,
                     ),
 
-                    // if (Platform.isAndroid)
                     GestureDetector(
                       onTap: () {
                         Navigator.push(

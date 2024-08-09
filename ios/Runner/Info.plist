@@ -12,22 +12,19 @@
 	<string>Used to demonstrate image picker plugin</string>
 	<!-- image picker 사진 사용 권한 -->
 
-	<!-- 구글 드라이브 권한 -->
+<!-- 구글드라이브 권한 -->
+	<key>GIDClientID</key>
+	<string>764272077871-4vpn0dd7e9tarlcjfgqo0p18vsa47jbt.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-			<dict>
-					<key>CFBundleURLSchemes</key>
-					<array>
-							<string>764272077871-4vpn0dd7e9tarlcjfgqo0p18vsa47jbt</string>
-					</array>
-			</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.764272077871-4vpn0dd7e9tarlcjfgqo0p18vsa47jbt</string>
+			</array>
+		</dict>
 	</array>
-	<key>GIDClientID</key>
-	<string>764272077871-4vpn0dd7e9tarlcjfgqo0p18vsa47jbt</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-			<string>com.googleusercontent.apps.764272077871-4vpn0dd7e9tarlcjfgqo0p18vsa47jbt</string>
-	</array>
+
 
 
 
