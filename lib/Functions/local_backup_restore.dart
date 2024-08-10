@@ -7,7 +7,6 @@ import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/Models/wish_model.dart';
-import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 

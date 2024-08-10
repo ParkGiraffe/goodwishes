@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Models/wish_model.dart';
-import 'package:goodwishes/Models/wish_model.dart';
-import 'package:goodwishes/widgets/goods/rewrite_goods_list.dart';
 import 'package:goodwishes/widgets/wish/rewrite_wish_list.dart';
 
 class WishRewritePage extends StatelessWidget {
