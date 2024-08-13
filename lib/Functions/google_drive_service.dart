@@ -62,7 +62,7 @@ class GoogleDriveService {
       response = await _driveApi!.files.create(driveFile,
           uploadMedia: drive.Media(file.openRead(), file.lengthSync()));
     }
-    print('Uploaded file: ${response.name}');
+    // print('Uploaded file: ${response.name}');
     return response;
   }
 
@@ -71,7 +71,7 @@ class GoogleDriveService {
 
     try {
       await _driveApi!.files.delete(driveFileId);
-      print('Deleted file with ID: $driveFileId');
+      // print('Deleted file with ID: $driveFileId');
     } catch (e) {
       debugPrint('Error deleting file with ID $driveFileId: $e');
     }
