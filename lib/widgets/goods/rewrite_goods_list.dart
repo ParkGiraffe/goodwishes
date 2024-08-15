@@ -5,7 +5,6 @@ import 'package:goodwishes/Functions/show_info_dialog.dart';
 import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/pages/add_category_page.dart';
-import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:goodwishes/widgets/goods/add_goods_list_el.dart';
 import 'package:goodwishes/widgets/goods/add_photo.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
