@@ -5,6 +5,7 @@ import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
 import 'package:goodwishes/pages/wish_detail_page.dart';
 
+// ignore: must_be_immutable
 class HorizonListEl extends StatelessWidget {
   final Uint8List image;
   final String goodsName;
@@ -25,7 +26,7 @@ class HorizonListEl extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style:
-          const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+          const ButtonStyle(padding: WidgetStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
         isGoods
             ? Navigator.push(

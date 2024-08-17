@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/pages/category_detail_page.dart';
 import 'package:goodwishes/pages/wish_category_detail_page.dart';
 
+// ignore: must_be_immutable
 class Tag extends StatelessWidget {
   Function? onNavigate;
   final String tagName;
