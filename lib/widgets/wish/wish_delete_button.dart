@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/Functions/show_info_dialog.dart';
 import 'package:goodwishes/Models/wish_category_model.dart';
 import 'package:goodwishes/Models/wish_model.dart';
-import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:provider/provider.dart';
 
 class WishDeleteButton extends StatelessWidget {
@@ -18,7 +17,7 @@ class WishDeleteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style:
-          const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+          const ButtonStyle(padding: WidgetStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
         Provider.of<WishListProvider>(context, listen: false).removeWish(id);
         Provider.of<WishCategoryListProvider>(context, listen: false)

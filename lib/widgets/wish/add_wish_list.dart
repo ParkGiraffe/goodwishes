@@ -4,7 +4,6 @@ import 'package:goodwishes/Functions/show_info_dialog.dart';
 import 'package:goodwishes/Models/wish_category_model.dart';
 import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/pages/add_wish_category_page.dart';
-import 'package:goodwishes/pages/text_dialog.dart';
 import 'package:goodwishes/widgets/goods/add_photo.dart';
 import 'package:goodwishes/widgets/wish/add_wish_list_el.dart';
 import 'package:goodwishes/widgets/date_picker.dart';
@@ -175,7 +174,7 @@ class _AddWishListState extends State<AddWishList> {
                 ),
                 TextButton(
                   style: const ButtonStyle(
-                      padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+                      padding: WidgetStatePropertyAll(EdgeInsets.zero)),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
