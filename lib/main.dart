@@ -10,6 +10,7 @@ import 'package:goodwishes/pages/mobile/add_goods_page.dart';
 import 'package:goodwishes/pages/mobile/favorite_page.dart';
 import 'package:goodwishes/pages/mobile/search_page.dart';
 import 'package:goodwishes/pages/mobile/wish_main_page.dart';
+import 'package:goodwishes/pages/tablet/goods_main_page_tablet.dart';
 import 'package:goodwishes/widgets/bottom_navigation.dart';
 import 'package:goodwishes/pages/mobile/goods_main_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -118,7 +119,7 @@ class _BuildTabletLayout extends StatelessWidget {
       child: TabBarView(
         physics: NeverScrollableScrollPhysics(),
         children: [
-          GoodsMainPage(),
+          GoodsMainPageTablet(),
           WishMainPage(),
           AddGoodsPage(),
           SearchPage(),

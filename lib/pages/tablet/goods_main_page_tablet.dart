@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
+import 'package:goodwishes/widgets/horizon_list_goods_category.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/horizon_list_goods.dart';
@@ -59,7 +60,7 @@ class GoodsMainPageTablet extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: UIDefault.pageHorizontalPadding,
                 ),
-                child: CategoryList(),
+                child: HorizonListGoodsCategory(),
               ),
             ],
           ),
