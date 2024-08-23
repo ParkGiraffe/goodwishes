@@ -6,12 +6,14 @@ import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/Models/wish_category_model.dart';
 import 'package:goodwishes/Models/wish_model.dart';
-import 'package:goodwishes/pages/add_goods_page.dart';
-import 'package:goodwishes/pages/favorite_page.dart';
-import 'package:goodwishes/pages/search_page.dart';
-import 'package:goodwishes/pages/wish_main_page.dart';
+import 'package:goodwishes/pages/mobile/add_goods_page.dart';
+import 'package:goodwishes/pages/mobile/favorite_page.dart';
+import 'package:goodwishes/pages/mobile/search_page.dart';
+import 'package:goodwishes/pages/mobile/wish_main_page.dart';
+import 'package:goodwishes/pages/tablet/goods_main_page_tablet.dart';
+import 'package:goodwishes/pages/tablet/wish_main_page_tablet.dart';
 import 'package:goodwishes/widgets/bottom_navigation.dart';
-import 'package:goodwishes/pages/goods_main_page.dart';
+import 'package:goodwishes/pages/mobile/goods_main_page.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -90,27 +92,60 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return const MaterialApp(
+    var isTablet = MediaQuery.of(context).size.width > 600;
+
+    return MaterialApp(
       // 디버그 표시를 없앤다.
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         animationDuration: Duration.zero,
         length: 5,
         child: Scaffold(
-          bottomNavigationBar: BottomNavigation(),
-          body: SafeArea(
-            child: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                GoodsMainPage(),
-                WishMainPage(),
-                AddGoodsPage(),
-                SearchPage(),
-                FavoritePage(),
-              ],
-            ),
-          ),
+          bottomNavigationBar: const BottomNavigation(),
+          body: isTablet
+              ? const _BuildTabletLayout()
+              : const _BuildMobileLayout(),
         ),
+      ),
+    );
+  }
+}
+
+class _BuildTabletLayout extends StatelessWidget {
+  const _BuildTabletLayout();
+
+  @override
+  Widget build(BuildContext context) {
+    return const SafeArea(
+      child: TabBarView(
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          GoodsMainPageTablet(),
+          WishMainPageTablet(),
+          AddGoodsPage(),
+          SearchPage(),
+          FavoritePage(),
+        ],
+      ),
+    );
+  }
+}
+
+class _BuildMobileLayout extends StatelessWidget {
+  const _BuildMobileLayout();
+
+  @override
+  Widget build(BuildContext context) {
+    return const SafeArea(
+      child: TabBarView(
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          GoodsMainPage(),
+          WishMainPage(),
+          AddGoodsPage(),
+          SearchPage(),
+          FavoritePage(),
+        ],
       ),
     );
   }
