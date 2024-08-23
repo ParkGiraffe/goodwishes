@@ -20,6 +20,7 @@ class HorizonListWish extends StatelessWidget {
 
     return SizedBox(
       height: 300,
+      width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,

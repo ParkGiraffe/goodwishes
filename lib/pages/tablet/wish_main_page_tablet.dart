@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
+
 import 'package:goodwishes/widgets/horizon_list_wish.dart';
+import 'package:goodwishes/widgets/horizon_list_wish_category.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
-import 'package:goodwishes/widgets/wish/wish_category_list.dart';
 
-class WishMainPage extends StatelessWidget {
-  const WishMainPage({
+class WishMainPageTablet extends StatelessWidget {
+  const WishMainPageTablet({
     super.key,
   });
 
@@ -59,7 +60,7 @@ class WishMainPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: UIDefault.pageHorizontalPadding,
                 ),
-                child: WishCategoryList(),
+                child: HorizonListWishCategory(),
               ),
             ],
           ),
