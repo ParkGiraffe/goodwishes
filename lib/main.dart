@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:goodwishes/Layouts/build_mobile_layout.dart';
+import 'package:goodwishes/Layouts/build_tablet_layout.dart';
 // import 'package:goodwishes/Functions/request_storage_permission.dart';
 import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/Models/wish_category_model.dart';
 import 'package:goodwishes/Models/wish_model.dart';
-import 'package:goodwishes/constants/ui_numbers.dart';
-import 'package:goodwishes/pages/mobile/add_goods_page.dart';
-import 'package:goodwishes/pages/mobile/favorite_page.dart';
-import 'package:goodwishes/pages/mobile/search_page.dart';
-import 'package:goodwishes/pages/mobile/wish_main_page.dart';
-import 'package:goodwishes/pages/tablet/goods_main_page_tablet.dart';
-import 'package:goodwishes/pages/tablet/wish_main_page_tablet.dart';
+
 import 'package:goodwishes/widgets/bottom_navigation.dart';
-import 'package:goodwishes/pages/mobile/goods_main_page.dart';
-import 'package:goodwishes/widgets/main_drawer.dart';
+
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -103,53 +98,12 @@ class MyApp extends StatelessWidget {
         animationDuration: Duration.zero,
         length: 5,
         child: Scaffold(
-          appBar: AppBar(),
-          drawer: const MainDrawer(),
-          bottomNavigationBar: const BottomNavigation(),
-          body: isTablet
-              ? const _BuildTabletLayout()
-              : const _BuildMobileLayout(),
+          // appBar: AppBar(),
+          // drawer: const MainDrawer(),
+          bottomNavigationBar: !isTablet ? const BottomNavigation() : null,
+          body:
+              isTablet ? const BuildTabletLayout() : const BuildMobileLayout(),
         ),
-      ),
-    );
-  }
-}
-
-class _BuildTabletLayout extends StatelessWidget {
-  const _BuildTabletLayout();
-
-  @override
-  Widget build(BuildContext context) {
-    return const SafeArea(
-      child: TabBarView(
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          GoodsMainPageTablet(),
-          WishMainPageTablet(),
-          AddGoodsPage(),
-          SearchPage(),
-          FavoritePage(),
-        ],
-      ),
-    );
-  }
-}
-
-class _BuildMobileLayout extends StatelessWidget {
-  const _BuildMobileLayout();
-
-  @override
-  Widget build(BuildContext context) {
-    return const SafeArea(
-      child: TabBarView(
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          GoodsMainPage(),
-          WishMainPage(),
-          AddGoodsPage(),
-          SearchPage(),
-          FavoritePage(),
-        ],
       ),
     );
   }
