@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Functions/navigation_rail_button.dart';
+import 'package:goodwishes/Models/profile_model.dart';
+import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/pages/mobile/add_goods_page.dart';
 import 'package:goodwishes/pages/mobile/favorite_page.dart';
 import 'package:goodwishes/pages/mobile/search_page.dart';
+import 'package:goodwishes/pages/profile_page.dart';
 import 'package:goodwishes/pages/tablet/goods_main_page_tablet.dart';
 import 'package:goodwishes/pages/tablet/wish_main_page_tablet.dart';
+import 'package:goodwishes/widgets/profile_icon.dart';
+import 'package:provider/provider.dart';
 
 class BuildTabletLayout extends StatefulWidget {
   const BuildTabletLayout({super.key});
@@ -27,6 +32,17 @@ class BuildTabletLayoutState extends State<BuildTabletLayout> {
 
   @override
   Widget build(BuildContext context) {
+    final profileProvider = Provider.of<ProfiletProvider>(context);
+
+    void profileClickHandler() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProfilePage(),
+        ),
+      );
+    }
+
     return SafeArea(
       child: Row(
         children: [
@@ -38,6 +54,19 @@ class BuildTabletLayoutState extends State<BuildTabletLayout> {
               });
             },
             labelType: NavigationRailLabelType.selected,
+            minWidth: 95, // 기본값이 72. 이 값을 조정해서 간격 조정
+
+            leading: Column(
+              children: [
+                ProfileIcon(
+                  profile: profileProvider.profile,
+                  onClick: profileClickHandler,
+                ),
+                const SizedBox(
+                  height: UIDefault.sizedBoxHeight,
+                )
+              ],
+            ),
             destinations: [
               navigationRailButton(
                 '굿즈',

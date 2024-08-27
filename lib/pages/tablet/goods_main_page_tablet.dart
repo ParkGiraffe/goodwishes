@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/horizon_list_goods_category.dart';
+import 'package:goodwishes/widgets/page_title.dart';
 import 'package:goodwishes/widgets/section_title.dart';
-import 'package:goodwishes/widgets/top_with_profile.dart';
+// import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/horizon_list_goods.dart';
-import 'package:goodwishes/widgets/goods/category_list.dart';
+// import 'package:goodwishes/widgets/goods/category_list.dart';
 
 class GoodsMainPageTablet extends StatelessWidget {
   const GoodsMainPageTablet({
@@ -16,12 +17,13 @@ class GoodsMainPageTablet extends StatelessWidget {
     return const SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: UIDefault.pageHorizontalPadding,
             ),
-            child: TopWithProfile(
+            child: PageTitle(
               title: 'GoodsList',
             ),
           ),

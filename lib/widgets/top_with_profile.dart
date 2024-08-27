@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/pages/profile_page.dart';
+import 'package:goodwishes/widgets/page_title.dart';
 import 'package:goodwishes/widgets/profile_icon.dart';
 import 'package:provider/provider.dart';
 
 class TopWithProfile extends StatelessWidget {
   final String title;
+  // final bool isTablet;
   const TopWithProfile({
     super.key,
     required this.title,
+    // this.isTablet = false,
   });
 
   @override
@@ -19,7 +22,7 @@ class TopWithProfile extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ProfilePage(),
+          builder: (context) => const ProfilePage(),
         ),
       );
     }
@@ -32,14 +35,7 @@ class TopWithProfile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // page title
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              letterSpacing: -2,
-            ),
-          ),
+          PageTitle(title: title),
 
           // profile icon
 
