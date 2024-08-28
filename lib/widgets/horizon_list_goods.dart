@@ -15,10 +15,6 @@ class HorizonListGoods extends StatelessWidget {
     Iterable<Goods> goodsList =
         Provider.of<GoodsListProvider>(context).goodsList;
 
-    // final goodsList = context.select((GoodsListProvider i) => i.goodsList);
-    // List<Goods> goodsList = context.select<GoodsListProvider>((state) => state.goodsList);
-    // print(goodsList);
-
     return SizedBox(
       height: 300,
       width: MediaQuery.of(context).size.width,

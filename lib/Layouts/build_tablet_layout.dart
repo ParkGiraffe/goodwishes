@@ -6,6 +6,7 @@ import 'package:goodwishes/pages/mobile/add_goods_page.dart';
 import 'package:goodwishes/pages/mobile/favorite_page.dart';
 import 'package:goodwishes/pages/mobile/search_page.dart';
 import 'package:goodwishes/pages/profile_page.dart';
+import 'package:goodwishes/pages/tablet/add_goods_page_tablet.dart';
 import 'package:goodwishes/pages/tablet/goods_main_page_tablet.dart';
 import 'package:goodwishes/pages/tablet/wish_main_page_tablet.dart';
 import 'package:goodwishes/widgets/profile_icon.dart';
@@ -25,7 +26,7 @@ class BuildTabletLayoutState extends State<BuildTabletLayout> {
   final List<Widget> _pages = [
     const GoodsMainPageTablet(),
     const WishMainPageTablet(),
-    const AddGoodsPage(),
+    const AddGoodsPageTablet(),
     const SearchPage(),
     const FavoritePage(),
   ];

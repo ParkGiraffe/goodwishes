@@ -7,11 +7,9 @@ import 'package:provider/provider.dart';
 
 class TopWithProfile extends StatelessWidget {
   final String title;
-  // final bool isTablet;
   const TopWithProfile({
     super.key,
     required this.title,
-    // this.isTablet = false,
   });
 
   @override
@@ -29,7 +27,6 @@ class TopWithProfile extends StatelessWidget {
 
     return SizedBox(
       height: 50,
-      // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,7 +35,6 @@ class TopWithProfile extends StatelessWidget {
           PageTitle(title: title),
 
           // profile icon
-
           ProfileIcon(
             profile: profileProvider.profile,
             onClick: profileClickHandler,
