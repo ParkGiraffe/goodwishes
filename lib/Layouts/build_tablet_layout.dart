@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goodwishes/Functions/navigation_rail_button.dart';
 import 'package:goodwishes/Models/profile_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
-import 'package:goodwishes/pages/mobile/add_goods_page.dart';
+// import 'package:goodwishes/pages/mobile/add_goods_page.dart';
 import 'package:goodwishes/pages/mobile/favorite_page.dart';
 import 'package:goodwishes/pages/mobile/search_page.dart';
 import 'package:goodwishes/pages/profile_page.dart';
@@ -39,7 +39,7 @@ class BuildTabletLayoutState extends State<BuildTabletLayout> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ProfilePage(),
+          builder: (context) => const ProfilePage(),
         ),
       );
     }

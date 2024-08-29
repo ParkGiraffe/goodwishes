@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
-import 'package:goodwishes/widgets/goods/add_goods_list.dart';
+// import 'package:goodwishes/widgets/goods/add_goods_list.dart';
 import 'package:goodwishes/widgets/goods/add_goods_list_tablet.dart';
 import 'package:goodwishes/widgets/page_title.dart';
-import 'package:goodwishes/widgets/wish/add_wish_list.dart';
+// import 'package:goodwishes/widgets/wish/add_wish_list.dart';
 import 'package:goodwishes/widgets/change_goods_wish_button.dart';
-import 'package:goodwishes/widgets/top_with_profile.dart';
+// import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/wish/add_wish_list_tablet.dart';
 
 class AddGoodsPageTablet extends StatefulWidget {
