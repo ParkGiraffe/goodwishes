@@ -10,16 +10,16 @@ import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/wish/wish_searching_list.dart';
 import 'package:provider/provider.dart';
 
-class SearchPage extends StatefulWidget {
-  const SearchPage({
+class SearchPageTablet extends StatefulWidget {
+  const SearchPageTablet({
     super.key,
   });
 
   @override
-  State<SearchPage> createState() => _SearchPageState();
+  State<SearchPageTablet> createState() => _SearchPageTabletState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _SearchPageTabletState extends State<SearchPageTablet> {
   bool isGoods = true;
   List<Goods> searchingList = [];
   List<Wish> searchingListWish = [];
@@ -44,6 +44,7 @@ class _SearchPageState extends State<SearchPage> {
         padding: const EdgeInsets.symmetric(
             horizontal: UIDefault.pageHorizontalPadding),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // const StackTopNavigationBar(),

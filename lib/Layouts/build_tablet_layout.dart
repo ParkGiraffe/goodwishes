@@ -8,6 +8,7 @@ import 'package:goodwishes/pages/mobile/search_page.dart';
 import 'package:goodwishes/pages/profile_page.dart';
 import 'package:goodwishes/pages/tablet/add_goods_page_tablet.dart';
 import 'package:goodwishes/pages/tablet/goods_main_page_tablet.dart';
+import 'package:goodwishes/pages/tablet/search_page.dart';
 import 'package:goodwishes/pages/tablet/wish_main_page_tablet.dart';
 import 'package:goodwishes/widgets/profile_icon.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,7 @@ class BuildTabletLayoutState extends State<BuildTabletLayout> {
     const GoodsMainPageTablet(),
     const WishMainPageTablet(),
     const AddGoodsPageTablet(),
-    const SearchPage(),
+    const SearchPageTablet(),
     const FavoritePage(),
   ];
 
@@ -46,6 +47,8 @@ class BuildTabletLayoutState extends State<BuildTabletLayout> {
 
     return SafeArea(
       child: Row(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NavigationRail(
             selectedIndex: _selectedIndex,
