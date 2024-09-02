@@ -19,7 +19,7 @@ class SearchingListEl extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style:
-          const ButtonStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+          const ButtonStyle(padding: WidgetStatePropertyAll(EdgeInsets.zero)),
       onPressed: () {
         Navigator.push(
           context,

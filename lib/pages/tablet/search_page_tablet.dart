@@ -4,6 +4,7 @@ import 'package:goodwishes/Models/wish_model.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/change_goods_wish_button.dart';
 import 'package:goodwishes/widgets/goods/searching_list.dart';
+import 'package:goodwishes/widgets/goods/searching_list_tablet.dart';
 
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
@@ -92,7 +93,7 @@ class _SearchPageTabletState extends State<SearchPageTablet> {
                   ),
 
             isGoods
-                ? SearchingList(
+                ? SearchingListTablet(
                     serachingList: searchingList,
                   )
                 : WishSearchingList(
