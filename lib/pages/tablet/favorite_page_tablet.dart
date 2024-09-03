@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:goodwishes/constants/ui_numbers.dart';
 import 'package:goodwishes/widgets/change_goods_wish_button.dart';
-import 'package:goodwishes/widgets/goods/favorite_list.dart';
+import 'package:goodwishes/widgets/goods/favorite_list_tablet.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/wish/wish_favorite_list.dart';
 
-class FavoritePage extends StatefulWidget {
-  const FavoritePage({
+class FavoritePageTablet extends StatefulWidget {
+  const FavoritePageTablet({
     super.key,
   });
 
   @override
-  State<FavoritePage> createState() => _FavoritePageState();
+  State<FavoritePageTablet> createState() => _FavoritePageTabletState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _FavoritePageTabletState extends State<FavoritePageTablet> {
   bool isGoods = true;
 
   void isGoodsChangeHandler() {
@@ -45,7 +45,7 @@ class _FavoritePageState extends State<FavoritePage> {
                 const SizedBox(
                   height: UIDefault.sizedBoxHeight,
                 ),
-                isGoods ? const FavoriteList() : const WishFavoriteList(),
+                isGoods ? const FavoriteListTablet() : const WishFavoriteList(),
               ],
             ),
           ),
