@@ -92,14 +92,11 @@ class MyApp extends StatelessWidget {
     var isTablet = MediaQuery.of(context).size.width > 600;
 
     return MaterialApp(
-      // 디버그 표시를 없앤다.
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, // 디버그 표시를 없앤다.
       home: DefaultTabController(
         animationDuration: Duration.zero,
         length: 5,
         child: Scaffold(
-          // appBar: AppBar(),
-          // drawer: const MainDrawer(),
           bottomNavigationBar: !isTablet ? const BottomNavigation() : null,
           body:
               isTablet ? const BuildTabletLayout() : const BuildMobileLayout(),
