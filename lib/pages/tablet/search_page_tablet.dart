@@ -9,6 +9,7 @@ import 'package:goodwishes/widgets/goods/searching_list_tablet.dart';
 import 'package:goodwishes/widgets/section_title.dart';
 import 'package:goodwishes/widgets/top_with_profile.dart';
 import 'package:goodwishes/widgets/wish/wish_searching_list.dart';
+import 'package:goodwishes/widgets/wish/wish_searching_list_tablet.dart';
 import 'package:provider/provider.dart';
 
 class SearchPageTablet extends StatefulWidget {
@@ -96,7 +97,7 @@ class _SearchPageTabletState extends State<SearchPageTablet> {
                 ? SearchingListTablet(
                     serachingList: searchingList,
                   )
-                : WishSearchingList(
+                : WishSearchingListTablet(
                     serachingList: searchingListWish,
                   ),
           ],
