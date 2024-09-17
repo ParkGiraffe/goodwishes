@@ -58,11 +58,6 @@ class GoodsDetailList extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          // const SectionTitle(titleText: '같은 카테고리의 물건들'),
-          // const SizedBox(
-          //   height: 15,
-          // ),
-          // const CategoryList(),
           GoodsRewriteButton(
             goods: goods,
             categoryName: goods.category,
