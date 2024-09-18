@@ -31,13 +31,6 @@ class GoodsDetailTitle extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // const Text(
-                  //   'categoryName',
-                  //   style: TextStyle(
-                  //     fontSize: 13,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -53,7 +46,6 @@ class GoodsDetailTitle extends StatelessWidget {
                       fontSize: 13,
                     ),
                   ),
-
                   const SizedBox(
                     height: UIDefault.sizedBoxHeight,
                   ),

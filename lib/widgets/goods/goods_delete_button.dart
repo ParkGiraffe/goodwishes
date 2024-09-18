@@ -32,8 +32,6 @@ class GoodsDeleteButton extends StatelessWidget {
         }
       },
       child: Container(
-        // width: 84,
-        // padding: const EdgeInsets.symmetric(horizontal: 10),
         height: 50,
         decoration: const BoxDecoration(
           color: Color(0xFFDBCACA),
