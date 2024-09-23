@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goodwishes/Layouts/build_mobile_layout.dart';
 import 'package:goodwishes/Layouts/build_tablet_layout.dart';
-// import 'package:goodwishes/Functions/request_storage_permission.dart';
 import 'package:goodwishes/Models/category_model.dart';
 import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/Models/profile_model.dart';

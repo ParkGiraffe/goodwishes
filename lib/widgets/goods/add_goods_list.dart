@@ -44,7 +44,6 @@ class _AddGoodsListState extends State<AddGoodsList> {
     final goodsList = Provider.of<GoodsListProvider>(context);
 
     Future<void> categoryButtonHandler(BuildContext context) async {
-      // final categoryList = context.read<CategoryListProvider>();
       final pickedCategory = await Navigator.push(
         context,
         MaterialPageRoute(
@@ -52,7 +51,6 @@ class _AddGoodsListState extends State<AddGoodsList> {
               ChangeNotifierProvider<CategoryListProvider>.value(
             value: categoryList,
             builder: (context, child) {
-              // print(categoryList.categoryList);
               return const AddCategoryPage();
             },
           ),
@@ -109,13 +107,6 @@ class _AddGoodsListState extends State<AddGoodsList> {
                     onNavigate: categoryButtonHandler,
                   ),
                 ),
-                // AddGoodsListEl(
-                //   leftText: '태그 설정',
-                //   rightWidget: Tag(
-                //     tagName: 'sample',
-                //     onNavigate: categoryButtonHandler,
-                //   ),
-                // ),
                 AddGoodsListEl(
                   leftText: '소지 수량',
                   rightWidget: TextInput(
@@ -173,7 +164,7 @@ class _AddGoodsListState extends State<AddGoodsList> {
                 ),
                 TextButton(
                   style: const ButtonStyle(
-                      padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+                      padding: WidgetStatePropertyAll(EdgeInsets.zero)),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
@@ -192,23 +183,14 @@ class _AddGoodsListState extends State<AddGoodsList> {
                         price: int.parse(price),
                         tagList: tagList,
                       );
-                      // print(newGoods.thumbnail);
                       goodsList.addGoods(newGoods);
                       categoryList.upCountCategory(category);
-                      // context.read<GoodsListProvider>().addGoods(newGoods);
-                      // print(goodsList);
+
                       showInfoDialog(
                         context,
                         '알림',
                         '등록되었습니다.',
                       );
-                      // showDialog(
-                      //     context: context,
-                      //     builder: (context) {
-                      //       return const TextDialog(
-                      //         text: '등록되었습니다',
-                      //       );
-                      //     });
                     }
                   },
                   child: const SubmitButton(),

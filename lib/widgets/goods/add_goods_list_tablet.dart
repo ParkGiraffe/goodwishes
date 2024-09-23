@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:goodwishes/Functions/show_info_dialog.dart';
 import 'package:goodwishes/Models/category_model.dart';
@@ -44,7 +43,6 @@ class _AddGoodsListTabletState extends State<AddGoodsListTablet> {
     final goodsList = Provider.of<GoodsListProvider>(context);
 
     Future<void> categoryButtonHandler(BuildContext context) async {
-      // final categoryList = context.read<CategoryListProvider>();
       final pickedCategory = await Navigator.push(
         context,
         MaterialPageRoute(
@@ -52,7 +50,6 @@ class _AddGoodsListTabletState extends State<AddGoodsListTablet> {
               ChangeNotifierProvider<CategoryListProvider>.value(
             value: categoryList,
             builder: (context, child) {
-              // print(categoryList.categoryList);
               return const AddCategoryPage();
             },
           ),
@@ -185,7 +182,7 @@ class _AddGoodsListTabletState extends State<AddGoodsListTablet> {
                     ),
                     TextButton(
                       style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+                          padding: WidgetStatePropertyAll(EdgeInsets.zero)),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
