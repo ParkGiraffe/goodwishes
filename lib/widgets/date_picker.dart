@@ -30,8 +30,8 @@ class _DatePickerState extends State<DatePicker> {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
-        minimumSize: MaterialStateProperty.all<Size>(Size.zero),
+        padding: WidgetStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+        minimumSize: WidgetStateProperty.all<Size>(Size.zero),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       onPressed: () async {
