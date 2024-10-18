@@ -3,13 +3,11 @@ import 'package:goodwishes/Models/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
-  // final Function(Category) onCheckedCategory;
   final Function(String) onDeleteCategory;
 
   const CategoryItem({
     super.key,
     required this.category,
-    // required this.onCheckedCategory,
     required this.onDeleteCategory,
   });
 
@@ -17,7 +15,6 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      // margin: const EdgeInsets.only(bottom: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.white,
@@ -30,7 +27,7 @@ class CategoryItem extends StatelessWidget {
                 Navigator.pop(context, category.categoryName);
               },
               style: const ButtonStyle(
-                  padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+                  padding: WidgetStatePropertyAll(EdgeInsets.zero)),
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 alignment: Alignment.centerLeft,

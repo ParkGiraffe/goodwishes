@@ -14,7 +14,6 @@ class StackTopNavigationBar extends StatelessWidget {
       children: [
         SizedBox(
           height: UIDefault.sizedBoxHeight * 2.5,
-          // padding: const EdgeInsets.fromLTRB(10, 6, 15, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,25 +29,6 @@ class StackTopNavigationBar extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-
-              /*
-              // profile icon
-              const Row(
-                children: [
-                  Icon(
-                    Icons.home,
-                    size: iconSize,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(
-                    Icons.search,
-                    size: iconSize,
-                  ),
-                ],
-              )
-              */
             ],
           ),
         ),

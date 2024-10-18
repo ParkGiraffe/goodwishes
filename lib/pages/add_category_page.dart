@@ -83,7 +83,6 @@ class CategoryList extends StatelessWidget {
           } else {
             return CategoryItem(
               category: categoryListProvider.categoryList.elementAt(index - 1),
-              // onCheckedTodo: _handleCheckTodoItem,
               onDeleteCategory: deleteCategoryHandler,
             );
           }

@@ -45,8 +45,6 @@ class CategoryListProvider with ChangeNotifier {
   removeCategory(String id) {
     for (var categoryItem in _categoryListBox.values) {
       if (categoryItem.id == id) {
-        // print(categoryItem.count);
-        // return false;
         if (categoryItem.count <= 0) {
           _categoryListBox.delete(id);
           notifyListeners();
@@ -55,7 +53,6 @@ class CategoryListProvider with ChangeNotifier {
           notifyListeners();
           return false;
         }
-        // return; // break를 안 걸면, 반복중에 리스트 요소가 사라진 탓에, 인덱스 탐색에 오류가 발생한다. (꼬임이 발생)
       }
     }
   }
