@@ -21,9 +21,6 @@ class TextInput extends StatelessWidget {
       child: TextFormField(
         onSaved: onSaved,
         validator: (value) {
-          // if (value!.isEmpty) {
-          //   return '다시 입력해주세요';
-          // }
           return null;
         },
         initialValue: initVal,
@@ -36,7 +33,6 @@ class TextInput extends StatelessWidget {
         ),
         decoration: InputDecoration.collapsed(
           border: const UnderlineInputBorder(),
-          // contentPadding: const EdgeInsets.only(bottom: 0),
           hintText: hintText,
         ),
       ),
