@@ -3,16 +3,11 @@ import 'package:goodwishes/Models/goods_model.dart';
 import 'package:goodwishes/pages/goods_detail_page.dart';
 
 class SearchingListEl extends StatelessWidget {
-  // final Uint8List imageRoute;
-  // final String itemName;
   final Goods item;
 
   const SearchingListEl({
     super.key,
     required this.item,
-
-    // required this.imageRoute,
-    // required this.itemName,
   });
 
   @override

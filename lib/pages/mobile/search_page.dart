@@ -23,7 +23,6 @@ class _SearchPageState extends State<SearchPage> {
   bool isGoods = true;
   List<Goods> searchingList = [];
   List<Wish> searchingListWish = [];
-  // List<String> searchedList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +35,6 @@ class _SearchPageState extends State<SearchPage> {
     final goodsListProvider = Provider.of<GoodsListProvider>(context);
     final wishListProvider = Provider.of<WishListProvider>(context);
 
-    // String searching = '';
-
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Padding(
@@ -46,7 +43,6 @@ class _SearchPageState extends State<SearchPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // const StackTopNavigationBar(),
             const TopWithProfile(title: 'Search'),
             const SizedBox(
               height: UIDefault.sizedBoxHeight,
@@ -62,13 +58,11 @@ class _SearchPageState extends State<SearchPage> {
               child: TextFormField(
                 onChanged: (value) {
                   setState(() {
-                    // searching = value;
                     isGoods
                         ? searchingList = goodsListProvider.searchGoods(value)
                         : searchingListWish =
                             wishListProvider.searchWish(value);
                   });
-                  // print(searchingList);
                 },
                 keyboardType: TextInputType.multiline,
                 maxLines: 1,
@@ -77,7 +71,6 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  // contentPadding: const EdgeInsets.only(bottom: 0),
                   hintText: '검색어를 입력하세요',
                 ),
               ),
@@ -89,7 +82,6 @@ class _SearchPageState extends State<SearchPage> {
                 : const SectionTitle(
                     titleText: '검색된 위시',
                   ),
-
             isGoods
                 ? SearchingList(
                     serachingList: searchingList,
