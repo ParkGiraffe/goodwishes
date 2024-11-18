@@ -50,7 +50,7 @@ class LicensesPage extends StatelessWidget {
     var ossLicenses = dependencies;
     return Scaffold(
       appBar: AppBar(
-        title: SectionTitle(
+        title: const SectionTitle(
           titleText: 'Licenses',
         ),
       ),
@@ -104,7 +104,7 @@ class LicenceDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SectionTitle(
+        title: const SectionTitle(
           titleText: 'Licenses',
         ),
       ),

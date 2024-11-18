@@ -13,23 +13,17 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:provider/provider.dart';
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends StatelessWidget {
   const ProfilePage({
     super.key,
   });
 
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfiletProvider>(context);
     final goodsAmount = Provider.of<GoodsListProvider>(context).goodsAmount;
     final wishAmount = Provider.of<WishListProvider>(context).wishAmount;
 
-    // XFile? image;
     final ImagePicker picker = ImagePicker();
 
     // 이미지를 가져오는 함수
@@ -39,10 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
       if (pickedFile != null) {
         List<int> imageBytes = await pickedFile.readAsBytes();
-        setState(() {
-          // image = XFile(pickedFile.path);
-          profileProvider.changeProfile(Uint8List.fromList(imageBytes));
-        });
+        profileProvider.changeProfile(Uint8List.fromList(imageBytes));
       }
     }
 
@@ -62,9 +53,6 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 Column(
                   children: [
-                    // const SizedBox(
-                    //   height: UIDefault.sizedBoxHeight * 2,
-                    // ),
                     ProfileIconBig(
                         profile: profileProvider.profile, onUpload: getImage),
                     const SizedBox(
@@ -78,7 +66,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       text: '원하는 위시의 수',
                       amount: wishAmount,
                     ),
-
                     GestureDetector(
                       onTap: () {
                         Navigator.push(

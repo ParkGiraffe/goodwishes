@@ -35,7 +35,6 @@ class CategoryListProvider with ChangeNotifier {
   }
 
   Iterable<Category> get categoryList => _categoryListBox.values;
-  // int get categoryAmount => _categoryListBox.values.length;
 
   void addCategory(Category element) {
     _categoryListBox.put(element.id, element);
