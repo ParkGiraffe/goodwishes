@@ -78,7 +78,7 @@ class BackupRestorePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: SectionTitle(titleText: 'Backup & Restore'),
+        title: const SectionTitle(titleText: 'Backup & Restore'),
       ),
       body: Center(
         child: Column(

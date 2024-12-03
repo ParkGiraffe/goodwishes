@@ -62,7 +62,7 @@ class GoogleDriveService {
       response = await _driveApi!.files.create(driveFile,
           uploadMedia: drive.Media(file.openRead(), file.lengthSync()));
     }
-    // print('Uploaded file: ${response.name}');
+
     return response;
   }
 
@@ -71,7 +71,6 @@ class GoogleDriveService {
 
     try {
       await _driveApi!.files.delete(driveFileId);
-      // print('Deleted file with ID: $driveFileId');
     } catch (e) {
       debugPrint('Error deleting file with ID $driveFileId: $e');
     }
@@ -101,7 +100,6 @@ class GoogleDriveService {
     drive.FileList fileList = await _driveApi!.files
         .list(spaces: "appDataFolder", $fields: "files(id,name,modifiedTime)");
     List<drive.File>? files = fileList.files;
-    // print('Files in appDataFolder: ${files?.map((f) => f.name).toList()}');
 
     try {
       drive.File? driveFile = files
