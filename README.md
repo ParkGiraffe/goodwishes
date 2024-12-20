@@ -1,8 +1,5 @@
 # goodwishes
 
-A new Flutter project.
-# goodwishes
-
 
 ## **제작과정 및 에러/오류 해결과정**
 |id  |title  | link |
